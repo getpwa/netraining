@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>ProgressBar</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>ProgressBar:-</u></b><br>
+<i id="font">Progress bars are used to show progress of a task.</i><br><hr><hr>
+For example, when you are uploading or downloading something from the internet, it is better to show the progress of download/upload to the user.<br><br>
+The application can change the amount of progress (modifying the length of the bar) as it moves forward.<br>
+
+There is also a <i id="font">secondary progress</i> displayable on a progress bar which is useful for displaying intermediate progress, such as the buffer level during a streaming playback progress bar.<br><br>
+<hr>
+<i id="font">A progress bar can also be made indeterminate.</i><br>
+In indeterminate mode, the progress bar shows a cyclic animation without an indication of progress.<br>
+This mode is used by applications when the length of the task is unknown. <br>
+The indeterminate progress bar can be either a spinning wheel or a horizontal bar.<br><br>
+<hr><hr>
+<b>How to add a ProgressBar?</b><br>
+Use &lt;progressbar&gt; element in the Layout file.<br><br>
+<div>
+<pre>
+<code>
+&lt;ProgressBar
+       android:layout_width=&quot;match_parent&quot;
+       android:layout_height=&quot;wrap_content&quot;
+       /&gt;
+</code>
+</pre>
+</div><br/><hr>
+<b><u>Note:-</u></b><br>
+By default, the progress bar is a spinning wheel (an indeterminate indicator). <br>
+To change to a horizontal progress bar, apply the <i id="font">Widget.ProgressBar.Horizontal</i> style, like so:
+<div>
+<pre>
+<code>
+&lt;ProgressBar
+       android:layout_width=&quot;match_parent&quot;
+       android:layout_height=&quot;wrap_content&quot;
+       style=&quot;@android:style/Widget.ProgressBar.Horizontal&quot;
+       /&gt;
+</code>
+</pre>
+</div><br/><hr><hr>
+Other progress bar styles provided by the system include:
+<ul>
+<li>Widget.ProgressBar.Horizontal</li>
+<li>Widget.ProgressBar.Small</li>
+<li>Widget.ProgressBar.Large</li>
+<li>Widget.ProgressBar.Inverse</li>
+<li>Widget.ProgressBar.Small.Inverse</li>
+<li>Widget.ProgressBar.Large.Inverse</li>
+</ul>
+<br><hr><hr>
+<b>Other XML Attributes:</b><br>
+
+	<i id="font">android:animationResolution</i><br>
+&#8627;Timeout between frames of animation in milliseconds<br>
+     Must be an integer value, such as "100". <br><hr>
+
+     <i id="font">android:indeterminate</i><br>
+&#8627;Allows to enable the indeterminate mode. <br><hr>
+	
+	<i id="font">android:indeterminateBehavior</i><br>
+&#8627;Defines how the indeterminate mode should behave when the progress reaches max.<br><hr>
+	
+	<i id="font">android:indeterminateDrawable</i><br>
+&#8627;Drawable used for the indeterminate mode. <br><hr>
+	
+	<i id="font">android:indeterminateDuration</i><br>
+&#8627;Duration of the indeterminate animation. <br><hr>
+	
+	<i id="font">android:indeterminateOnly</i><br>
+&#8627;Restricts to ONLY indeterminate mode (state-keeping progress mode will not work). <br><hr>
+	
+	<i id="font">android:indeterminateTint</i><br>
+&#8627;Tint to apply to the indeterminate progress indicator. <br><hr>
+	
+	<i id="font" >android:indeterminateTintMode</i><br>
+&#8627;Blending mode used to apply the indeterminate progress indicator tint.<br><hr>
+	
+	<i id="font">android:max</i><br>
+&#8627;Defines the maximum value the progress can take. <br><hr>
+	
+	<i id="font">android:maxHeight</i><br>
+&#8627;An optional argument to supply a maximum height for this view. <br><hr>
+	
+	<i id="font">android:maxWidth</i><br>
+&#8627;An optional argument to supply a maximum width for this view.<br><hr>
+	
+	<i id="font">android:mirrorForRtl</i><br>
+&#8627;Defines if the associated drawables need to be mirrored when in RTL mode.<br><hr>
+	
+	<i id="font">android:progress</i><br>
+&#8627;Defines the default progress value, between 0 and max. <br><hr>
+	
+	<i id="font">android:progressBackgroundTint</i><br>
+&#8627;Tint to apply to the progress indicator background. <br><hr>
+	
+	<i id="font">android:progressBackgroundTintMode</i><br>
+&#8627;Blending mode used to apply the progress indicator background tint. <br><hr>
+	
+	<i id="font">android:progressDrawable</i><br>
+&#8627;Drawable used for the progress mode.<br><hr>
+	
+	<i id="font">android:progressTint</i><br>
+&#8627;Tint to apply to the progress indicator. <br><hr>
+	
+	<i id="font">android:progressTintMode</i><br>
+&#8627;Blending mode used to apply the progress indicator tint. <br><hr>
+	
+	<i id="font">android:secondaryProgress</i><br>
+&#8627;Defines the secondary progress value, between 0 and max.<br><hr>
+	
+	<i id="font">android:secondaryProgressTint</i><br>
+&#8627;Tint to apply to the secondary progress indicator. <br><hr>
+	
+	<i id="font">android:secondaryProgressTintMode</i><br>
+&#8627;Blending mode used to apply the secondary progress indicator tint. <hr><br><br>
+	
+</body>
+</html>

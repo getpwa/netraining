@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Intent</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>What is an Intent?</u></b><br>
+An Intent is a messaging object you can use to request an action from another app component<br><br>
+<hr>
+It&rsquo;s a way to communicate between Android components (not just activities) to request an action from and by different components. <br>
+It&rsquo;s like a message that Android listens for and react accordingly by identifying and invoking the targeted app&rsquo;s appropriate component (like an Activity, Service, Content Provider, etc.).The components can be within that same application or some other app.<br><br>
+<hr>
+If multiple apps are capable of responding to the message then Android provides the user with a list of those apps from which a choice can be made.<br>
+It is known as Chooser<br><br>
+<hr><hr>
+<b><u>Uses of Intents:</u></b><br>
+<ul>
+    <li>Starting an Activity</li>
+    <li>Starting a service</li>
+    <li>Delivering a broadcast</li>
+</ul>
+<hr><hr>
+<b><u>Types of Intent:-</u></b><br>
+
+1. <b><u>Explicit Intent:</u></b><br> While creating an Intent object when we explicitly specify the target component name(e.g Package name or Class name) directly in the intent, it&rsquo;s an explicit intent.
+E.g.
+<div>
+<pre>
+<code>
+Intent intent = new Intent(this, LoginActivity.class);
+startActivity(intent);
+</code>
+</pre>
+</div>
+Thus specifying that we want to navigate to LoginActivity.class<br><hr>
+2. <b><u>Implicit Intent:</u></b><br>Implicit Intent doesn't specifiy the component.they must include enough information for the system to determine which of the available components is best to run for that intent.
+E.g.
+<div>
+<pre>
+<code>
+Intent intent=new Intent(Intent.ACTION_VIEW);  
+intent.setData(Uri.parse("http://www.javatpoint.com"));  
+startActivity(intent);  
+</code>
+</pre>
+</div>
+Thus asking the system to find a suitable component to run this URI.<br><hr><br><br>
+</body>
+</html>

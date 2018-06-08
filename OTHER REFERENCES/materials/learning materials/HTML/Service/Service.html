@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>Service</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android Service:-</u></b><br>
+<i id="font">Service is a long runnig task or process without any user interaction.</i><br>
+The <i id="font">android.app.Service</i> is subclass of <i id="font">ContextWrapper</i> class.<br><br>
+<hr><hr>
+A service can essentially take two forms:<br><hr>
+1. <b><u>Started:</u></b><br>
+A service is "started" when an application component (such as an activity) starts it by calling startService( ).<br>
+Once started, a service can run in the background indefinitely, even if the component that started it is destroyed.<br>
+Usually, a started service performs a single operation and does not return a result to the caller.<br>
+ For example, it might download or upload a file over the network. When the operation is done, the service should stop itself.<br>
+<hr>
+2. <b><u>Bound:</u></b><br>
+A service is "bound" when an application component binds to it by calling bindService( ).<br>
+A bound service  allows components to interact with the service, send requests, get results, and even do so across processes with interprocess communication (IPC).<br>
+A bound service runs only as long as another application component is bound to it.<br> Multiple components can bind to the service at once, but when all of them unbind, the service is destroyed.<br>
+<br><hr><br><br>
+</body>
+</html>

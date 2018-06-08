@@ -1,0 +1,68 @@
+<html>
+<head>
+
+    <title>Service Example</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.app.Service;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.IBinder;
+import android.widget.Toast;
+
+public class MyService extends Service {
+    MediaPlayer myPlayer;
+    public MyService() {
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO: Return the communication channel to the service.
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Toast.makeText(this,"onCreate in Service was Called",Toast.LENGTH_SHORT).show();
+        myPlayer = MediaPlayer.create(this,R.raw.arjun);
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        myPlayer.start();
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        myPlayer.stop();
+        Toast.makeText(this,"onDestroy in Service was Called",Toast.LENGTH_SHORT).show();
+    }
+}
+</textarea>
+
+</body>
+</html>

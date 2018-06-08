@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>SQLite Read</title>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Steps to Read Values in SQLite Database</u>:-</b><br>
+<ol style="padding-left: 15px;">
+ <li>In DataBaseHelper class create a method to read data with return type as Cursor.</li>
+<div>
+<pre>
+<code>
+ public Cursor getAllData(){
+       
+ }
+</code>
+</pre>
+</div><br>
+
+ <li>Open Database for reading data in the tables using getWritableDatabase().</li>
+<div>
+<pre>
+<code>
+ public Cursor getAllData(){
+ SQLiteDatabase db = this.getWritableDatabase();
+ }
+</code>
+</pre>
+</div><br>
+
+ <li>Write your query for reading values in the rawQuery() method.</li>
+It runs the provided SQL and returns a Cursor over the result set.<br>
+<div>
+<pre>
+<code>
+ Cursor res = db.rawQuery("Select * from " + TABLE_NAME,null);
+</code>
+</pre>
+</div><br>
+
+Thus the complete method would be:-<br>
+<div>
+<pre>
+<code>
+ public Cursor getAllData(){
+  SQLiteDatabase db = this.getWritableDatabase();
+  Cursor res = db.rawQuery("Select * from " + TABLE_NAME,null);
+  return  res;
+  }
+</code>
+</pre>
+</div><br>
+
+<li> Now go to your MainActivity.class</li>
+Call the method for reading Data from DataBaseHelper.class<br>
+<div>
+<pre>
+<code>
+ DataBaseHelper myDb;
+ myDb.getAllData();
+</code>
+</pre>
+</div><br>
+
+Since the return type of this method is Cursor.We need to store the data in an Object of class Cursor.<br>
+Thus the statment would be,<br>
+<div>
+<pre>
+<code>
+ Cursor res = myDb.getAllData();
+</code>
+</pre>
+</div><br>
+
+Now, we can get the result by  moving cursor to the next row and appending the result in StringBuffer.<br>
+To get the result from the resultset we pass the parameter ColumnIndex in getString() method.<br>
+Thus,<br>
+<div>
+<pre>
+<code>
+ while (res.moveToNext()){
+ stringBuffer.append("Id: "+res.getString(0)+"\n");
+ }
+</code>
+</pre>
+</div><br>
+ </ol>
+This is how we read entries from SQLite DataBase <br><hr><br><br>
+</body>
+</html>              

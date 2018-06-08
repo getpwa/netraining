@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>AlertDialog</title>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Dialog:-</u></b><br>
+<i id="font">A dialog is a small window that prompts the user to make a decision or enter additional information.</i><br>
+ A dialog does not fill the screen and is normally used for modal events that require users to take an action before they can proceed.<br><br>
+<hr><hr>
+<b><u>Steps of Building an Alert Dialog:-</u></b><br>
+<div>
+<pre>
+<code>
+// 1. Instantiate an AlertDialog.Builder with its constructor
+AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+// 2. Chain together various setter methods to set the dialog characteristics
+builder.setMessage(R.string.dialog_message);
+builder.setTitle(R.string.dialog_title);
+
+// 3. Add the buttons
+builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+               // User clicked OK button
+           }
+       });
+builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+               // User cancelled the dialog
+           }
+       });
+	   
+// 4. Get the AlertDialog from create()
+AlertDialog dialog = builder.create();
+
+//As we touch on the screen the dialog disappears.To avoid that we need to add :
+dialog.setCancelable(false);
+
+// 5. Show the Dialog
+alertDialog.show();
+</code>
+</pre>
+</div><br><hr><br><br>
+
+</body>
+</html>

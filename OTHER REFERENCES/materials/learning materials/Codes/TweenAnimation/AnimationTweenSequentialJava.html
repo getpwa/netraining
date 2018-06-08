@@ -1,0 +1,60 @@
+<html>
+<head>
+
+    <title>AnimationTweenSequential</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity {
+    Button btnSequential;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btnSequential = (Button) findViewById(R.id.idbtnSequential);
+        btnSequential.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageView image = (ImageView) findViewById(R.id.idImageView);
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.sequential);
+                image.startAnimation(animation);
+            }
+        });
+
+    }
+}
+</textarea>
+
+</body>
+</html>

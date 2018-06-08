@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>AlarmManager</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>AlarmManager :-</u></b><br>
+AlarmManager is used to  perform time-based operations outside the lifetime of your application.<br>
+It provides access to the system alarm services and schedules our application to be run at some point in the future.<br><hr><hr>
+
+<b>AlarmManager is having different characteristics mentioned below:</b>
+<ol>
+<li>AlarmManager runs outside the lifetime of your application. Once an alarm is scheduled, it will invoke even when your application is not running or in sleep mode.</li>
+<li>An scheduled alarm will execute unless it is stopped explicitly by calling cancel() method, or until device reboots.</li>
+<li>All scheduled alarms will be stopped when device reboots. This means, you need to re-schedule them explicitly when device boot completes.</li>
+<li>AlarmManger fires an Intent at given intervals. This can be used along with broadcast receivers to start a service to perform network operations.</li>
+</ol><hr><hr>
+
+<b>Steps of using AlarmManager:-</b><br><br>
+1. Obtain the Instance of AlarmManager Class :<br>
+Context.getSystemService(Context.ALARM_SERVICE) <br><hr>
+
+2.Define a Pending Intent:-
+AlarmManager is always registered with intent.Thus whenever an alarm goes off, the Intent which has been registered with AlarmManager, is broadcasted by the system automatically.<br> 
+This intent starts the target application if it is not running.<br>
+<div>
+<pre>
+<code>
+Intent intent = new Intent(this, MyReceiver.class);
+PendingIntent pend_intent = PendingIntent.getBroadcast(this.getApplicationContext(), 0, intent, 0);
+</code>
+</pre>
+</div><br><hr>
+
+3. Register the Alarm with the PendingIntent:-
+<div>
+<pre>
+<code>
+alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (time * 10000), pend_intent);
+</code>
+</pre>
+</div><br><hr>
+
+4. Create a new Class extending BroadcastReceiver and Override its onreceive method:-
+The Android SDK provides developers an abstract class called BroadcastReceiver which is used to pass a notification to the user in case any specific event occurs.<br>
+Thus we have created a class extending BroadcastReceiver , so that whenever an alarm gets triggered system can listen to it and perform the desired action.
+<div>
+<pre>
+<code>
+public class MyReceiver extends BroadcastReceiver{
+ 
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		//Write your logic here
+		//What you want to do when the Alarm gets triggered
+         
+	}
+ 
+}
+</code>
+</pre>
+</div><br><hr><hr>
+
+<b>Methods:-</b><br><br>
+set (int type, long triggerAtMillis, PendingIntent operation):<br>	
+Schedules an alarm for one time.<br>
+type: type of alarm.Value is RTC_WAKEUP, RTC, ELAPSED_REALTIME_WAKEUP or ELAPSED_REALTIME.<br>
+triggerAtMillis: time in milliseconds that the alarm should go off, using the appropriate clock (depending on the alarm type).<br>
+operation: Action to perform when the alarm goes off; typically comes from IntentSender.getBroadcast().<br><hr>
+
+setRepeating (int type, long triggerAtMillis, long intervalMillis, PendingIntent operation): <br>
+Schedules an alarm with exact repeating time. <br>
+type: type of alarm.Value is RTC_WAKEUP, RTC, ELAPSED_REALTIME_WAKEUP or ELAPSED_REALTIME. <br>
+triggerAtMillis: time in milliseconds that the alarm should first go off, using the appropriate clock (depending on the alarm type). <br>
+intervalMillis: interval in milliseconds between subsequent repeats of the alarm. <br>
+operation: Action to perform when the alarm goes off; typically comes from IntentSender.getBroadcast().<br><hr>
+
+cancel(PendingIntent operation)<br>
+Remove any alarms with a matching Intent.<br>
+operation: IntentSender which matches a previously added IntentSender. This parameter must not be null.<br><hr><br><br>
+</body>
+</html>

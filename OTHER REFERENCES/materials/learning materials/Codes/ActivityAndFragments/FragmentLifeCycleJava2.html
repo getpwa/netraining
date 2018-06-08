@@ -1,0 +1,128 @@
+<html>
+<head>
+
+    <title>Fragment LifeCycle</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class FragmentA extends Fragment {
+
+
+    public FragmentA() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        Toast.makeText(getActivity(),"onCreateView in Fragment was Called",Toast.LENGTH_SHORT).show();
+        return inflater.inflate(R.layout.fragment_a, container, false);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Toast.makeText(getActivity(),"onAttach in Fragment was Called",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Toast.makeText(getActivity(),"onCreate in Fragment was Called",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Toast.makeText(getActivity(),"onActivityCreated in Fragment was Called",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Toast.makeText(getActivity(),"onStart in Fragment was Called",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Toast.makeText(getActivity(),"onResume in Fragment was Called",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Toast.makeText(getActivity(),"onPause in Fragment was Called",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Toast.makeText(getActivity(),"onSaveInstanceState in Fragment was Called",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Toast.makeText(getActivity(),"onStop in Fragment was Called",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Toast.makeText(getActivity(),"onDestroyView in Fragment was Called",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(getActivity(),"onDestroy in Fragment was Called",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Toast.makeText(getActivity(),"onDetach in Fragment was Called",Toast.LENGTH_SHORT).show();
+    }
+}
+
+
+</textarea>
+
+</body>
+</html>

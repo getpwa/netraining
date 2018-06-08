@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Toast</title>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Toast:-</u></b><br>
+<i id="font">Toast is a notification message that pop up for a specific duration.</i><br>
+ It only fills the amount of space required for the message and the current activity remains visible and interactive.<br><br>
+ The <i id="font">android.widget.Toast</i> class is the subclass of <i id="font">java.lang.Object class</i>.<br><hr><hr>
+ <b><u>Constants of Toast class:</u></b><br>
+ <i id="font">public static final int LENGTH_LONG</i><br>
+&#8627;displays view for the long duration of time.<br><hr>
+
+  <i id="font">public static final int LENGTH_SHORT</i><br>
+&#8627; displays view for the short duration of time.<br><hr><hr>
+
+<b><u>Android Toast Example:-</u></b><br>
+<div >
+<pre>
+<code>
+Context context = getApplicationContext();
+CharSequence text = &quot;Hello toast!&quot;;
+int duration = Toast.LENGTH_SHORT;
+
+Toast toast = Toast.makeText(context, text, duration);
+toast.show();
+</code>
+</pre>
+</div><hr/><hr>
+You can also chain your methods like this:<br>
+<i id="font">Toast.makeText(getApplicationContext(),"Hello toast!" ,Toast.LENGTH_SHORT).show();</i><br>
+This method takes three parameters: the application Context, the text message, and the duration for the toast.<br><br>
+ 
+<b><u>Note:-</u></b><br>
+You can either use a Toast for short dutation by using <b><i>Toast.LENGTH_SHORT</i></b> which displays Toast message for 2 secs.<br>
+Or you can create Toast for Longert duration by using <b><i>Toast.LENGTH_LONG</i></b> which displays Toast message for 3.5 secs.<br><br>
+<hr><hr>
+<b><u>Positioning your Toast:-</u></b><br>
+A standard toast notification appears near the bottom of the screen, centered horizontally. <br>
+ You can change this position with the <b><i id="font">setGravity(int, int, int) </i></b>method. <br>
+ This accepts three parameters: a Gravity constant, an x-position offset, and a y-position offset.<br>
+ For example, if you decide that the toast should appear in the top-left corner, you can set the gravity like this:<br>
+<div>
+<pre>
+<code>
+Toast toast = Toast.makeText(this, &quot;Toast!!!&quot;, Toast.LENGTH_SHORT);
+toast.setGravity(Gravity.AXIS_PULL_AFTER , 0, 0);
+toast.show();
+</code>
+</pre>
+</div><br/>
+For displaying our own Layout instead of simple Toast message , we use Custom Toast (i.e. Customizing our Toast)<br><hr><br><br>
+</body>
+</html>

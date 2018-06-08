@@ -1,0 +1,403 @@
+{"rootnode":[
+  {
+    "number":"1",
+    "question": "We can pass Data between Activities in Android using-",
+    "option1": "Intent",
+    "option2": "Content Provider",
+    "option3": "Broadcast Receiver",
+    "option4": "None of the above",
+    "hint":"We can easily pass data between actvities using Intent(putExtra method)\r\nE.g.\r\nIntent i = new Intent(this,MainActivity2.class);\r\ni.putExtra(\"Variable Name\",\"Value\");\r\nstartActivity(i);",
+    "ans":"Intent"
+  },
+  {
+    "number":"2",
+    "question": "What is ANR in android?",
+    "option1": "Dialog box is called as ANR",
+    "option2": "Application Not Responding",
+    "option3": "Android Not Responding",
+    "option4": "None of the above",
+    "hint":"ANR stands for Application Not Responding.\r\n\r\nAn ANR will occur if you are running a process on the UI thread which takes a long time, usually around 5 seconds. During this time the GUI (Graphical User Interface) will lock up which will result in anything the user presses will not be actioned. After the 5 seconds approx has occurred, if the thread still hasn't recovered then an ANR dialogue box is shown informing the user that the application is not responding and will give the user the choice to either wait, in the hope that the app will eventually recover, or to force close the app.\r\n",
+    "ans":"Application Not Responding"
+  },
+  {
+    "number":"3",
+    "question": "What is ANR responding time in android?",
+    "option1": "8sec",
+    "option2": "10sec",
+    "option3": "1min",
+    "option4": "5sec",
+    "hint":"ANR responding time is 5 sec. If an application is not responding within 5 sec, ANR will occur",
+    "ans":"5sec"
+  },
+  {
+    "number":"4",
+    "question": "How to stop the services in android?",
+    "option1": "finish()",
+    "option2": "exit()",
+    "option3": "stop()",
+    "option4": "stopSelf() and stopService()",
+    "hint":"We can stop the services by stopSelf() and stopService(), in some cases android will kill the services due to the low memory problem.",
+    "ans":"stopSelf() and stopService()"
+  },
+  {
+    "number":"5",
+    "question": "Which permissions are required to get a location in android?",
+    "option1": "ACCESS_FINE and ACCESS_COARSE",
+    "option2": "Internet permission",
+    "option3": "WIFI permission",
+    "option4": "GPRS permission",
+    "hint":"The main permissions you need are android.permission.ACCESS_COARSE_LOCATION or \r\nandroid.permission.ACCESS_FINE_LOCATION.\r\n",
+    "ans":"ACCESS_FINE and ACCESS_COARSE"
+  },
+  {
+    "number":"6",
+    "question": "Is it possible to have an activity without UI in android?",
+    "option1": "No",
+    "option2": "Yes",
+    "option3": "It will give run time error",
+    "option4": "Cant say",
+    "hint":"Yes, it is not necessary that an Activity should always have a UI.\r\nFoe e.g To Display a Toast from an Activity without layout you would define the activity in your manifest like so:\r\npublic class MainActivity extends Activity {\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        Toast.makeText(this, \"I'm alive\", Toast.LENGTH_LONG).show();\r\n        finish();\r\n    }\r\n}\r\n\r\nAlso the Programmer can omit the UI and do some background functionalities within an activity.\r\nBut generally using Servies for that purpose is the prefered option.",
+    "ans":"Yes"
+  },
+  {
+    "number":"7",
+    "question": "Assets Holds",
+    "option1": "Java Source Code",
+    "option2": "Resources",
+    "option3": "Static Files",
+    "option4": "Application",
+    "hint":"Assets provide a way to include arbitrary files like text, xml, fonts, music, and video in your application. If you try to include these files as \"resources\", Android will process them into its resource system and you will not be able to get the raw data. If you want to access data untouched, Assets are one way to do it.",
+    "ans":"Static Files"
+  },
+  {
+    "number":"8",
+    "question": "What is meant by AAPT?",
+    "option1": "Android Asset Packaging Tool",
+    "option2": "Application Asset Packaging Tool",
+    "option3": "Android Application Packaging Tool",
+    "option4": "Android Application Property Tool",
+    "hint":"Android Application Packaging Tool is a default tool of android sdk to pack all classes and resources to apk file",
+    "ans":"Android Application Packaging Tool"
+  },
+  {
+    "number":"9",
+    "question": "What is DDMS in Android?",
+    "option1": "Dalvik Memory Server",
+    "option2": "Distributed Denial Memory Services",
+    "option3": "Dalvik Debug Monitor Server",
+    "option4": "Dalvik Debug Monitor Services",
+    "hint":"Android Studio includes a debugging tool called the Dalvik Debug Monitor Server (DDMS),which provides port-forwarding services, screen capture on the device, thread and heap information on the device, logcat, process, and radio state information, incoming call and SMS spoofing, location data spoofing, and more\r\n",
+    "ans":"Dalvik Debug Monitor Server"
+  },
+  {
+    "number":"10",
+    "question": "Which Database is Automatically supplied to you in Android?",
+    "option1": "Apache",
+    "option2": "SQLite",
+    "option3": "MySql",
+    "option4": "Oracal",
+    "hint":"SQLite is a opensource SQL database that stores data to a text file on a device. Android comes in with built in SQLite database implementation.\r\nSQLite supports all the relational database features. In order to access this database, you don't need to establish any kind of connections for it.",
+    "ans":"SQLite"
+  },
+  {
+    "number":"11",
+    "question": "Which Exception is thrown when a given package name ,application or component name cannot be found?",
+    "option1": "Resources.NotFoundException",
+    "option2": "PackageManager.NameNotFoundException",
+    "option3": "Formation.Exception",
+    "option4": "Parse.Exception",
+    "hint":"PackageManager.NameNotFoundException exception is thrown when a given package, application, or component name cannot be found.\r\nResources.NotFoundException exception is thrown by the resource APIs when a requested resource can not be found.",
+    "ans":"PackageManager.NameNotFoundException"
+  },
+  {
+    "number":"12",
+    "question": "The root element of AndroidManifest.xml file is",
+    "option1": "Activity",
+    "option2": "Manifest",
+    "option3": "Action",
+    "option4": "Application",
+    "hint":"manifest is the root element of the AndroidManifest.xml file. It has package attribute that describes the package name of the activity class.",
+    "ans":"Manifest"
+  },
+  {
+    "number":"13",
+    "question": "Who designed Android Logo?",
+    "option1": "Andy Rubin",
+    "option2": "Larry Page",
+    "option3": "Irina Blok",
+    "option4": "Sundar Pichai",
+    "hint":"Android logo was designed by Irina Blok and is said to be insipired from an old Atari video game called “Gauntlet: The Third Encounter”",
+    "ans":"Irina Blok"
+  },
+  {
+    "number":"14",
+    "question": "What is the time limit of broadcast receiver in Android?",
+    "option1": "15sec",
+    "option2": "5sec",
+    "option3": "1 hour",
+    "option4": "10sec",
+    "hint":"Broad cast Receiver is a component that responds to system wide broad cast announcements. It acts as gateway to other components of our application. It is not supposed to do long running operation, it has to do its operation in 10 seconds maximum.",
+    "ans":"10sec"
+  },
+  {
+    "number":"15",
+    "question": "Which field accepts only digits?",
+    "option1": "android:capitalize",
+    "option2": "android:digits",
+    "option3": "android:digitsOnly",
+    "option4": "android:num",
+    "hint":"android:digits specifies that the particular textview has a numeric input method",
+    "ans":"android:digits"
+  },
+  {
+    "number":"16",
+    "question": "Android Logo is inspired from :-",
+    "option1": "Super Mario",
+    "option2": "Roadrash",
+    "option3": "Contra 4",
+    "option4": "The Gauntlet",
+    "hint":"Android logo was designed by Irina Blok and is said to be inspired from an old Atari video game called “Gauntlet: The Third Encounter”",
+    "ans":"The Gauntlet"
+  },
+  {
+    "number":"17",
+    "question": "Who was not among the founders of Android?",
+    "option1": "Andy Rubin",
+    "option2": "Larry Page",
+    "option3": "Rich Miner",
+    "option4": "Nick Sears",
+    "hint":"Android, Inc. was founded in Palo Alto, California in October 2003 by Andy Rubin ,Rich Miner ,Nick Sears.",
+    "ans":"Larry Page"
+  },
+  {
+    "number":"18",
+    "question": "All layout classes are direct subclasses of:-",
+    "option1": "java.lang.object",
+    "option2": "android.widget",
+    "option3": "android.view.Viewgroup",
+    "option4": "android.view.VIew",
+    "hint":"A Viewgroup is a special view that contains other views (called children).The view group is a base class for layouts and views.",
+    "ans":"android.view.Viewgroup"
+  },
+  {
+    "number":"19",
+    "question": "How to kill an Activity in Android?",
+    "option1": "kill()",
+    "option2": "finish()",
+    "option3": "stop()",
+    "option4": "pause()",
+    "hint":"Calling finish() in onCreate(): onCreate() -> onDestroy()\r\nCalling finish() in onStart() : onCreate() -> onStart() -> onStop() -> onDestroy()\r\nCalling finish() in onResume(): onCreate() -> onStart() -> onResume() -> onPause() -> onStop() -> onDestroy()",
+    "ans":"finish()"
+  },
+  {
+    "number":"20",
+    "question": "The first smart phone to run on Android platform was:-",
+    "option1": "HTC Dream",
+    "option2": "Motorola",
+    "option3": "Nexus",
+    "option4": "Samsung",
+    "hint":"",
+    "ans":"HTC Dream"
+  },
+  {
+    "number":"21",
+    "question": "For writing Android code using C/C++ you need to use ________",
+    "option1": "JDK",
+    "option2": "NDK",
+    "option3": "SDK",
+    "option4": "MDK",
+    "hint":"The android NDK is a toolset that lets you implement parts of your app using native-code languages such as C and C++",
+    "ans":"NDK"
+  },
+  {
+    "number":"22",
+    "question": "On which Thread Services work in Android?",
+    "option1": "Own Thread",
+    "option2": "Worker Thread",
+    "option3": "Background Thread",
+    "option4": "Main Thread",
+    "hint":"Android Services are long running Background process running on Main i.e UI thread.",
+    "ans":"Main Thread"
+  },
+  {
+    "number":"23",
+    "question": "What is ADB in Android?",
+    "option1": "Application Development Base",
+    "option2": "Android Developer Base",
+    "option3": "Android Development Base",
+    "option4": "Android Debug Bridge",
+    "hint":"ADB,Android Debug Bridge , is a command-line utility included with Google's Android SDK.ADB can control your device our USB from a computer,copy files back and forth,install and uninstall apps, run shell commands etc.",
+    "ans":"Android Debug Bridge"
+  },
+  {
+    "number":"24",
+    "question": "What is AIDL in Android?",
+    "option1": "Android Interface Design Language",
+    "option2": "Android Interface Development Language",
+    "option3": "Android Interface Definition Language",
+    "option4": "Android Interface Debug Language",
+    "hint":"AIDL, or Android Interface Definition Language, handles the interface requirements between a client and a service so both can communicate at the same level through interprocess communication or IPC. This process involves breaking down objects into primitives that Android can understand. This part is required simply because a process cannot access the memory of the other process.",
+    "ans":"Android Interface Definition Language"
+  },
+  {
+    "number":"25",
+    "question": "What does APK stands for?",
+    "option1": "Android Packaging Kit",
+    "option2": "Application Packaging Kit",
+    "option3": "Application Programming Kit",
+    "option4": "Android Programming Kit",
+    "hint":"APK is an android packaging kit. We can pack/zip, our code in apk format to work on Android devices as an application.",
+    "ans":"Android Packaging Kit"
+  },
+  {
+    "number":"26",
+    "question": "What is GCM in Android?",
+    "option1": "Google Message pack",
+    "option2": "Google Count Messaging",
+    "option3": "Google Could Messaging",
+    "option4": "Geo Message pack",
+    "hint":"GCM stands for Google Cloud Messaging using which we can push the data from the servers to client devices. In short, we can send messages to mobile devices through the cloud(Push Notification).",
+    "ans":"Google Could Messaging"
+  },
+  {
+    "number":"27",
+    "question": "Is it mandatory to call onCreate() in android?",
+    "option1": "Yes",
+    "option2": "No",
+    "option3": "Depends on minSdk version",
+    "option4": "Depends on target api level",
+    "hint":"onCreate() is NOT required for apps. But, the reason it is common to every single app is because that method is typically the best place to put initialization code. We can also put that same exact initialization code in onStart() or onResume() method.",
+    "ans":"No"
+  },
+  {
+    "number":"28",
+    "question": "How to get a response from an activity in Android?",
+    "option1": "startActivityToResult()",
+    "option2": "startActiivtyForResult()",
+    "option3": "Bundle()",
+    "option4": "All of the above",
+    "hint":"startActivityForResult(Intent intent,int requestCode) will give the response from second activity to first activity as a result.",
+    "ans":"startActiivtyForResult()"
+  },
+  {
+    "number":"29",
+    "question": "What is singleton class in android?",
+    "option1": "A class that can create only one object",
+    "option2": "Anonymous class",
+    "option3": "Java class",
+    "option4": "Manifest file",
+    "hint":"In object-oriented programming , a singleton class is a class that can have only one object (an instance of the class) at a time.",
+    "ans":"A class that can create only one object"
+  },
+  {
+    "number":"30",
+    "question": "On which thread services work in android?",
+    "option1": "Worker Thread",
+    "option2": "Own Thread",
+    "option3": "Main Thread",
+    "option4": "None of the above",
+    "hint":"Service is a long running background process running in the Main Thread",
+    "ans":"Main Thread"
+  },
+  {
+    "number":"31",
+    "question": "What built in database is Android shipped with ?",
+    "option1": "MYSQL",
+    "option2": "Oracle",
+    "option3": "SQlite",
+    "option4": "Apache",
+    "hint":"SQLite is a opensource SQL database that stores data to a text file on a device. Android comes in with built in SQLite database implementation.SQLite supports all the relational database features",
+    "ans":"SQlite"
+  },
+  {
+    "number":"32",
+    "question": "_________ sets the gravity of the content of the View its used on.",
+    "option1": "android:gravity",
+    "option2": "android:layout_gravity",
+    "option3": "android:weight",
+    "option4": "android:orientation",
+    "hint":"android:gravity sets the gravity of the content of the View its used on. It describes how the content should be aligned with respect to the View.",
+    "ans":"android:gravity"
+  },
+  {
+    "number":"33",
+    "question": "_________ sets the gravity of the View or Layout in its parent.",
+    "option1": "android:gravity",
+    "option2": "android:layout_gravity",
+    "option3": "android:weight",
+    "option4": "android:orientation",
+    "hint":"android:layout_gravity sets the gravity of the content of the View its used on. It describes how the view should be aligned with respect to the Parent.",
+    "ans":"android:layout_gravity"
+  },
+  {
+    "number":"34",
+    "question": "_________ is a view group that aligns all children in a single direction, vertically or horizontally",
+    "option1": "RelativeLayout",
+    "option2": "TableLayout",
+    "option3": "FrameLayout",
+    "option4": "LinearLayout",
+    "hint":"LinearLayout is a view group that aligns all children in a single direction, vertically or horizontally.All children of a LinearLayout are stacked one after the other, so a vertical list will only have one child per row, no matter how wide they are, and a horizontal list will only be one row high (the height of the tallest child, plus padding).",
+    "ans":"LinearLayout"
+  },
+  {
+    "number":"34",
+    "question": "_________ is a view group that aligns all children in a single direction, vertically or horizontally",
+    "option1": "RelativeLayout",
+    "option2": "TableLayout",
+    "option3": "FrameLayout",
+    "option4": "LinearLayout",
+    "hint":"LinearLayout is a view group that aligns all children in a single direction, vertically or horizontally.All children of a LinearLayout are stacked one after the other, so a vertical list will only have one child per row, no matter how wide they are, and a horizontal list will only be one row high (the height of the tallest child, plus padding).",
+    "ans":"LinearLayout"
+  },
+  {
+    "number":"34",
+    "question": "In LinearLayout to arrange layout horizontally we use attribue:-",
+    "option1": "android:orientation=\"vertical\"",
+    "option2": "android:orientation=\"horizontal\"",
+    "option3": "android:orientation=\"horizontally\"",
+    "option4": "android=horizontal",
+    "hint":"In LinearLayout to arrange children either horizontally or vertically we use attribute android:orientation=\"horizontal\".",
+    "ans":"android:orientation=\"horizontal\""
+  },
+  {
+    "number":"35",
+    "question": "______ Layout organises content into rows and columns",
+    "option1": "RelativeLayout",
+    "option2": "TableLayout",
+    "option3": "FrameLayout",
+    "option4": "LinearLayout",
+    "hint":"TableLayout organises content into rows and columns.We use <TableRow> element to build a row in the table. Each row has zero or more cells; each cell can hold one View object.",
+    "ans":"TableLayout"
+  },
+  {
+    "number":"36",
+    "question": "______ is the simplest data storing option available in Android.It stores data in key value pairs.",
+    "option1": "SQLite",
+    "option2": "SharedPreference",
+    "option3": "Internal Storage",
+    "option4": "Cloud Storage",
+    "hint":"SharedPreference is the simplest data storing option available in Android.It stores data in key value pairs.\n\nData is stored in XML file in the directory data/data/<package-name>/shared-prefs folder ",
+    "ans":"SharedPreference"
+  },
+  {
+    "number":"37",
+    "question": "To send SMS we need to declare which permission in AndroidManifest.xml file?",
+    "option1": "android.permission.SEND_SMS",
+    "option2": "android.permission.SEND_MSG",
+    "option3": "android.permission.SEND_MMS",
+    "option4": "No Permission required",
+    "hint":"To send SMS declare:\n\n<uses-permission android:name=\"android.permission.SEND_SMS\"/>",
+    "ans":"android.permission.SEND_SMS"
+  },
+  {
+    "number":"38",
+    "question": "______ is a view that display web pages inside your application",
+    "option1": "LinearLayout",
+    "option2": "HTMLView",
+    "option3": "BrowserView",
+    "option4": "WebView",
+    "hint":"WebView is a view that display web pages inside your application.WebView makes turns your application to a web application.",
+    "ans":"WebView"
+  }
+]
+}

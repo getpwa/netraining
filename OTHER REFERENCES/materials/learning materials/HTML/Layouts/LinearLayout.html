@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>LinearLayout</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>LinearLayout:-</u></b>
+<i id="font">LinearLayout is a view group that aligns all children in a single direction, vertically or horizontally.</i> <br>
+Layout direction is specified by <em id="font">android:orientation</em> attribute<br>
+<img src="orientation.jpg" ><br/><br><hr><hr>
+<b><u>LinearLayout Horizontal:-</u></b><br>
+<i id="font">It arranges the elements Horizontally in the LinearLayout.</i><br><hr>
+<b><u>Attribute:-</u></b><br>
+<div>
+android:orientation=&quot;horizontal&quot;
+</div><hr><br>
+In the example below we have arranged two TextView&apos;s and a Button&apos;s horizontally<br>
+<div>
+<pre>
+<code>
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;com.example.arjun.helloworld.MainActivity&quot;
+    android:orientation=&quot;horizontal&quot;&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Hello World!&quot; /&gt;
+    &lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Hello World!&quot; /&gt;
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Hiii!&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code>
+</pre>
+</div><br>
+<img src="LinearLayout_Horizontal.png" ><br/><hr><hr>
+<b><u>LinearLayout Vertical:-</u></b><br>
+<i id="font">It arranges the elements Vertically in the LinearLayout.</i><br><hr>
+<b><u>Attribute:-</u></b><br>
+<div>
+android:orientation=&quot;vertical&quot;
+</div><hr><br>
+In the example below we have arranged two TextViews and a buttons vertically<br>
+<div >
+<pre >
+<code>
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;com.example.arjun.helloworld.MainActivity&quot;
+    android:orientation=&quot;vertical&quot;&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Hello World!&quot; /&gt;
+    &lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Hello World!&quot; /&gt;
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Hiii!&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code>
+</pre>
+</div><br>
+<img src="LinearLayout_Vertical.png" ><br><hr><br><br>
+</body>
+</html>

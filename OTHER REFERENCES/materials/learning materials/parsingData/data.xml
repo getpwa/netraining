@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <rootnode>
+        <Id>1</Id>
+        <Name>Arjun</Name>
+        <Surname>Toshniwal</Surname>
+        <Age>25</Age>
+    </rootnode>
+    <rootnode>
+        <Id>2</Id>
+        <Name>Anuradha</Name>
+        <Surname>Awale</Surname>
+        <Age>24</Age>
+    </rootnode>
+    <rootnode>
+        <Id>3</Id>
+        <Name>Ankit</Name>
+        <Surname>Toshniwal</Surname>
+        <Age>21</Age>
+    </rootnode>
+    <rootnode>
+        <Id>4</Id>
+        <Name>Ganesh</Name>
+        <Surname>Mudkhede</Surname>
+        <Age>26</Age>
+    </rootnode>
+</root>

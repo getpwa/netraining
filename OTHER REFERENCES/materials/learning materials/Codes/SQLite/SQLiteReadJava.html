@@ -1,0 +1,79 @@
+<html>
+<head>
+
+    <title>SQliteRead Java</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.database.Cursor;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    DataBaseHelper myDb;
+    TextView txtResult;
+    Button btnClick;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        myDb = new DataBaseHelper(this);
+        txtResult = (TextView) findViewById(R.id.idResult);
+        btnClick = (Button) findViewById(R.id.idBtn);
+        btnClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClickMe();
+            }
+        });
+
+    }
+
+    private void ClickMe() {
+        Cursor res = myDb.getAllData();
+        StringBuffer stringBuffer = new StringBuffer();
+        if(res!=null && res.getCount()>0){
+            while (res.moveToNext()){
+                stringBuffer.append("Id: "+res.getString(0)+"\n");
+                stringBuffer.append("Name: "+res.getString(1)+"\n");
+                stringBuffer.append("Surname: "+res.getString(2)+"\n");
+                stringBuffer.append("Marks: "+res.getString(3)+"\n"+"\n");
+            }
+            txtResult.setText(stringBuffer.toString());
+            Toast.makeText(this,"Data Retrieved Successfully",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this,"No Data to Retrieve",Toast.LENGTH_SHORT).show();
+        }
+            
+    }
+}
+</textarea>
+</body>
+</html>

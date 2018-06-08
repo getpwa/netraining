@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Dimens.xml</title>
+<link href='https://fonts.googleapis.com/css?family=Roboto:300italic' rel='stylesheet' type='text/css'>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b id="font">Dimens.xml:</b><br/>
+Similarly as you define strings or colors you could define dimensions. 
+Typically dimensions are stored in dimens.xml file in values folder (in resources). 
+Usually there is already such a file and all you have to do it’s just adding yours extra definitions.<br/><br/>
+
+You could define various dimensions, like margins, padding, height, width, radius, text size etc.<br/><br/>
+
+This is an example of dimens.xml:<br/>
+<div style="color:blue">
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+    &lt;dimen name=&quot;textview_height&quot;&gt;25dp&lt;/dimen&gt;
+    &lt;dimen name=&quot;textview_width&quot;&gt;150dp&lt;/dimen&gt;
+    &lt;dimen name=&quot;ball_radius&quot;&gt;30dp&lt;/dimen&gt;
+    &lt;dimen name=&quot;font_size&quot;&gt;16sp&lt;/dimen&gt;
+&lt;/resources&gt;
+</code>
+</pre>
+</div><br/>
+How to use dimens.xml in layout?<br/>
+<div style="color:blue">
+<pre>
+<code>
+&lt;TextView
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;@string/title&quot;
+    android:textSize=&quot;@dimen/text_size&quot;
+/&gt;
+</code>
+</pre>
+</div><br/>
+<br><hr><br><br>
+</body>
+</html>

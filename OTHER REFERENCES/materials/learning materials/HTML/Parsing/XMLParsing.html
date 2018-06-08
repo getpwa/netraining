@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>XML Parsing</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>XML Parsing</u> :</b><br>
+Extracting data from a structured document such as XML ,HTML or any other format that follows certain rules is called parsing.<br>
+A piece of code that does parsing is called a parser.<br><br>
+
+Document Builder Object:<br>
+1. Create a DocumentBuilderFactory
+<div>
+<pre>
+<code>
+DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+</code>
+</pre>
+</div><br>
+
+2. Create a DocumentBuilder
+<div>
+<pre>
+<code>
+DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+</code>
+</pre>
+</div><br>
+
+
+3. Create and set an Error Handler
+<div>
+<pre>
+<code>
+ErrorHandlerImpl errorHandler = new ErrorHandlerImpl();
+documentBuilder.setErrorHandler(errorHandler);
+</code>
+</pre>
+</div><br>
+<hr><hr>
+
+<b>Document Interface:</b><br>
+getDocumentElement()- Returns the root element<br><hr><hr>
+
+
+<b>Element Interface:</b><br>
+getAttributes - Returns a NamedNodeMap of attributes<br>
+getAttribute(String) - Gets an attribute value by attribute name<br>
+getElementsByTagName(String)-Gets a NodeList of elements by element name<br>
+getTagName() -Gets the element tag name<br><hr><hr>
+
+<b>Attribute Interface:</b><br>
+getName() - Returns the attribute name<br>
+getValue()- Returns the attribute value<br><hr><hr>
+
+
+<b>Node Interface:</b><br>
+getAttributes() - Returns a NamedNodeMap of attributes for an element node<br>
+getChildNodes() - Returns the child nodes in a node<br>
+getNodeName() - Returns the node name<br>
+getNodeValue() -Returns the node value<br>
+getNodeType() - Returns the node type<br><hr><hr>
+
+<b>Processing the root element:</b><br>
+1. Get the root element in the xml document
+<div>
+<pre>
+<code>
+Element rootElement = document.getDocumentElement();
+</code>
+</pre>
+</div><br>
+
+2. Get the root elements name:
+<div>
+<pre>
+<code>
+String rootElementName = rootElement.getTagName();
+</code>
+</pre>
+</div><br>
+
+3.Check whether your element has attributes
+<div>
+<pre>
+<code>
+if (rootElement.hasAttributes()) {
+    //Get all the attributes of rootElement
+    NamedNodeMap attributes = rootElement.getAttributes();
+
+    //Get the list size of all the attributes
+    for (int i = 0; i < attributes.getLength(); i++) {
+        Attr attribute = (Attr)(attributes.item(i))
+    }
+
+    Processing Child Nodes
+    Check whether root element has subnodes.
+    if(rootElement.hasChildNodes()) {
+        //Get the list of all childNodes
+        NodeList nodelist = rootElement.getChildNodes();
+
+        //Get the lenght of list of ChildNodes 
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            //Get Each Item of Node
+            Node node = nodeList.item(i);
+        }
+    }
+}
+
+
+</code>
+</pre>
+</div><br>
+
+Complete Code:-
+<div>
+<pre>
+<code>
+InputStream is = getAssets().open("file.xml");
+
+DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+Document doc = dBuilder.parse(is);
+
+Element element=doc.getDocumentElement();
+element.normalize();
+
+NodeList nList = doc.getElementsByTagName("employee");
+			
+         for (int i=0; i&lt; nList.getLength(); i++) {
+
+            Node node = nList.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+               Element element2 = (Element) node;
+               //Now we can access each element of the node
+            }
+         }
+</code>
+</pre>
+</div><br><hr><br><br>
+
+
+</body>
+</html>

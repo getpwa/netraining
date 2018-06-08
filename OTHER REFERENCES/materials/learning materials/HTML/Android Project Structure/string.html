@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>strings.xml</title>
+<link href='https://fonts.googleapis.com/css?family=Roboto:300italic' rel='stylesheet'
+          type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b>RESOURCE REFERENCE:</b><br/>
+How to refer string from strings.xml to java and in our layout file?<br/>
+<b>In Java:</b><i> R.string.string_name</i><br/>
+<b>In XML:</b><i>@string/string_name</i><br/><br/>
+
+<b>SYNTAX:In XML</b><br/>
+<div style="color:blue">
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+    &lt;string name=&quot;string_name&quot;&gt;text_string&lt;/string&gt;
+&lt;/resources&gt;
+</code>
+</pre>
+</div><br/>
+EXAMPLE:<br/>
+XML file saved at <i>res/values/strings.xml</i>:
+<div style="color:blue">
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+    &lt;string name=&quot;hello&quot;&gt;Hello!&lt;/string&gt;
+&lt;/resources&gt;
+</code>
+</pre>
+</div><br/>
+This layout XML applies a string to a View:
+<div style="color:blue">
+<pre>
+<code>
+&lt;TextView
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;@string/hello&quot; /&gt;
+</code>
+</pre>
+</div><br/>
+This application code in .java file retrieves a string:<br/>
+<div style="color:blue">
+<pre>
+<code>
+String string = getString(R.string.hello);
+</code>
+</pre>
+</div>
+<br><hr><br><br>
+</body>
+</html>

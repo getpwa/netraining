@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Option Menu</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android Option Menu:</u></b><br>
+<i id="font">The options menu is the primary collection of menu items for an activity. </i><br>
+It's where you should place actions that have a global impact on the app, such as "Search," "Compose email," and "Settings."<br>
+<hr><hr>
+<b><u>Steps of Creating Option Menu:</u></b><br>
+1. Define menu items in <i id="font">res/menu.xml</i><br>
+<div >
+<pre >
+<code>
+&lt;menu xmlns:androclass=&quot;http://schemas.android.com/apk/res/android&quot; &gt;  
+    &lt;item  android:id=&quot;@+id/item1&quot;  
+        android:title=&quot;Item 1&quot;/&gt;  
+    &lt;item  android:id=&quot;@+id/item2&quot;  
+        android:title=&quot;Item 2&quot;/&gt;  
+    &lt;item  android:id=&quot;@+id/item3&quot;  
+        android:title=&quot;Item 3&quot;/&gt;  
+&lt;/menu&gt;
+</code>
+</pre>
+</div><br><hr>
+<b>In Activity class:</b><br>
+2. Override onCreateOptionsMenu()<br>
+ It is this method where you inflate your menu resource (defined in XML) into the Menu provided in the callback. For example:
+<div >
+<pre >
+<code>
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.game_menu, menu);
+    return true;
+}
+</code>
+</pre>
+</div><br><hr>
+3. Define Click Events<br>
+<div >
+<pre >
+<code>
+@Override  
+    public boolean onOptionsItemSelected(MenuItem item) {  
+        switch (item.getItemId()) {  
+            case R.id.item1:  
+              //Your Code here 
+            return true;     
+           case R.id.item2:  
+                //Your Code here
+              return true;     
+            case R.id.item3:  
+                //Your Code here
+              return true;     
+              default:  
+                return super.onOptionsItemSelected(item);  
+        }  
+    }
+</code>
+</pre>
+</div><br>
+<hr><hr>
+<b>Note:-</b>
+<ol>
+<li>Items for the options menu can be declared from either your Activity subclass or a Fragment subclass.</li>
+<li>If both ,activity and fragment(s) declare items for the options menu, they are combined in the UI.</li>
+<li>The activity's items appear first, followed by those of each fragment in the order in which each fragment is added to the activity.</li> 
+</ol><br><hr><br><br>
+</body>
+</html>

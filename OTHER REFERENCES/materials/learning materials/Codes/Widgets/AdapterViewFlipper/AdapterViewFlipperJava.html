@@ -1,0 +1,101 @@
+<html>
+<head>
+
+    <title>ListView</title>
+    <link rel="stylesheet" href="../../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../../CodeMirror/codemirror.js"></script>
+    <script src="../../../CodeMirror/clike.js"></script>
+    <script src="../../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.AdapterViewFlipper;
+import android.widget.Button;
+
+
+public class MainActivity extends AppCompatActivity {
+    private AdapterViewFlipper adapterViewFlipper;
+    private Button btnPrevious,btnNext;
+    private static final String[] TEXT = { "When in Rome, do as the Romans",
+            "The squeaky wheel gets the grease","Two wrongs don't make a right",
+    "Hope for the best, but prepare for the worst","A picture is worth a thousand words"};
+    private static final int[] IMAGES = { R.drawable.illusion1, R.drawable.illusion2,R.drawable.illusion3,
+            R.drawable.illusion4,R.drawable.illusion5 };
+    private int mPosition = -1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        adapterViewFlipper = (AdapterViewFlipper) findViewById(R.id.idAdapterViewFlipper);
+
+        //creating adapter object
+        FlipperAdapter adapter = new FlipperAdapter(this, TEXT,IMAGES);
+        adapterViewFlipper.setAdapter(adapter);
+        adapterViewFlipper.setAutoStart(true);
+
+    }
+	
+	class FlipperAdapter extends BaseAdapter{
+    Context ctx;
+    int[] images;
+    String[] text;
+    LayoutInflater inflater;
+
+    public FlipperAdapter(Context context , String[] myText , int[] myImages){
+        this.ctx = context;
+        this.images = myImages;
+        this.text = myText;
+        inflater = LayoutInflater.from(context);
+    }
+    @Override
+    public int getCount() {
+        return text.length;
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        view = inflater.inflate(R.layout.flipper_items, null);
+        TextView txtName = (TextView) view.findViewById(R.id.idTextView);
+        ImageView txtImage = (ImageView) view.findViewById(R.id.idImageView);
+        txtName.setText(text[i]);
+        txtImage.setImageResource(images[i]);
+        return view;
+
+    }
+}
+}
+
+
+</textarea>
+
+</body>
+</html>

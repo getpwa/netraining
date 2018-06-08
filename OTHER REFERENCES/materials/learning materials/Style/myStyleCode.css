@@ -1,0 +1,14 @@
+.CodeMirror {
+    border: 1px solid #888;
+    font-size:15px !important;
+}
+
+
+body{
+    margin:0px;
+     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+}
+
+#idBody{
+    visibility :hidden;
+}

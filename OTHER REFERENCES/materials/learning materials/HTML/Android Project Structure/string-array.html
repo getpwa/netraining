@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>string-array</title>
+<link href='https://fonts.googleapis.com/css?family=Roboto:300italic' rel='stylesheet' type='text/css'>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b>RESOURCE REFERENCE:</b><br/>
+How to refer string-array from strings.xml to java <br/><br/>
+<b>In Java:</b><i> <br/>R.array.string_array_name</i><br/>
+<br/>
+<b>SYNTAX:</b><br/>
+<div style="color:blue">
+<pre>
+<code>
+<?xml version="1.0" encoding="utf-8"?>
+&lt;resources&gt;
+    &lt;string-array name=&quot;string_array_name&quot;&gt;
+        &lt;item&gt;text_string&lt;/item&gt;
+    &lt;/string-array&gt;
+&lt;/resources&gt;
+</code>
+</pre>
+</div>
+<br/>
+EXAMPLE:<br/>
+XML file saved at <i>res/values/strings.xml</i>:
+<div style="color:blue">
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+    &lt;string-array name=&quot;planets_array&quot;&gt;
+        &lt;item&gt;Mercury&lt;/item&gt;
+        &lt;item&gt;Venus&lt;/item&gt;
+        &lt;item&gt;Earth&lt;/item&gt;
+        &lt;item&gt;Mars&lt;/item&gt;
+    &lt;/string-array&gt;
+&lt;/resources&gt;
+</code>
+</pre>
+</div><br/>
+
+This application code retrieves a string array:
+Resources res = getResources();<br>
+String[] planets = res.getStringArray(R.array.planets_array);
+<br><hr><br><br>
+</body>
+</html>

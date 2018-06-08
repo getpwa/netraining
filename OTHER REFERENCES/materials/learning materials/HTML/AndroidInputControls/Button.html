@@ -1,0 +1,137 @@
+<html>
+<head>
+    <title>Button</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+Android Buttons are that GUI components which are sensible to taps (click) by the User.<br/>
+<hr>
+<hr>
+<p>
+    Android Buttons can be of two types:-
+<ol>
+    <li>Button with Text.</li>
+    <li>Button with Images.Button which contains images are also called as ImageButton.</li>
+</ol>
+</p>
+<hr>
+<hr>
+<p><b><u>Button:-</u></b><br>
+    A standard Android button with text is represented by the Android class <em>android.widget.Button </em>.<br>
+    Button instance can be inserted into GUI either through .xml file or programmatically in .java
+    file.<br></p>
+<hr>
+<b><u>Adding a Button in Layout File:-</u></b><br/>
+Adding a Button to an Android app via a layout XML file is done by inserting a Button element into
+the layout file at the place where you want the Button to be located.<br>
+Here is an example of a Android button in a layout file:<br>
+<div>
+<pre>
+<code>
+&lt;Button
+    android:id=&quot;@+id/btn1&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;@string/button_text&quot;
+    /&gt;
+</code>
+</pre>
+</div>
+<br>
+<hr>
+<hr>
+<i id="font">android:id :-</i><br> &#8627;id provides a unique identification to a UI element.<br><hr>
+Thus when there are two or more buttons, it is this id which helps us to differentiate between the
+two in the java code (usualy done by findViewByID() method).<br><hr>
+<i id="font">android:layout_width & android:layout_height :-</i><br> &#8627;It defines the size the UI
+    element should occupy.<br><hr>
+    <i id="font">android:text :-</i><br> &#8627;Defines the text wihch the UI element should
+        display<br><br>
+        <hr><hr>
+        <b><u>Adding a Button Programmatically:-</u></b><br>
+        <div>
+<pre>
+<code>
+public class MainActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button button = new Button(this);
+        button.setText(&quot;Hello&quot;);
+
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.rootlayout);
+        relativeLayout.addView(button);
+    }
+}
+</code>
+</pre>
+        </div>
+        <br/>
+        1. Create the instance of the Button class.By passing the current context as <i><u>this</u></i><br>
+        2. Set the text which the button should display.<br>
+        3. Create the object of the ViewGroup (Layout) in which the button needs to be placed.<br>
+        4. Find the layout by using findViewById() method.<br>
+        5. Add the button to the layout by addView function<br><br>
+        <hr>
+        <b>Note:-</b><br>
+        You can also add an Image with a button by using <i><u>android:drawableLeft</u></i>
+        property.<br>
+        Eg.<br>
+        <div>
+<pre>
+<code>
+&lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;New Button&quot;
+        android:id=&quot;@+id/btn1&quot;
+        android:drawableLeft=&quot;@mipmap/ic_launcher&quot;
+        /&gt;
+</code>
+</pre>
+        </div>
+        <br>
+        <hr>
+        <hr>
+        <b><u>Button Click Events:-</u></b><br>
+        When the user clicks a button, the Button object receives an on-click event.<br><br>
+        To define the click event handler for a button, add the <i>android:onClick</i> attribute to
+        the &lt;Button&gt; element in your XML layout.<br>
+        The value for this attribute must be the name of the method you want to call in response to
+        a click event.<br>
+        The Activity hosting the layout must then implement the corresponding method.<br><br>
+
+        For example, here's a layout with a button using android:onClick:<br>
+        <div >
+<pre>
+<code>
+&lt;Button
+    android:id=&quot;@+id/btn1&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;@string/button_text&quot;
+     android:text=&quot;btnClick()&quot;
+    /&gt;
+</code>
+</pre>
+        </div>
+        <br><br>
+        Within the Activity that hosts this layout, the following method handles the click
+        event:<br>
+        <div>
+<pre>
+<code>
+public void btnClick(View view) {
+    // Do something in response to button click
+}
+</code>
+</pre>
+        </div>
+        <hr>
+        <hr>
+        <br><br>
+</body>
+</html>

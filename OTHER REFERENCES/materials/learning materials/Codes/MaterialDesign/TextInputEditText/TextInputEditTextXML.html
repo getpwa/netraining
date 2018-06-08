@@ -1,0 +1,101 @@
+<html>
+<head>
+
+    <title>ActivityLifeCycle</title>
+    <link rel="stylesheet" href="../../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../../CodeMirror/codemirror.js"></script>
+    <script src="../../../CodeMirror/clike.js"></script>
+    <script src="../../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot;
+    tools:context=&quot;arjun.example.com.materialdesign.MainActivity&quot;&gt;
+
+    &lt;RelativeLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_weight=&quot;3&quot;&gt;
+
+        &lt;TextView
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:layout_centerInParent=&quot;true&quot;
+            android:gravity=&quot;center&quot;
+            android:text=&quot;Welcome&quot;
+            android:textColor=&quot;#333333&quot;
+            android:textSize=&quot;30sp&quot; /&gt;
+
+    &lt;/RelativeLayout&gt;
+
+    &lt;LinearLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_weight=&quot;1&quot;
+        android:orientation=&quot;vertical&quot;&gt;
+
+        &lt;android.support.design.widget.TextInputLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;&gt;
+
+            &lt;android.support.design.widget.TextInputEditText
+                android:id=&quot;@+id/idUserName&quot;
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;wrap_content&quot;
+                android:hint=&quot;User Name&quot;
+                android:inputType=&quot;text&quot;
+                android:maxLines=&quot;1&quot; /&gt;
+
+        &lt;/android.support.design.widget.TextInputLayout&gt;
+
+
+        &lt;android.support.design.widget.TextInputLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            app:passwordToggleEnabled=&quot;true&quot;&gt;
+
+            &lt;android.support.design.widget.TextInputEditText
+                android:id=&quot;@+id/idPassword&quot;
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;wrap_content&quot;
+                android:hint=&quot;Password&quot;
+                android:inputType=&quot;textPassword&quot;
+                android:maxLines=&quot;1&quot; /&gt;
+
+        &lt;/android.support.design.widget.TextInputLayout&gt;
+
+        &lt;Button
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:id=&quot;@+id/idBtnLogin&quot;
+            android:layout_gravity=&quot;center&quot;
+            android:text=&quot;Login&quot;/&gt;
+    &lt;/LinearLayout&gt;
+&lt;/LinearLayout&gt;
+
+</textarea>
+
+</body>
+</html>

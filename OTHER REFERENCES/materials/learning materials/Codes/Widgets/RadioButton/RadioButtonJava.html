@@ -1,0 +1,64 @@
+<html>
+<head>
+
+    <title>MultiAutoCompleteTextView</title>
+    <link rel="stylesheet" href="../../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../../CodeMirror/codemirror.js"></script>
+    <script src="../../../CodeMirror/clike.js"></script>
+    <script src="../../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+     radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.radioButton1Id:
+                        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#FF0000"));
+                        break;
+                    case R.id.radioButton2Id:
+                        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#FFFF00"));
+                        break;
+                    case R.id.radioButton3Id:
+                        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#FF00FF"));
+                        break;
+                    case R.id.radioButton4Id:
+                        getWindow().getDecorView().setBackgroundColor(Color.parseColor("#00FFFF"));
+                        break;
+                }
+            }
+    }
+
+
+}
+</textarea>
+
+</body>
+</html>

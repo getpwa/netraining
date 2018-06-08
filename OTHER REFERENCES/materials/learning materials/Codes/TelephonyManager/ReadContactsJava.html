@@ -1,0 +1,114 @@
+<html>
+<head>
+
+    <title>Read Contacts</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+   ListView listView;
+    TextView textView;
+    private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 100;
+    Cursor c;
+    ArrayList&lt;String&gt; contacts;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        listView = (ListView) findViewById(R.id.idList);
+
+
+
+        //Method to Start the Service
+        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
+
+        if (permissionCheck == PackageManager.PERMISSION_GRANTED ) {
+                //Name of Method for Calling Message
+            showContacts();
+
+            } else {
+                //TODO
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_CONTACTS},
+                        PERMISSIONS_REQUEST_READ_CONTACTS);
+            }
+
+
+        ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(
+                this, android.R.layout.simple_list_item_1, contacts);
+
+        listView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
+        if (requestCode == PERMISSIONS_REQUEST_READ_CONTACTS) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission is granted
+                showContacts();
+            } else {
+                Toast.makeText(this, &quot;Until you grant the permission, we canot display the names&quot;, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void showContacts() {
+        c = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, ContactsContract.Contacts.DISPLAY_NAME + &quot; ASC &quot;);
+
+        contacts = new ArrayList&lt;String&gt;();
+        while (c.moveToNext()) {
+
+            String contactName = c.getString(c.getColumnIndex( ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME ));
+            String phNumber = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+            contacts.add(&quot;Name: &quot;+contactName + &quot;\n&quot;+ &quot;PhoneNo: &quot; + phNumber);
+
+            //Toast.makeText(this,&quot;Contacts: &quot;+contacts,Toast.LENGTH_SHORT).show();
+        }
+        c.close();
+    }
+
+}
+</textarea>
+
+</body>
+</html>

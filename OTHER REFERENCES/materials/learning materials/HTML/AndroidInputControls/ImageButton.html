@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>ImageButton</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>ImageButton:-</u></b><br>
+As the name says, the ImageButton component is a button with an image on it.<br>
+The ImageButton is represented by the Android class <i id="font">android.widget.ImageButton</i> .<br><hr><hr>
+<b>Adding an ImageButton in a Layout File</b>
+<div >
+<pre>
+<code>
+&lt;ImageButton
+    android:id=&quot;@+id/theimagebutton&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:src=&quot;@drawable/the_image_button_icon&quot;
+        /&gt;
+</code>
+</pre>
+</div><br/>
+<i id="font">android:src :- </i>It refers to an image in a drawable folder.<br><hr><hr>
+<b>Adding a Button Programmatically:</b><br>
+<div>
+<pre>
+<code>
+public class MainActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button button = new Button(this);
+        button.setText(&quot;Hello&quot;);
+	button.setImageResource(R.drawable.the_image_button_icon);
+
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.rootlayout);
+        relativeLayout.addView(button);
+    }
+}
+</code>
+</pre>
+</div><br/><hr><hr>
+<b><u>ImageButton Click Events:-</u></b><br>
+Similar to Button Click we can define an onClick method for ImageButton which will repond to our tap event.<br>
+<div>
+<pre>
+<code>
+&lt;ImageButton
+    android:id=&quot;@+id/btn1&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;@string/button_text&quot;
+     android:text=&quot;btnClick()&quot;
+    /&gt;
+</code>
+</pre>
+</div><br/>
+Within the Activity that hosts this layout, the following method handles the click event:<br>
+<div>
+<pre>
+<code>
+public void btnClick(View view) {
+    // Do something in response to button click
+}
+</code>
+</pre>
+</div><br><hr><br><br>
+</body>
+</html>

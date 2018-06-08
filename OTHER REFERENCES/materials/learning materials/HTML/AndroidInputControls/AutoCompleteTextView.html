@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>AutoComplete TextView</title>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>AutoCompleteTextView:-</u></b><br>
+<i id="font">An editable text view that shows completion suggestions automatically while the user is typing.</i><br>
+The list of suggestions is displayed in a drop down menu from which the user can choose an item to replace the content of the edit box with.<br><br>
+<hr>
+<b>Android <i>AutoCompleteTextView</i> is the subclass of <i>EditText</i> class.</b><br>
+The list of suggestions is obtained from a data adapter and appears only after a given number of characters defined by the threshold.<br>
+<hr><hr>
+<b>Steps of Creating AutoCompleteTextView:-</b><br>
+1. Create AutoCompleteTextView in the xml<br>
+<div>
+<pre>
+<code>
+&lt;AutoCompleteTextView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/countries_list&quot;/&gt;
+</code>
+</pre>
+</div><br/><hr>
+2. Get the reference of AutoCompleteTextView in Java class<br>
+<div>
+<pre>
+<code>
+ AutoCompleteTextView textView = (AutoCompleteTextView)findViewById(R.id.countries_list);
+</code>
+</pre>
+</div><br/><hr>
+3. Specify the list of suggestions items to be displayed. You can specify the list items as a string array in java or in strings.xml<br>
+<ul>
+<li>As a string array in Strings.xml</li>
+<div>
+<pre>
+<code>
+//In onCreate Method
+String[] countries = getResources().getStringArray(R.array.list_of_countries);
+ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,android.R.layout.simple_list_item_1,countries);
+textView.setAdapter(adapter);
+</code>
+</pre>
+</div><br/><hr>
+<li>As a String Array in Java</li>
+<div>
+<pre>
+<code>
+//In onCreate Method
+ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this, android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+textView.setAdapter(adapter);
+
+//String Array in Java
+private static final String[] COUNTRIES = new String[] {
+            "Belgium", "France", "Italy", "Germany","Georgia", "Spain","Bangladesh","Belgium","Belarus"
+    };
+</code>
+</pre>
+</div>
+</ul><br/><hr><br><br>
+</body>
+</html>

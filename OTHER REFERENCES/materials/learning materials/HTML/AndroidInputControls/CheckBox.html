@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>CheckBox</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Checkbox:-</u></b><br>
+<i id="font">Checkboxes allow the user to select one or more options from a set. </i><br>
+Typically, you should present each checkbox option in a vertical list.<br><hr><hr>
+<b>How to Create CheckBox?</b><br>
+Create a CheckBox in your Layout.<br>
+Since CheckBox allows us to select multiple items we need to register a Click Listener for each one.<hr><hr>
+For example, here are a couple CheckBox objects :<br>
+<div>
+<pre>
+<code>
+&lt;CheckBox
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Tea&quot;
+        android:id=&quot;@+id/checkBox1&quot;
+        android:onClick=&quot;CheckBoxClicked&quot;/&gt;
+
+    &lt;CheckBox
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Coffee&quot;
+        android:id=&quot;@+id/checkBox2&quot;
+        android:onClick=&quot;CheckBoxClicked&quot;/&gt;
+
+    &lt;CheckBox
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;ColdDrink&quot;
+        android:id=&quot;@+id/checkBox3&quot;
+        android:onClick=&quot;CheckBoxClicked&quot;/&gt;
+</code>
+</pre>
+</div><br/>
+Within the Activity that hosts this layout, the following method handles the click event for both checkboxes:<br>
+<div>
+<pre>
+<code>
+public void CheckBoxClicked(View view) {
+    // Is the view now checked?
+    boolean checked = ((CheckBox) view).isChecked();
+
+    // Check which checkbox was clicked
+    switch(view.getId()) {
+        case R.id.checkBox1:
+            if (checked)
+                // Put some code for checkbox1
+            else
+                // Put some code for checkbox1
+            break;
+        case R.id.checkBox2:
+            if (checked)
+               // Put some code for checkbox2
+            else
+                // Put some code for checkbox2
+            break;
+          case R.id.checkBox3:
+            if (checked)
+               // Put some code for checkbox3
+            else
+                // Put some code for checkbox3
+            break;
+    }
+}
+</code>
+</pre>
+</div><br><hr><br><br>
+</body>
+</html>

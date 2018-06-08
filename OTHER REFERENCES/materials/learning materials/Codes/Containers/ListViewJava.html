@@ -1,0 +1,64 @@
+<html>
+<head>
+
+    <title>ListView</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+
+public class MainActivity extends AppCompatActivity {
+    ListView lv;
+    String[] charactersDC={&quot;Flash&quot;,&quot;Arrow&quot;,&quot;SuperGirl&quot;,&quot;BatMan&quot;,&quot;SuperMan&quot;,
+            &quot;Atom&quot;,&quot;WonderWomen&quot;,&quot;GreenLantern&quot;,&quot;Aquaman&quot;,&quot;Cyborg&quot;,&quot;CaptainCold&quot;,
+            &quot;Darkseid&quot;,&quot;FireStorm&quot;,&quot;GreenArrow&quot;,&quot;Grodd&quot;,&quot;Joker&quot;,&quot;KillerFrost&quot;,
+            &quot;Zoom&quot;,&quot;ReverseFlash&quot;
+    };
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        lv = (ListView) findViewById(R.id.idListView);
+        ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,android.R.layout.simple_list_item_1,charactersDC);
+        lv.setAdapter(adapter);
+        //Setting onClickListener on ListView
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView&lt;?&gt; adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(),&quot;Item Clicked: &quot;+i,Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+}
+</textarea>
+
+</body>
+</html>

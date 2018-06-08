@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>MYSQL Introduction</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android PHP and MySQL Database</u></b>:-<br>
+In this Tutorial we are going to learn how to create an Android App using MySQL database.<br>
+The Android app calls the defined php script to perform the operation which in turns connects to the
+MySQL Database.<br>
+1. Download and install WAMPP which is a local web server.<br>
+2. Create a Database and a Table in WAMPP Server.<br>
+3. Create File called conn.php for Database connection.<br>
+<b><u>Write this php script to connect the database:-</u></b>
+<div >
+<pre>
+<code>
+&lt;?php
+$db_name=&quot;&quot;;				//Write your database name 
+$mysql_username=&quot;&quot;;			//Write your username 
+$mysql_password=&quot;&quot;;			//Write your password 
+$server_name=&quot;&quot;;			//Write your server name 
+$conn= mysqli_connect($server_name,$mysql_password,$mysql_username,$db_name);
+if($conn){
+echo &quot;connection success&quot;;
+}else{
+echo &quot;connection not success&quot;;
+}
+?&gt;
+</code>
+</pre>
+</div><br><hr><hr>
+Goto <i id="font">wampp->www</i> and save this file.<br>
+Goto your webbrowser and type:<br>
+<i id="font">localhost://conn.php</i><br>
+to check for connection success.<br>
+
+4. Create a File called login.php.<br>
+<b><u>Write this php script inside login.php</u></b>:-
+<div >
+<pre>
+<code>
+&lt;?php
+require &quot;conn.php&quot;;
+$user_name=&quot;&quot;;
+$user_pass=&quot;&quot;;
+$mysql_query=&quot;Select * from Employee_Data where Username =&#39;$user_name&#39; and Password=&#39;$user_pass&#39;;
+$result=mysqli_query($conn,$mysql_query);
+if(mysqli_num_rows($result)&gt;0){
+echo &quot;login success&quot;
+}else{
+echo &quot;login failed&quot;
+}
+?&gt;
+</code>
+</pre>
+</div><br><hr><hr>
+Goto <i id="font">wampp->www</i> and save this file.<br>
+Goto your webbrowser and type:<br>
+<i id="font">localhost://login.php</i><br>
+to check for login success/login failure.<br><hr><br><br>
+</body>
+</html>

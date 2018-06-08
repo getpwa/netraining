@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>Menu</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Menu:</u></b><br>
+It is an efficient and friendly way to display multiple options, from which users can choose what they like.<br><br>
+<hr><hr>
+Android provides the following three type of menus:
+<ul>
+<li>Options menu</li>
+<li>Context menu</li>
+<li>Popup menu</li>
+</ul>
+<hr><hr>
+<b><u>Steps:-</u></b><br><hr>
+<b><u>Defining a Menu in XML:</u></b><br>
+To define the menu, create an XML file inside your project&#039;s res/menu/ directory and build the menu with the following elements:<br><br>
+<hr>
+<i id="font">&lt;menu&gt;</i><br>
+Defines a Menu, which is a container for menu items. A &lt;menu&gt; element must be the root node for the file and can hold one or more &lt;item&gt; and &lt;group&gt; elements.<br><br>
+<hr>
+    <i id="font">&lt;item&gt;</i><br>
+Creates a MenuItem, which represents a single item in a menu. This element may contain a nested &lt;menu&gt; element in order to create a submenu.<br><br>
+<hr><hr>
+Here is an example of game_menu.xml:<br>
+<div>
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;item android:id=&quot;@+id/new_game&quot;
+          android:icon=&quot;@drawable/ic_new_game&quot;
+          android:title=&quot;@string/new_game&quot;
+          android:showAsAction=&quot;ifRoom&quot;/&gt;
+    &lt;item android:id=&quot;@+id/help&quot;
+          android:icon=&quot;@drawable/ic_help&quot;
+          android:title=&quot;@string/help&quot; /&gt;
+&lt;/menu&gt;
+</code>
+</pre>
+</div><br>
+The &lt;item&gt; element supports several attributes you can use to define an item's appearance and behavior. <br>
+For information about all the supported attributes, see the <a href="https://developer.android.com/guide/topics/resources/menu-resource.html">Menu Resource </a>document.<br><br>
+<hr><hr>
+Adding a submenu(Nested Menu):<br>
+You can add a submenu to an item in any menu (except a submenu) by adding a &lt;menu&gt; element as the child of an &lt;item&gt;.<br>
+<div >
+<pre >
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;item android:id=&quot;@+id/file&quot;
+          android:title=&quot;@string/file&quot; &gt;
+        &lt;!-- &quot;file&quot; submenu --&gt;
+        &lt;menu&gt;
+            &lt;item android:id=&quot;@+id/create_new&quot;
+                  android:title=&quot;@string/create_new&quot; /&gt;
+            &lt;item android:id=&quot;@+id/open&quot;
+                  android:title=&quot;@string/open&quot; /&gt;
+        &lt;/menu&gt;
+    &lt;/item&gt;
+&lt;/menu&gt;
+</code>
+</pre>
+</div><br><hr><hr>
+<b>How to use the menu in your Activity?</b><br>
+To use the menu in your activity, you need to inflate the menu resource (convert the XML resource into a programmable object) using <i id="font">MenuInflater.inflate()</i>.
+<div >
+<pre >
+<code>
+MenuInflater inflater = getMenuInflater();
+inflater.inflate(R.menu.game_menu, menu);
+</code>
+</pre>
+</div><hr>
+<b>Defining action on Menu Click :</b><br>
+<div >
+<pre >
+<code>
+ public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+</code>
+</pre>
+</div><br><hr><br><br>
+</body>
+</html>

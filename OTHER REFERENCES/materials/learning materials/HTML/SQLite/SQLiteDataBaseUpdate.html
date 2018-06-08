@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>SQLite Update</title>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Steps to Update Values in SQLite Database</u>:-</b><br>
+<ol style="padding-left: 15px;">
+<li>In DataBaseHelper class create a method with return type as boolean to update data in the Database.</li>
+<div>
+<pre>
+<code>
+ public boolean updateData(){
+
+ }
+</code>
+</pre>
+</div><br>
+
+<li>Pass all the arguments which need to be updated in the database as parameters to the function.</li>
+<div>
+<pre>
+<code>
+ public boolean updateData(String id,String name,String surname,String marks){
+		
+ }
+</code>
+</pre>
+</div><br>
+	
+<li>Open Database for updating data in the tables using getWritableDatabase().</li>
+<div>
+<pre>
+<code>
+ SQLiteDatabase db = this.getWritableDatabase();
+</code>
+</pre>
+</div><br>
+
+<li>Create an instance of a class ContentValues and use put method to store values in the object.</li>
+<div>
+<pre>
+<code>
+ ContentValues contentValues = new ContentValues();
+ contentValues.put(COL_2,name);
+ contentValues.put(COL_3,surname);
+ contentValues.put(COL_4,marks);
+</code>
+</pre>
+</div><br>
+ 
+<li>Update Data in the table using update method on the SQLiteDatabase instance.</li>
+<div>
+<pre>
+<code>
+ int update (String table, ContentValues values, String whereClause, String[] whereArgs)
+</code>
+</pre>
+</div><br>
+It takes four parameters,<br>
+<b id="font">table</b>:<br> the table to update in<br>
+ <b id="font">values</b>:<br> a map from column names to new column values. null is a valid value that will be translated to NULL.<br>
+  <b id="font">whereClause</b>:<br> the optional WHERE clause to apply when updating. Passing null will update all rows.<br>
+   <b id="font">whereArgs</b>:<br> You may include ?s in the where clause, which will be replaced by the values from whereArgs. The values will be bound as Strings.<br><br>
+
+<li>Thus the complete method for pdating the data would be,</li>
+<div>
+<pre>
+<code>
+ public boolean updateData(String id,String name,String surname,String marks){
+  SQLiteDatabase db = this.getWritableDatabase();
+  ContentValues contentValues = new ContentValues();
+  contentValues.put(COL_2,name);
+  contentValues.put(COL_3,surname);
+  contentValues.put(COL_4,marks);
+  db.update(TABLE_NAME,contentValues,"ID =?",new String[]{id});
+  return true;
+}
+</code>
+</pre>
+</div><br>
+
+ <li>Now in MainActivity,</li>
+Get the values of the textFields which needs to be inserted in the DataBase.<br>
+Create an object of class DataBaseHelper and call the method of inserting Data in it.<br>
+<div>
+<pre>
+<code>
+ DataBaseHelper myDb;
+ myDb.updateData(value1,value2,value3);
+</code>
+</pre>
+</div>
+ </ol>
+This is how we update entries in SQLite DataBase.<br><hr><br><br>
+</body>
+</html>  
+
+
+
+
+

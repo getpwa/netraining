@@ -1,0 +1,173 @@
+<html>
+<head>
+
+    <title>Expandable ListView</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.content.Context;
+import android.graphics.Typeface;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+    HashMap&lt;String,List&lt;String&gt;&gt; myHeader ;
+    List&lt;String&gt; myChild;
+    ExpandableListView expList;
+    MyAdapter adapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        expList = (ExpandableListView) findViewById(R.id.idListView);
+        myHeader= MyAdapter.DataProvider.getInfo();
+        myChild = new ArrayList&lt;String&gt;(myHeader.keySet());
+        adapter = new MyAdapter(this,myHeader,myChild);
+        expList.setAdapter(adapter);
+    }
+}
+
+class MyAdapter extends BaseExpandableListAdapter {
+    private Context ctx;
+    private HashMap&lt;String, List&lt;String&gt;&gt; ChildTitles;
+    private List&lt;String&gt; HeaderTitles;
+
+    MyAdapter(Context ctx, HashMap&lt;String, List&lt;String&gt;&gt; ChildTitles, List&lt;String&gt; HeaderTitles) {
+        this.ctx = ctx;
+        this.ChildTitles = ChildTitles;
+        this.HeaderTitles = HeaderTitles;
+    }
+
+    @Override
+    public int getGroupCount() {
+        return HeaderTitles.size();
+    }
+
+    @Override
+    public int getChildrenCount(int i) {
+        return ChildTitles.get(HeaderTitles.get(i)).size();
+    }
+
+    @Override
+    public Object getGroup(int i) {
+        return HeaderTitles.get(i);
+    }
+
+    @Override
+    public Object getChild(int i, int i1) {
+        return ChildTitles.get(HeaderTitles.get(i)).get(i1);
+    }
+
+    @Override
+    public long getGroupId(int i) {
+        return i;
+    }
+
+    @Override
+    public long getChildId(int i, int i1) {
+        return i;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return false;
+    }
+
+    @Override
+    public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
+        String title = (String) this.getGroup(i);
+        if (view == null) {
+            LayoutInflater inflater = (LayoutInflater) this.ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.custom_header, null);
+        }
+        TextView txt = (TextView) view.findViewById(R.id.idTitle);
+        txt.setTypeface(null, Typeface.BOLD);
+        txt.setText(title);
+        return view;
+    }
+
+    @Override
+    public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
+        String title = (String) this.getChild(i, i1);
+        if (view == null) {
+            LayoutInflater inflater = (LayoutInflater) this.ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.custom_childitems, null);
+        }
+        TextView txt = (TextView) view.findViewById(R.id.idChild);
+        txt.setText(title);
+        return view;
+    }
+
+    @Override
+    public boolean isChildSelectable(int i, int i1) {
+        return true;
+    }
+}   
+    
+public class DataProvider {
+    public static HashMap&lt;String,List&lt;String&gt;&gt; getInfo()
+
+    {
+        HashMap&lt;String, List&lt;String&gt;&gt; HeaderDetails = new HashMap&lt;String, List&lt;String&gt;&gt;();
+        List&lt;String&gt; ChildDetails1 = new ArrayList&lt;String&gt;();
+        ChildDetails1.add("This is Children 11");
+        ChildDetails1.add("This is Children 12");
+        ChildDetails1.add("This is Children 13");
+        ChildDetails1.add("This is Children 14");
+        List&lt;String&gt; ChildDetails2 = new ArrayList&lt;String&gt;();
+        ChildDetails2.add("This is Children 21");
+        ChildDetails2.add("This is Children 22");
+        ChildDetails2.add("This is Children 23");
+        ChildDetails2.add("This is Children 24");
+        List&lt;String&gt; ChildDetails3 = new ArrayList&lt;String&gt;();
+        ChildDetails3.add("This is Children 31");
+        ChildDetails3.add("This is Children 32");
+        ChildDetails3.add("This is Children 33");
+        ChildDetails3.add("This is Children 34");
+        List&lt;String&gt; ChildDetails4 = new ArrayList&lt;String&gt;();
+        ChildDetails4.add("This is Children 41");
+        ChildDetails4.add("This is Children 42");
+        ChildDetails4.add("This is Children 43");
+        ChildDetails4.add("This is Children 44");
+        HeaderDetails.put("Header 1", ChildDetails1);
+        HeaderDetails.put("Header 2", ChildDetails2);
+        HeaderDetails.put("Header 3", ChildDetails3);
+        HeaderDetails.put("Header 4", ChildDetails4);
+
+        return HeaderDetails;
+    }
+}
+</textarea>
+
+</body>
+</html>

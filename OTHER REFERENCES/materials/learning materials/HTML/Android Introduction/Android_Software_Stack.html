@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Android Software Stack</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b class="font">Android Software Stack:</b>
+<img src="Android_Software_Stack.jpg" style="padding-left:2%;padding-right:2%;"><br/>
+<hr>
+<b>Operating System:</b><br/>
+In Android, the Operating System is <b>Linux Kernel</b>.<br/>
+You can find the Linux kernel version running on your device under &ldquo;About phone&rdquo;
+or &ldquo;About tablet&rdquo; in Android&rsquo;s Settings.<br/>
+<img src="Android_Linux_Kernel_Version.png"><br/>
+<br/>
+<u>Functions of Linux Kernel/Operating System:</u>
+<ul >
+    <li id="headColor">Memory Management:</li>
+    Allocate a memory to a new file, Free the memory when a specific file is deleted etc.
+    <li id="headColor">Power Management:</li>
+    Providing power to various devices like bluetooth, camera etc
+    <li id="headColor">Resource Management:</li>
+    It provides resources to each process, thus providing the ability to do multiple operations at
+    the same time.i.e. Surfing Internet,Listening Songs etc
+    <li id="headColor">Driver Management:</li>
+    It handles installation of various drivers.
+</ul>
+<hr>
+<b>MiddleWare:</b><br/>
+<ol>
+    <li><b>Native Applications:</b><br/></li>
+    Just by using Java we cannot interact with native applications.
+    (Here native applications means that programs written in some other languages like
+    C,C++,Assembly
+    which are specific to hardware and operating system).
+    Thus we need the support of native libraries for interacting with such low level media
+    components.<br/>
+    <li><b>Application Framework:</b><br/></li>
+    The android framework is the set of API's that allow developers to quickly and easily write apps
+    for
+    android phones.
+    For e.g we need to guess the state of a wifi.Then rather than writing huge amounts of code for
+    accessing wifi we can just include a class called wifiManger which would look upon all the tasks
+    related to wifi.
+    Thus simply saying The Application Framework layer provides many higher-level services to
+    applications in the form of Java classes.
+    Application developers are allowed to make use of these services in their applications.<br/>
+
+    <li><b>Android Runtime:</b><br></li>
+    It comprises of Dalvik Virtual Machine and Core Libraries.<br>
+	Which we will be covering in next Section.<br>
+    
+</ol>
+<hr>
+<b>Applications:</b><br>
+Applications layer is the top most layer of Android Architecture.All applications using android framework uses android runtime and libraries.
+While android runtime and native libraries are using Linux Kernel<br>
+<br><hr><br><br>
+</body>
+</html>

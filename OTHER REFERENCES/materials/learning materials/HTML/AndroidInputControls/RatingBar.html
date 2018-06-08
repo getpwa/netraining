@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>RatingBar</title>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>RatingBar:</u></b><br>
+<i id="font">A RatingBar is an extension of SeekBar and ProgressBar that shows a rating in stars.</i><br><br>
+We can use <i id="font">&quot;  android.widget.RatingBar&quot;  </i> to display rating bar component in stars icon.<br><br>
+The number of stars set (via <i>setNumStars(int)</i> or in an XML layout) will be shown when the layout width is set to wrap content (if another layout width is set, the results may be unpredictable).<br>
+The <i>getRating()</i> method of android RatingBar class returns the rating number.<br><hr><hr>
+<b>Steps of creating RatingBar:-</b><br>
+
+1. Create RatingBar in the xml.<br>
+<div>
+<pre>
+<code>
+&lt;RatingBar
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/rating_id&quot;
+        android:numStars=&quot;5&quot;
+        android:rating=&quot;4.5&quot; /&gt;
+</code>
+</pre>
+</div><br/><hr>
+2. Get the reference of RatingBar in Java class<br>
+<div><br>
+<pre>
+<code>
+ RatingBar ratingBar = (RatingBar) findViewById(R.id.rating_id);
+</code>
+</pre>
+</div><br/><hr>
+3. Set a Click event which fires whenever the Rating is Changed<br>
+<div>
+<pre>
+<code>
+ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+            //Your Code here
+            }
+        });
+</code>
+</pre>
+</div><br/>
+<hr><hr>
+<b><u>XML Attributes:-</u></b><br>
+	<i id="font">android:isIndicator</i><br>
+	Whether this rating bar is an indicator (and non-changeable by the user).<hr>
+	<i id="font">android:numStars</i><br>
+	The number of stars (or rating items) to show. <hr>
+    <i id="font">android:rating</i><br>
+	The rating to set by default. <hr>
+	<i id="font">android:stepSize</i><br>
+	The step size of the rating. <br><hr><br><br>
+</body>
+</html>

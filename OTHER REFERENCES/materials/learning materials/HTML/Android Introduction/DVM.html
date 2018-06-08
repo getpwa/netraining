@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Android Softwaew Stack</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<b><p>Dalvik Virtual Machine:</p></b>
+<img src="DVM.png"/>
+The official language for Android App Development is <b>Java</b>.<br>
+<b>JDK</b>(Java Development Kit) will compile our Java code and it is going to produce a file called <b>.class</b> file.
+Also called as Java bytecode.<p class="font">Java bytecode is platform independent code because it can run on
+multiple platforms.</p><hr>
+In android Dex Compiler takes all the .class file as input and it is going to produce a single lightweight file
+called <b>.dex</b> file.<br><br>
+<b>Note:</b><br>
+Dex Compiler produces a single .dex file for multiple .class files.<br><br>
+<p class="font">Dex is termed as Dalvik Executable Code.</p><br>
+DVM takes this single .dex file as input and generates the final machine code.<br><br>
+With Android Version 2.2 (Froyo) Google introduced <b>JIT(Just in Time )</b> compilation in Dalvik.<br><br>
+Till Android Version 5.0 (Lollipop) Dalvik was the runtime use by Android which is being replaced by
+<b>ART(Android Run Time)</b> in later versions.<hr><hr>
+
+<b>Why do we need a .dex file when actually even .class file is platform independend?</b><br>
+1. DVM is Register based which is designed to run on low memory unlike JVM which is Stack based.
+Thus through DVM we are able to achieve small memory footprint with higher battery life.<br>
+2. Java tools are free but the JVM is not free, so the android developers from google have made their own virtual machine and made it as free.
+    <br><hr><br><br>
+</body>
+</html>

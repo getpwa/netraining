@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>ImageSwitcher</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>ImageSwitcher:-</u></b><br>
+Android ImageSwitcher is a subclass of Android ViewSwitcher class in the hierarchy.<br>
+Android ImageSwitcher switches smoothly between two images and thus provides a way of transitioning from one Image to another through appropriate animations.<br><hr>
+<b>Note:-</b><br>
+The views added to an ImageSwitcher must all be ImageViews.<br><hr><hr>
+
+<b>Steps for Implementing ImageSwitcher:-</b><br><br>
+1. Define the ImageSwitcher in XML.<br>
+<div>
+<pre>
+<code>
+&lt;ImageSwitcher
+   android:id=&quot;@+id/IdImageSwitcher&quot;
+   android:layout_width=&quot;wrap_content&quot;
+   android:layout_height=&quot;wrap_content&quot;
+   android:layout_centerHorizontal=&quot;true&quot;
+   android:layout_centerVertical=&quot;true&quot; &gt;
+&lt;/ImageSwitcher&gt;
+</code>
+</pre>
+</div><br><br><hr>
+
+2. Create an instance of ImageSwitcher in Java file and get a reference of its XML Component.
+<div>
+<pre>
+<code>
+private ImageSwitcher imageSwitcher;
+imageSwitcher = (ImageSwitcher)findViewById(R.id.IdImageSwitcher);
+</code>
+</pre>
+</div><br><br><hr>
+
+
+3. Implement the ViewFactory interface and implement unimplemented method that returns an imageView.<br>
+<div>
+<pre>
+<code>
+imageSwitcher.setImageResource(R.drawable.ic_launcher);
+imageSwitcher.setFactory(new ViewFactory() {
+   public View makeView() {
+      ImageView myView = new ImageView(getApplicationContext());
+      return myView;
+   }
+}
+</code>
+</pre>
+</div><br><hr>
+
+4. Add Animation to the ImageSwitcher<br>
+<div>
+<pre>
+<code>
+Animation in = AnimationUtils.loadAnimation(this,android.R.anim.slide_in_left);
+imageSwitcher.setInAnimation(in);
+imageSwitcher.setOutAnimation(out);   
+</code>
+</pre>
+</div><br><hr><hr>
+
+
+<b>Methods:</b><br><br>
+setImageDrawable(Drawable drawable)<br>
+Sets a new drawable(image) on the ImageSwitcher.<br><hr> 
+
+	
+setImageResource(int resid)<br>
+Sets a new image on the ImageSwitcher with the given resource id.<br><hr>
+
+
+setImageURI(Uri uri)<br>
+Sets a new image on the ImageSwitcher with the given Uri.<br><hr>
+
+	
+ImageSwitcher(Context context, AttributeSet attrs)<br>
+Creates a new empty ImageSwitcher for the given context and with the specified set attributes.<br><hr><br><br>
+
+</body>
+</html>

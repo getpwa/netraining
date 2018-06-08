@@ -1,0 +1,124 @@
+<html>
+<head>
+    <title>SharedPreference</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android SharedPreference:-</u></b>
+It is the simplest data storing option available in Android.
+It stores data in key value pairs.
+<hr>
+<hr>
+E.g.
+<table>
+    <thead>
+    <tr>
+        <td>Key</td>
+        <td>Value</td>
+    </tr>
+    <tr>
+        <td>Username</td>
+        <td>Arjun</td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td>Newuser@123</td>
+    </tr>
+    <tr>
+        <td>location</td>
+        <td>India</td>
+    </tr>
+</table>
+<br>
+Data is stored in XML file in the directory <br>
+<i id="font"><u>data/data/&lt;package-name&gt;/shared-prefs</u></i> folder<br>
+<hr>
+<b>What kind of data can be stored?</b><br>
+<i id="font">Any primitive data: booleans, floats, ints, longs, and strings.</i><br>
+This data will persist across user sessions (even if your application is killed).<br>
+<hr>
+<hr>
+<b>How to access them?</b><br>
+To get a SharedPreferences object for your application, use one of two methods:
+<ol>
+    <li><b>getSharedPreferences(int mode):</b></li>
+    Use this if you need multiple preferences files identified by name, which you specify with the
+    first parameter<br>
+    <li><b>getPreferences(String name,int mode):</b></li>
+    Use this if you need only one preferences file for your Activity.<br>
+    Because this will be the only preferences file for your Activity, you don't supply a
+    name.<br><br>
+</ol>
+<hr>
+<hr>
+<b><u>Modes:</u></b><br>
+Modes refer to operating modes.<br>
+<i id="font">Use 0 or MODE_PRIVATE for the default operation.</i>
+<i id="font">MODE_PRIVATE:</i> Only your app can acces the file<br>
+<hr>
+<i id="font">MODE_WORLD_READABLE:</i>All apps can read the file<br>
+<hr>
+<i id="font">MODE_WORLD_WRITEABLE:</i>All apps can write the file<br>
+<hr>
+<i id="font">MODE_MULTI_PROCESS:</i>Multiple process can modify the same shared-prefs file.<br>
+<hr>
+
+MODE_WORLD_READABLE & MODE_WORLD_WRITEABLE are deprecated in current versions.<br>
+<hr>
+<hr>
+<b>Uses:</b><br>
+<ul>
+    <li>Check whether user is using your app</li>
+    <hr>
+    <li>Check when your app was last updated</li>
+    <hr>
+    <li>Remember user credentials</li>
+    <hr>
+    <li>Remember user settings</li>
+    <hr>
+    <li>Location caching</li>
+    <hr>
+</ul>
+<hr>
+<hr>
+<b>How to use shared preferences to store data?</b><br>
+<ol>
+    <li>Get a reference to a shared preference object</li>
+    <hr>
+    <ol>
+        <li>For a single file, call <b>getPreferences(int mode)</b></li>
+        <li>For several file , call <b>getSharedPreferences(String name,int mode)</b></li>
+    </ol>
+    <hr>
+    <li>Call the editor</li>
+    SharedPreference.Editor editor = sharedpreferences.edit();
+    <hr>
+    <li>Use the editor to add the data with the key</li>
+    editor.putString("name","arjun");<br>
+    editor.putString("password","arjun@123");
+    <hr>
+    <li>Commit Editor changes</li>
+    editor.commit()
+    <hr>
+</ol>
+<hr>
+<hr>
+<b>How to use shared preferences to retrieve data?</b>
+<ol>
+    <li>Get a reference to a shared preference object</li>
+    <hr>
+    <ol>
+        <li>For a single file, call <b>getPreferences(int mode)</b></li>
+        <li>For several file , call <b>getSharedPreferences(String name,int mode)</b></li>
+    </ol>
+    <hr>
+    <li>Use the key provided earlier to get data</li>
+    <hr>
+    <li>Supply default value if data is not found</li>
+    <hr>
+    String name = sharedPreferences.getString("name","N/A");<br>
+    String password = sharedPreferences.getString("password","N/A");<br>
+</ol>
+<br><hr><br><br><br>
+</body>
+</html>

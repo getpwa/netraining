@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>DatePicker</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>DatePicker:-</u></b><br>
+<i id="font">Android Date Picker allows you to select the <i>date</i> consisting of <i>day</i>, <i>month</i> and <i>year</i> in your custom user interface.</i><br>
+The <i>android.widget.DatePicker</i> is the subclass of <i>FrameLayout</i> class.<br><hr><hr>
+<b>Object &rarr; View &rarr; ViewGroup &rarr; FrameLayout &rarr; DatePicker</b><br><hr><hr>
+<b>DatePicker code in XML:</b>
+<div >
+<pre >
+<code>
+&lt;DatePicker
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/datePicker&quot; /&gt;
+</code>
+</pre>
+</div><br><hr>
+<b>DatePicker code in Activity:</b>
+<div >
+<pre >
+<code>
+DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
+Calendar calendar = Calendar.getInstance();
+datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), 
+calendar.get(Calendar.DAY_OF_MONTH), 
+new DatePicker.OnDateChangedListener() {
+           @Override
+           public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
+               Toast.makeText(getApplicationContext(),
+			   datePicker.getDayOfMonth() + &quot;-&quot; 
+			   +datePicker.getMonth() + &quot;-&quot;
+			   +datePicker.getYear(),Toast.LENGTH_SHORT).show();
+           }
+       });
+</code>
+</pre>
+</div><br><hr><hr>
+<b><u>Methods:-</u></b><br>
+<u id="font">GetDayOfMonth():</u><br>
+&#8627;This method is used to get the selected day of the month from a date picker.This method returns an integer value.<br><hr>
+<u id="font">getMonth():</u><br>
+&#8627;This method is used to get the selected month from a date picker.This method returns an integer value.<br><hr>
+<u id="font">getYear():</u><br>
+&#8627;This method is used to get the selected year from a date picker.  This method returns an integer value.<br><hr>
+<u id="font">getFirstDayOfWeek():</u><br>
+&#8627;This method is used to get the first day of the week. This method returns an integer value.<br><hr><br><br>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<html>
+<head>
+
+    <title>ListView</title>
+    <link rel="stylesheet" href="../../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../../CodeMirror/codemirror.js"></script>
+    <script src="../../../CodeMirror/clike.js"></script>
+    <script src="../../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextSwitcher;
+import android.widget.TextView;
+import android.widget.ViewSwitcher;
+
+public class MainActivity extends AppCompatActivity {
+    private TextSwitcher switcher;
+    private Button btnPrevious,btnNext;
+    private static final String[] TEXT = { "When in Rome, do as the Romans",
+            "The squeaky wheel gets the grease","Two wrongs don't make a right",
+    "Hope for the best, but prepare for the worst","A picture is worth a thousand words"};
+    private int mPosition = -1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btnPrevious = (Button) findViewById(R.id.idBtnPrevious);
+        btnNext = (Button) findViewById(R.id.idBtnNext);
+
+        switcher = (TextSwitcher) findViewById(R.id.idTextSwitcher);
+        switcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                TextView textView = new TextView(getApplicationContext());
+                textView.setTextSize(18);
+                return textView;
+            }
+        });
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mPosition<TEXT.length-1){
+                    mPosition = mPosition+1;
+                    switcher.setText(TEXT[mPosition]);
+                }
+
+            }
+        });
+
+        btnPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mPosition>0){
+                    mPosition = mPosition-1;
+                    switcher.setText(TEXT[mPosition]);
+                }
+            }
+        });
+    }
+}
+
+</textarea>
+
+</body>
+</html>

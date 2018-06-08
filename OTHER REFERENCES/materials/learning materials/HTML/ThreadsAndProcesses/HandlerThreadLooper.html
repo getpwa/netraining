@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>Handlers,Threads and Looper</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android Thread,Handler and Looper</u>:-</b><br>
+<i id="font">All apps, when started, run in a single Main thread. It’s also known as the User Interface (or UI) thread.</i><br><br>
+All components that run in the same process run in this Main thread.<br>
+But executing long running operations on UI thread would block the UI thread untill that operation is complete.
+And if the UI thread is blocked for more than 5 secs it will result ANR.
+<br><br>
+Thus long running intensive operations like database transactions, file downloading,complex calculations etc. should be done in Background/Worker Thread.
+<br><hr><hr>
+<b><u>Note</u>:-</b><br>
+<i id="font">In Android we can't directly interact with the UI elements from the Background/Worker Thread.<br>
+	Thus we need Handlers to communicate between the UI/Main thread and Background/Worker thread.</i><br>
+<hr><hr><br>
+
+<b>What will happen if we try to interact directly with the UI elements from other Threads?</b><br>
+<b id="font">java.lang.RuntimeException:</b><br>
+<i id="font">Cannot update the UI from annother thread.</i>
+<br><hr><hr>
+
+<b><u>MessageQueue:</u></b><br>Android maintains a queue of task which needs to be executed one after another known as <i id="font">MessageQueue</i>.<br>
+In Android Messages cannot be added directly into <i id="font">MessageQueue</i>,but only by using <i id="font">Handler</i> objects.<br><hr>
+<b><u>Handler:</u></b><br>Handler is responsible for creating the message, sending the message to the MessageQueue and handling the messages coming out of the MessageQueue.
+Each Handler must be attached to a <i id="font">Looper</i>.<br><hr>
+
+<b><u>Looper:</u></b><br>Looper polls for the next message in the  MessageQueue and as soon as the message is encountered it is passed to the
+respective Handler.<br><hr><hr><br>
+<b><u>Note</u>:-</b><br>
+A thread can be associated with only one Looper and hence a single MessageQueue.<br>
+But a Looper can have many associated Handlers, but they all insert messages into the same MessageQueue.<br><br>
+Thus,if multiple threads tries to send messsages to a particular Looper thread then all of them will be processed sequentially.<br>
+<hr><hr><br>
+
+<b>What if happen if we try to setup another Looper for the same Thread?</b><br>
+Trying to setup another looper to the same Thread will result in :-<br>
+<b id="font">java.lang.RuntimeException:</b><br>
+<i id="font">Only one Looper may be created per Thread.</i><br><br>
+<hr><hr><br>
+
+<b>How does Android checks whether there is Looper associated with a Thread?</b><br>
+We create Looper by calling Looper.prepare() which first examines the ThreadLocal of current Thread to make sure
+that there isn't already a Looepr associated with the Thread.<br>
+It is only after the examination a new Looper is created and saved in ThreadLocal.<br><hr><br><br>
+</body>
+</html>

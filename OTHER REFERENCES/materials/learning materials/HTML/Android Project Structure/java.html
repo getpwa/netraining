@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>java</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<u><b>java:</b></u><br/>
+Contains the Java source code files, separated by package names, including JUnit test code.<br/>
+All the Activity class are stored inside java folder.<br/>
+For e.g.The Activity class called MainActivity.java is stored in this directory under the package name you mentioned in the wizard.<br/><br/>
+<hr/>
+<b><u>MainActivity.java:-</u></b><br/>
+The MainActivity.java class looks like this:<br/>
+<div>
+<pre>
+<code>
+package demo.arjun.com.helloworld;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}
+</code>
+</pre>
+</div><br><hr><hr>
+<span><b>Why MainActivty is inheriting from AppCompatActivity?</b></span><br/>
+<span>Every activity should inherit from Activity, directly or indirectly.
+Here our MainActivity inherits from AppCompatActivity which in itself inherits from FragmentActivity which is inheriting from Activity<br/>
+Thus our MainActivity is indirectly inherting from Activity.</span><br><hr><hr>
+&emsp;<b id="font">public class AppCompatActivity extends FragmentActivity</b><br/>
+&emsp;&emsp;&#8627;<b id="font">public class FragmentActivity extends Activity</b><br/>
+Thus basically MainActivity extends Activity<br/>
+<br><hr><br><br>
+</body>
+</html>

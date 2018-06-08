@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title>Loader</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Loaders :-</u></b><br>
+Android introduced Loader API in API Level 11 which consists of multiple classes and interfaces when using loaders in the app.<br><hr><hr>
+
+<b>Loaders:</b><br>
+Loaders perform the loading of data. This class is abstract and serves as the base class for all loaders.<br>
+It is a generic type class that exposes one generic type argument.<br>
+<div>
+<pre>
+<code>
+public class Loader &lt;DataType&gt;
+</code>
+</pre>
+</div><br>
+
+<b>Note:</b><br>
+Loader by itself does not have the ability to asynchronously load data.<br>
+It is the AsyncTaskLoader subclass of Loader which provides an AsyncTask to perform load operations on a separate thread.<br>
+CursorLoader subclass of AsyncTaskLoader is used for asynchronously loading data from a ContentProvider. It queries a ContentResolver and returns a Cursor.<br><hr><hr>
+
+<b>Advantages of Using Loaders:</b>
+<ol>
+<li>AsyncTaskLoader overcomes the limitations of an Asynctask by managing the Thread and UI Thread in Activity and Fragment Lifecycle events.</li>
+<li>At time of device configuration changes such as rotation of the screen involve restarting your whole Activity.
+The best part about Loaders is that Loaders survive configuration changes.It can cache results across configuration changes to prevent duplicate queries. </li>
+<li>Loaders simplify thread management by providing callback methods when events occur.</li>
+<li>Loaders can implement an observer to monitor for changes in the underlying data source. 
+For example, CursorLoader automatically registers a ContentObserver to trigger a reload when data changes.</li>
+<li>Loaders dont stay forever. They’ll be automatically cleaned up when the requesting Activity or Fragment is permanently destroyed.</li>
+</ol>
+<hr><hr> 
+
+<b>LoaderManager:</b><br>
+LoaderManager is responsible for managing one or more Loaders associated with an Activity or Fragment.<br> <br>
+
+<b>Note:</b><br>
+There is only one LoaderManager per activity or fragment , but a LoaderManager can manage multiple loaders.<br>
+A LoaderManager is in charge of starting, stopping, retaining, restarting, and destroying its Loaders by calling its corresponding methods.<br>
+Thus whenever an Activity or a fragment is destroyed , it instructs its LoaderManager to destroy and close its Loaders (as well as any resources associated with them, such as a Cursor).<br>
+The LoaderManager is also responsible for retaining your data on configuration changes like a change of orientation and it calls the relevant callback methods when the data changes.<br><br>
+
+To initiate LoaderManager , we call getLoaderManager()/getSupportLoaderManager() from within your activity or your fragment.<br>
+They are 2 main methods of the LoaderManager:
+<ol>
+<li>initLoader(): <br>
+It is used to initialize a Loader within the activity's onCreate() method, or within the fragment's onActivityCreated() method.</li>
+<div>
+<pre>
+<code>
+getLoaderManager().initLoader(LOADER_ID,null, this);
+</code>
+</pre>
+</div>
+It takes 3 arguments:<br>
+A unique ID that identifies the loader.<br>
+An optional Bundle with args for your Loader if needed.<br>
+A LoaderManager.LoaderCallbacks implementation, which the LoaderManager calls to report loader events. In this example, the local class implements the LoaderManager.LoaderCallbacks interface, so it passes a reference to itself, this.<br><br>
+<b>Note:</b><br>
+If the loader specified by the ID already exists, the last created loader is reused.<br>
+If the loader specified by the ID does not exist, initLoader() triggers the LoaderManager.LoaderCallbacks method onCreateLoader() where we write the code to instantiate and return a new loader.<br><br>
+
+<li>restartLoader():</li>
+Since initLoader() uses an existing loader with a specified ID if it was created previous, it doesnt discard the old data.<br>  
+But sometimes you want to discard your old data and start over.<br>
+Thus restartLoader() is used to reset the Loaders when the Query changes, thus discarding the old data.<br> 
+It takes the same arguments as initLoader() and you must use the same ID used to initialize the Loader in the first place.<br>
+<div>
+<pre>
+<code>
+getLoaderManager().restartLoader(LOADER_ID, null, this);
+</code>
+</pre>
+</div>
+</ol><hr><hr>
+
+<b>LoaderCallbacks:</b><br>
+To interact with the loader manager, the client (Activity or Fragment) needs to implement certain LoaderCallback&lt;D&gt; Interface.<br>
+The following functions have to be implemented by the user.<br><br>
+onCreateLoader(int, Bundle) - <br>called when the system needs a new loader to be created. Your code should create a Loader object and return it to the system.<br><br>
+onLoadFinished(Loader&lt;D&gt;, D) - <br>called when a loader has finished loading data. Typically, your code should display the data to the user.<br><br>
+onLoaderReset(Loader&lt;D&gt;) - <br>called when a previously created loader is being reset (when you call destroyLoader(int) or when the activity or fragment is destroyed , and thus making its data unavailable. 
+Your code should remove any references it has to the loader's data.<br><hr><br><br>
+
+</body>
+</html>

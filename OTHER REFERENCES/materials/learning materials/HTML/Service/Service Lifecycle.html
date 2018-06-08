@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>Service Lifecycle</title>
+
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+Service Lifecycle:<br>
+<img src="service_lifecycle.png"/><br><br>
+onStartCommand()<br>
+The system calls this method when another component, such as an activity, requests that the service be started, by calling startService(). Once this method executes, the service is started and can run in the background indefinitely. If you implement this, it is your responsibility to stop the service when its work is done, by calling stopSelf() or stopService().<br><br>
+onBind()<br>
+The system calls this method when another component wants to bind with the service (such as to perform RPC), by calling bindService(). In your implementation of this method, you must provide an interface that clients use to communicate with the service, by returning an IBinder. You must always implement this method, but if you don't want to allow binding, then you should return null.<br><br>
+onCreate()<br>
+The system calls this method when the service is first created, to perform one-time setup procedures (before it calls either onStartCommand() or onBind()). If the service is already running, this method is not called.<br><br>
+onDestroy()<br>
+The system calls this method when the service is no longer used and is being destroyed. Your service should implement this to clean up any resources such as threads, registered listeners, receivers, etc. This is the last call the service receives.<br><br>
+
+If a component starts the service by calling startService() (which results in a call to onStartCommand()), then the service remains running until it stops itself with stopSelf() or another component stops it by calling stopService().<br><br>
+
+If a component calls bindService() to create the service (and onStartCommand() is not called), then the service runs only as long as the component is bound to it. Once the service is unbound from all clients, the system destroys it.<br><br>
+<br><hr><br><br>
+</body>
+</html>

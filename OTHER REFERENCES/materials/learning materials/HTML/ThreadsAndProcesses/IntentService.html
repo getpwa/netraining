@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>IntentService</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>IntentService :-</u></b><br>
+IntentService is a Service which runs in a separate worker thread.<br>
+Thus ,IntentService can be defined as a long running background process without any user interaction running in a separate thread.<br>
+It helps us to achieve parallelism in Android by automatically handling the long-running operations without affecting responsiveness of our UI.<br>
+It is normally used when there is no communication needed back to the main thread after the completion of the process.<br>
+<i class="myfont">android.app.IntentService</i> is a subclass of <i class="myfont">android.app.Service</i>.<br>
+<div>
+<pre>
+<code>
+java.lang.Object
+   	android.content.Context
+ 	   	android.content.ContextWrapper
+ 	 	   	android.app.Service
+ 	 	 	   	android.app.IntentService	
+</code>
+</pre>
+</div><br><hr><hr>
+		   
+<b>How Intent Service Works?</b><br>
+Clients send requests through startService(Intent).<br>
+The IntentService handles each Intent using a worker thread, and stops itself when it runs out of work.<br>
+Only one instance of a IntentService can run at the same time, thus all the subsequent calls to the IntentService is queued on the same worker thread.<br><hr><hr>
+
+			   
+<b>Note:-</b><br>
+Asynctask are not aware of the activity or fragment lifecycle and so it is the programmer's responsibility to handle the AsyncTasks behaviour when the activity is destroyed.<br>
+Thus, if we are running a long running background process (like downloading a song,file) if the app is in the background and the app is terminated by Android, your background processing is also terminated.<br>
+While an IntentService isn't affected by most user interface lifecycle events, so it continues to run in circumstances that would shut down an AsyncTask.<br><hr><hr>
+
+<b>Difference between Service and IntentService:</b><br>
+<ul>
+<li>Service class uses the application's main thread, while IntentService creates a worker thread and uses that thread to run the service.</li>
+<li>Service class needs a manual stop using stopSelf(). Meanwhile, IntentService automatically stops itself when there is no intent in queue, all queued intents are handled. </li>
+</ul><br><hr><hr>
+
+<b>Steps of Implementing Intent Service:</b><br> 
+1. Create a new Class Extening Intent Service. Override the onHandleIntent() method and Create a Default Constructor.
+<div>
+<pre>
+<code>
+public class MyService extends IntentService {
+    public MyService(String name) {
+        super(name);
+    }
+
+    @Override
+    protected void onHandleIntent(@Nullable Intent intent) {
+        // Gets data from the incoming Intent
+        String dataString = intent.getDataString();
+        ...
+        // Do work here, based on the contents of dataString
+        ...
+    }
+}
+</code>
+</pre>
+</div><br><br>
+
+2. Create an entry in AndroidManifest.xml file
+<div>
+<pre>
+<code>
+&lt;application
+        android:icon=&quot;@drawable/icon&quot;
+        android:label=&quot;@string/app_name&quot;&gt;
+        ...
+        &lt;!--
+            Because android:exported is set to &quot;false&quot;,
+            the service is only available to this app.
+        --&gt;
+        &lt;service
+            android:name=&quot;.MyService&quot;
+            android:exported=&quot;false&quot;/&gt;
+        ...
+&lt;application/&gt;
+</code>
+</pre>
+</div><br><hr><br><br>
+
+</body>
+</html>

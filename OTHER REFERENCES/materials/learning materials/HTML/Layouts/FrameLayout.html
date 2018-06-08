@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>FrameLayout</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>FrameLayout:-</u></b><br>
+<i>FrameLayout</i> is designed to display a single item at a time.<br>
+You can have multiple elements within a FrameLayout but each element will be positioned based on the top left of the screen. 
+Elements that overlap will be displayed overlapping.<br><hr><hr>
+I have created a simple XML layout using FrameLayout that shows how this works.
+<div>
+<pre>
+<code>
+&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;com.example.arjun.helloworld.MainActivity&quot;&gt;
+
+    &lt;ImageView
+        android:id=&quot;@+id/ImageView&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+       android:src=&quot;@mipmap/ic_launcher&quot;  /&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:textAppearance=&quot;?android:attr/textAppearanceLarge&quot;
+        android:text=&quot;Large Text&quot;
+        android:id=&quot;@+id/textView&quot;
+        android:layout_gravity=&quot;center&quot; /&gt;
+&lt;/FrameLayout&gt;
+</code>
+</pre>
+</div><br>
+<img src="FrameLayout.png" ><br/><hr><hr>
+You can see I had both the ImageView and TextView fill the parent in both horizontal and vertical layout.<br/> 
+<i id="b2">Gravity specifies where the text appears within its container</i>, so I set that to center. <br/>
+If I had not set a gravity then the text would have appeared at the top left of the screen.<br/><br/>
+<hr><hr>
+<i>FrameLayout</i> can become more useful when elements are hidden and displayed programmatically.
+You can use the attribute <i id="font">android:visibility</i> in the XML to hide specific elements.
+You can even call setVisibility method from the code to accomplish the same thing. <br/><hr>
+The three available visibility values are <u>visible</u>,<br> <u>invisible</u> (does not display, but still takes up space in the layout),<br> and <u>gone</u> (does not display, and does not take space in the layout).<br/><br/>
+<hr>
+So you could, for example, have a game in a FrameView where text displayed to the user is visible in the middle of the screen at appropriate times (e.g. &ldquo;Game Over&rdquo;).<br><br>
+<br><hr><br><br>
+</body>
+</html>

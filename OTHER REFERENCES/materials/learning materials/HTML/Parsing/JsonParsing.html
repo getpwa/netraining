@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>JSON Parsing</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>JsonParsing</u> :</b><br>
+All the JSON nodes will start with a square bracket or with a curly bracket.<br>
+Json Nodes starting with a square brackets represents JSONArray node.<br>
+Json Nodes starting with a curly brackets represents JSONObject node.<br><br>
+
+Thus, if the nodes starts with square brackets use getJSONArray() method<br>
+While, if the nodes starts with curly brackets use getJSONObject() method<br><br>
+
+Example:
+<div>
+<pre>
+<code>
+String JSONDATA = "{
+  \"rootnode\":{
+    \"key1\":\"value1\",
+    \"key2\":\"value2\",
+    \"key3\":\"value3\",
+    \"key4\":\"value4\",
+    \"key5\":\"value5\"
+  }
+}";
+
+JSONObject reader = new JSONObject(JSONDATA);
+JSONObject jObject = reader.getJSONObject("rootnode");
+String aJsonString = jObject.getString("key1");
+</code>
+</pre>
+</div><br><hr><hr>
+
+<b>Note:</b>
+<ul>
+<li>If value is string use - <i>getString("STRINGNAME")</i></li>
+<li>If value is boolean use - <i>getBoolean("BOOLEANNAME)</i></li>
+<li>If value is integer use - <i>getInt("INTEGERNAME)</i></li>
+<li>If value is double use - <i>getDouble("DOUBLENAME)</i></li>
+</ul><hr><hr>
+
+Now,
+Consider this JSON:-
+To get the items from the array:
+<div>
+<pre>
+<code>
+String JSONDATA = "{
+	\"rootnode": [{
+		\"key1"\: \"value11\",
+		\"key2"\: \"value21\",
+		\"key3"\: \"value31\",
+		\"key4"\: \"value41\",
+		\"key5"\: \"value51\"
+	}, {
+		\"key1"\: \"value21\",
+		\"key2"\: \"value22\",
+		\"key3"\: \"value23\",
+		\"key4"\: \"value24\",
+		\"key5"\: \"value25\"
+	}, {
+		\"key1"\: \"value31\",
+		\"key2"\: \"value32\",
+		\"key3"\: \"value33\",
+		\"key4"\: \"value34\",
+		\"key5"\: \"value35\"
+	}, {
+		\"key1"\: \"value41\",
+		\"key2"\: \"value42\",
+		\"key3"\: \"value43\",
+		\"key4"\: \"value44\",
+		\"key5"\: \"value45\"
+	}]
+}";
+
+JSONObject reader = new JSONObject(JSONDATA);
+JSONArray jArray = reader.getJSONObject("rootnode");
+for (int i=0; i < jArray.length(); i++)
+{
+    try {
+        JSONObject obj = jArray.getJSONObject(i);
+        // Pulling items from the array
+        String value1 = obj.getString("key1");
+        String value2 = obj.getString("key2");
+    } catch (JSONException e) {
+        // Oops
+	}
+</code>
+</pre>
+</div><br><hr><br><br>
+
+</body>
+</html>
+

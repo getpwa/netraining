@@ -1,0 +1,135 @@
+<html>
+<head>
+    <title>RelativeLayout</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>RelativeLayout:-</u></b><br>
+<i id="font">RelativeLayout lays out elements based on their relationships with one another, and
+    with the parent container. </i><br>
+This is arguably the most complicated layout, and we need several properties to actually get the
+layout we want. <br><br>
+<hr>
+<hr>
+<b><u>Relative To Container:-</u></b><br>
+These properties will layout elements relative to the parent container.<br>
+<hr>
+<i id="font">android:layout_alignParentBottom</i> – Places the bottom of the element on the bottom
+of
+the container<br>
+<hr>
+<i id="font">android:layout_alignParentLeft</i> – Places the left of the element on the left side of
+the container<br>
+<hr>
+<i id="font">android:layout_alignParentRight</i> – Places the right of the element on the right side
+of the
+container<br>
+<hr>
+<i id="font">android:layout_alignParentTop</i> – Places the element at the top of the container<br>
+<hr>
+<i id="font">android:layout_centerHorizontal</i> – Centers the element horizontally within its
+parent
+container<br>
+<hr>
+<i id="font">android:layout_centerInParent</i> – Centers the element both horizontally and
+vertically within
+its container<br>
+<hr>
+<i id="font">android:layout_centerVertical</i> – Centers the element vertically within its parent
+container<br>
+<hr>
+<hr>
+<br>
+
+<b><u>Relative To Other Elements:-</u></b><br>
+These properties allow you to layout elements relative to other elements on screen.<br>
+The value for each of these elements is the id of the element you are using to layout the
+new element.<br>
+Each element that is used in this way must have an ID defined using android:id=”@+id/XXXXX”
+where XXXXX is replaced with the desired id. You use “@id/XXXXX” to reference an element by
+its id. <br>
+One thing to remember is that referencing an element before it has been declared will
+produce an error.<br>
+<hr>
+
+<i id="font">android:layout_above</i> – Places the element above the specified element.<br>
+<hr>
+<i id="font">android:layout_below</i> – Places the element below the specified element.<br>
+<hr>
+<i id="font">android:layout_toLeftOf</i> – Places the element to the left of the specified
+element.<br>
+<hr>
+<i id="font">android:layout_toRightOf</i> – Places the element to the right of the specified
+element.<br>
+<hr>
+<hr>
+<br>
+
+<b><u>Alignment With Other Elements:</u></b><br>
+These properties allow you to specify how elements are aligned in relation to other
+elements.<br>
+<hr>
+
+<i id="font">android:layout_alignBaseline</i> – Aligns baseline of the new element with the baseline
+of the
+specified element<br>
+<hr>
+<i id="font">android:layout_alignBottom</i> – Aligns the bottom of new element in with the bottom of
+the
+specified element<br>
+<hr>
+<i id="font">android:layout_alignLeft</i> – Aligns left edge of the new element with the left edge
+of the
+specified element<br>
+<hr>
+<i id="font">android:layout_alignRight</i> – Aligns right edge of the new element with the right
+edge of the
+specified element<br>
+<hr>
+<i id="font">android:layout_alignTop</i> – Places top of the new element in alignment with the top
+of the specified element<br>
+<hr>
+<hr>
+
+<div>
+<pre>
+<code>
+&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;com.example.arjun.helloworld.MainActivity&quot;&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:textAppearance=&quot;?android:attr/textAppearanceLarge&quot;
+        android:text=&quot;Large Text&quot;
+        android:id=&quot;@+id/textView&quot;
+        android:layout_alignParentTop=&quot;true&quot;
+        android:layout_alignParentStart=&quot;true&quot; /&gt;
+
+    &lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Button1&quot;
+        android:id=&quot;@+id/button&quot;
+        android:layout_below=&quot;@+id/textView&quot;
+        android:layout_alignParentStart=&quot;true&quot; /&gt;
+
+    &lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Button2&quot;
+        android:id=&quot;@+id/button2&quot;
+        android:layout_centerVertical=&quot;true&quot;
+        android:layout_centerHorizontal=&quot;true&quot; /&gt;
+
+&lt;/RelativeLayout&gt;
+</code>
+</pre>
+</div>
+<br>
+<img src="RelativeLayout.png"><br><hr><br><br>
+</body>
+</html>

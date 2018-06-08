@@ -1,0 +1,204 @@
+<html>
+<head>
+    <title>SQLite Create</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android SQLite:-</u></b><br>
+SQLite is a very light weight database which comes with Android OS.<br/><hr><hr>
+<b>Note:-</b><br>
+Since <i>SQLite</i> is embeded in Android by Default, we dont need to perform any database setup or installation for using it.<br>
+SQLite supports standard relational database features like SQL syntax, transactions and prepared statements.
+<hr><hr>
+<b>Steps of Creating <i>DataBase</i> and <i>Table</i></b>:-<br>
+<ol style="padding-left: 15px;">
+    <li>Create a new Java Class called DataBaseHelper.</li>
+    <li>Extend the class with SQLiteOpenHelper.</li>
+    <div>
+<pre>
+<code>
+ public class DataBaseHelper extends SQLiteOpenHelper{
+ 
+ }
+</code>
+</pre>
+    </div><br/><hr><hr>
+    <li>Implement the methods.</li>
+    <div>
+<pre>
+<code>
+public class DataBaseHelper extends SQLiteOpenHelper {
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+}
+</code>
+</pre>
+    </div><br/><hr>
+    <li>Create the Default constructor.</li>
+    <div>
+<pre>
+<code>
+public class DataBaseHelper extends SQLiteOpenHelper {
+    public DataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+}
+</code>
+</pre>
+    </div><br/><hr>
+
+<li>Define name for your DataBase and Table.</li>
+<div>
+<pre>
+<code>
+public static final  String DATABASE_NAME = "Student.db";
+public static final  String TABLE_NAME = "Student_table";
+</code>
+</pre>
+</div><br/><hr>
+<li>Define name for your columns</li>
+<div >
+<pre>
+<code>
+public static final  String COL_1 = "ID";
+public static final  String COL_2 = "NAME";
+public static final  String COL_3 = "SURNAME";
+public static final  String COL_4 = "MARKS";
+</code>
+</pre>
+</div><br><br>
+<b><u>Code Till now:-</u></b>
+<div >
+<pre>
+<code>
+public class DataBaseHelper extends SQLiteOpenHelper {
+    public static final  String DATABASE_NAME = "Student.db";
+    public static final  String TABLE_NAME = "Student_table";
+    
+    public static final  String COL_1 = "ID";
+    public static final  String COL_2 = "NAME";
+    public static final  String COL_3 = "SURNAME";
+    public static final  String COL_4 = "MARKS";
+
+    public DataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+}
+</code>
+</pre>
+</div><br><br>
+<li>Modify the Constructor to take only Context.Provide the database name and version to the superclass.</li>
+<div>
+<pre>
+<code>
+ public DataBaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, 1);
+ }
+</code>
+</pre>
+</div><br>
+<li>In OnCreate method write a Query to Create a Table.</li>
+<div >
+<pre>
+<code>
+ public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE " + DATABASE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,SURNAME TEXT,MARKS INTEGER)");
+
+ }
+</code>
+</pre>
+</div><br>
+<li>In onUpgrade method write a Query to drop the table if it exists.</li>
+<div>
+<pre>
+<code>
+  public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+  }
+</code>
+</pre>
+</div><br>
+<li>To create database use getWritableDatabase() method in our constructor</li>
+<div>
+<pre>
+<code>
+ public DataBaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, 1);
+        SQLiteDatabase db = this.getWritableDatabase();
+ }
+</code>
+</pre>
+</div><br><br>
+Final Code of our DataBaseHelper.class is:-
+<div>
+<pre>
+<code>
+ public class DataBaseHelper extends SQLiteOpenHelper {
+    public static final  String DATABASE_NAME = "Student.db";
+    public static final  String TABLE_NAME = "Student_table";
+
+    public static final  String COL_1 = "ID";
+    public static final  String COL_2 = "NAME";
+    public static final  String COL_3 = "SURNAME";
+    public static final  String COL_4 = "MARKS";
+
+    public DataBaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, 1);
+        SQLiteDatabase db = this.getWritableDatabase();
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,SURNAME TEXT,MARKS INTEGER)");
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+    }
+ }
+</code>
+</pre>
+</div><br><br>
+<li>Create an object of our DataBaseHelper class in MainActivity and pass Context to it.</li>
+<div>
+<pre>
+<code>
+ DataBaseHelper myDb = new DataBaseHelper(this);
+</code>
+</pre>
+</div>
+    </ol>
+Thus it will call our constructor in DataBaseHelper class which will create our DataBase and Table in the database.<br>
+This is how we create DataBase and Table in SQLite.<br><hr><br><br>
+</body>
+</html>
+    

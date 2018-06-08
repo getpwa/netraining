@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>NotificationBigPictureStyle</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android Big Picture Style Notification</u>:-</b><br>
+Big Picture Style is used to show image-rich content. The image limits will be phone screen length by 256dp height. On Tablets, the image is 2:1 ratio. The rest of the image will be cropped with a ScaleType.CROP_CENTER
+<br>
+<img src="big_picture_expanded-1.png" />
+<hr><hr><br>
+
+<b>Steps of Creating Big Picture Style Notification:-</b><br>
+1. Retrieve an instance of NotificationCompat.Builder.<br>
+<div>
+<pre>
+<code>
+	NotificationCompat.Builder builder =  new NotificationCompat.Builder(context);
+</code>
+</pre>
+</div><br><hr>
+
+2. Apply the style by creating a new NotificationCompat.InboxStyle instance.<br>
+<div>
+<pre>
+<code>
+	NotificationCompat.BigPictureStyle style =  new NotificationCompat.BigPictureStyle (builder);
+</code>
+</pre>
+</div><br><hr>
+
+3. Add the image you want to display by using BigPictureStyle.bigPicture method. The format of the image must be a Bitmap.<br>
+<div>
+<pre>
+<code>
+	final Bitmap picture = BitmapFactory.decodeResource(getResources(), R.drawable.conga);  
+	style.bigPicture(picture);
+</code>
+</pre>
+</div><br><hr>
+  
+4. Add a new LargeIcon if you want to change it. In other case it will default to NotificationCompat.Builder.setLargeIcon(Bitmap).<br>
+<div>
+<pre>
+<code>
+        style.bigLargeIcon(largeExpandedAvatar);
+</code>
+</pre>
+</div><br><hr>
+
+5. Add a different title if you want by using setBigContentTitle.<br>
+<div>
+<pre>
+<code>
+	style.setBigContentTitle("Expanded title");
+</code>
+</pre>
+</div><br>
+<b>Note:-</b><br>
+If you do not call this method the title will fallback to the value you set on setContentTitle from NotificationCompat.Builder.<br><hr>
+
+6. Optionally add a summary to the notification.<br>
+<div>
+<pre>
+<code>
+	style.setSummaryText("Summary text");
+</code>
+</pre>
+</div><br><hr>
+
+7. Build a Notification using the NotificationCompat.Builder<br>
+<div>
+<pre>
+<code>
+	Notification notification = builder  
+    	.setContentTitle("Title")
+    	.setContentText("This is a notification!")
+    	.setSmallIcon(R.drawable.ic_notifications_white_small)
+    	.build();
+</code>
+</pre>
+</div><br><hr>
+
+8. Pass along the Notification object via notify method from NotificationManagerCompat and assign an ID of your choice.<br>
+<div>
+<pre>
+<code>
+	NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+	notificationManager.notify(0x1234, notification); 
+ </code>
+</pre>
+</div><br><hr>
+
+<b>Note:-</b><br>
+Title, text and small icon are mandatory so that the notification can be displayed.<br><hr><br><br>
+</body>
+</html>
+
+
+
+

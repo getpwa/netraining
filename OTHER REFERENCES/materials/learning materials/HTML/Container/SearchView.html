@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>SearchView</title>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>SearchView</u>:-</b><br> 
+SearchView provides a user interface for the user to enter a search query and submit a request to a search provider.<br><hr><hr>
+Steps of using SearchView in Android:
+<ol>
+<li>Add &lt;SearchView&gt; element to your xml layout file</li>
+<div style="color:blue">
+<pre>
+<code>
+&lt;SearchView
+        android:id=&quot;@+id/idsearch&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:iconifiedByDefault=&quot;false&quot;&gt;
+
+        &lt;requestFocus /&gt;
+    &lt;/SearchView&gt;
+</code>
+</pre>
+</div> <br>
+<li>Get a reference of this view in Java file</li>
+<div style="color:blue">
+<pre>
+<code>
+SearchView searchView = (SearchView) findViewById(R.id.idsearch);
+</code>
+</pre>
+</div> <br>
+<li>To execute the query add the method setOnQueryTextListener to the searchview</li>
+<div style="color:blue">
+<pre>
+<code>
+searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+</code>
+</pre>
+</div> <br>
+</ol>
+<br><hr><br><br>
+</body>
+</html>

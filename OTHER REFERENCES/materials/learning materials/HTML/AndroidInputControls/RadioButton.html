@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>RadioButton</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>RadioButton:-</u></b>
+<i id="font">Radio button allows the user to select one option from a set.</i><br>
+To create each radio button option, create a RadioButton in your layout. <br><br>
+However,<br>
+<i id="font"> because radio buttons are mutually exclusive, you must group them together inside a RadioGroup.</i><br>
+By grouping them together, the system ensures that only one radio button can be selected at a time.<br><hr><hr>
+For example, here are a couple RadioButton objects with RadioGroup:<br>
+<div>
+<pre>
+<code>
+&lt;RadioGroup
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;&gt;
+
+        &lt;RadioButton
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:text=&quot;Tea&quot;
+            android:id=&quot;@+id/radioButton1&quot;
+            android:onClick=&quot;RadioButtonClicked&quot;/&gt;
+
+        &lt;RadioButton
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:text=&quot;Coffee&quot;
+            android:id=&quot;@+id/radioButton2&quot;
+            android:onClick=&quot;RadioButtonClicked&quot;/&gt;
+
+        &lt;RadioButton
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:text=&quot;SoftDrink&quot;
+            android:id=&quot;@+id/radioButton3&quot;
+            android:onClick=&quot;RadioButtonClicked&quot;/&gt;
+    &lt;/RadioGroup&gt;
+</code>
+</pre>
+</div><br/><hr>
+Within the Activity that hosts this layout, the following method handles the click event for both RadioButtons:<br>
+<div>
+<pre>
+<code>
+public void RadioButtonClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radiobutton was clicked
+        switch(view.getId()) {
+            case R.id.radioButton1:
+                if (checked)
+                    //code for radiobutton1
+                break;
+            case R.id.radioButton2:
+                if (checked)
+                    //code for radiobutton2
+                break;
+            case R.id.radioButton3:
+                if (checked)
+                    //code for radiobutton3
+                break;
+        }
+    }
+</code>
+</pre>
+</div><br><br>
+</body>
+</html>

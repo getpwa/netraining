@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>XML Introduction</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>XML</u> :</b><br>
+XML stands for Extensible Mark-up Language.<br>
+XML is a markup language much like HTML that was designed to describe data.<br>
+An XML Document consists of elements,each element comprises of a start tag, content and end tag.<br>
+An XML document must have exactly one root element (i.e., one tag which encloses the remaining tags).<br>
+XML differentiates between capital and non-capital letters.<br><hr><hr>
+
+Every XML Document must follow these conditions:-
+<ul>
+<li>An XML document always starts with a prolog.</li>
+	<?xml version="1.0"?>	<br>
+<li>Every opening tag has a closing tag.</li>
+<li>All tags are completely nested.</li>
+</ul>
+Example:-
+<div>
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;communicate&gt;
+    &lt;name&gt;Arjun Toshniwal&lt;/name&gt;
+    &lt;country&gt;India&lt;/country&gt;
+    &lt;email&gt;arjun.toshniwal@gmail.com&lt;/email&gt;
+&lt;/communicate&gt;
+</code>
+</pre>
+</div><br><hr><hr>
+<b>Note:-</b><br>
+XML tags are not predefined we need to define our own tags.<br><br>
+
+Example:
+<div>
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;root&gt;
+	&lt;rootnode&gt;
+		&lt;Tutorial&gt;Android Tutorial&lt;/Tutorial&gt;
+		&lt;Author&gt;
+			&lt;Name&gt;Arjun&lt;/Name&gt;
+			&lt;Surname&gt;Toshniwal&lt;/Surname&gt;
+		&lt;/Author&gt;
+		&lt;Rating&gt;5&lt;/Rating&gt;
+	&lt;/rootnode&gt;
+	&lt;rootnode&gt;
+		&lt;Tutorial&gt;Angular Tutorial&lt;/Tutorial&gt;
+		&lt;Author&gt;
+			&lt;Name&gt;Ankit&lt;/Name&gt;
+			&lt;Surname&gt;Toshniwal&lt;/Surname&gt;
+		&lt;/Author&gt;
+		&lt;Rating&gt;5&lt;/Rating&gt;
+	&lt;/rootnode&gt;
+&lt;/root&gt;
+</code>
+</pre>
+</div><br><hr><hr>
+
+XML Validation:<br>
+You can validate XML online using:<br>
+<a href="https://codebeautify.org/xmlvalidator">https://codebeautify.org/xmlvalidator</a>
+<img src="xmlvalidate.png" alt="XML Validation" /><br><hr><br><br>
+
+</body>
+</html>

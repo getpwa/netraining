@@ -1,0 +1,102 @@
+<html>
+<head>
+    <title>ImageSwitcher</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>CheckedTextView:-</u></b><br>
+Android CheckedTextView is subclass of TextView.<br>
+It comprises of a TextView with a CheckBox.<br>
+It can be very useful when included in a ListView where it’s  setChoiceMode  has been set to something other than CHOICE_MODE_NONE.<br><hr>
+ 
+<b>Note:-</b><br>
+Set android:checkMark  attribute to provide a graphic or drawable or it will not show the check mark.<br>
+The check mark on the UI cannot be changed only by clicking on the UI, we need to use a listener to do that.<br><hr><hr>
+
+<b>Steps for Implementing CheckedTextView:-</b><br>
+1. Define the CheckedTextView in XML.<br>
+<div>
+<pre>
+<code>
+&lt;CheckedTextView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/idCheckedTextView&quot;
+        android:checked=&quot;true&quot;
+        android:checkMark=&quot;?android:attr/listChoiceIndicatorMultiple&quot;
+        android:text=&quot;CheckBox1&quot;
+        android:gravity=&quot;center_vertical&quot;
+        android:drawableLeft=&quot;@mipmap/ic_launcher&quot;/&gt;
+</code>
+</pre>
+</div><br><br><hr>
+
+
+
+2. Create an instance of CheckedTextView in Java file and get a reference of its XML Component.<br>
+<div>
+<pre>
+<code>
+CheckedTextView checkedTextView = (CheckedTextView) findViewById(R.id.idCheckedTextView); // get the reference of CheckedTextView
+checkedTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkedTextView.isChecked()){
+                    checkedTextView.setChecked(false);
+                }else{
+                    checkedTextView.setChecked(true);
+                }
+            }
+        });
+</code>
+</pre>
+</div><br><hr><hr>
+
+
+<b><u>XML Attributes</u>:</b><br><br>
+android:checkMark <br>
+Drawable used for the check mark graphic.<br><hr>
+
+android:checkMarkTint <br>
+Tint to apply to the check mark.<br><hr>
+ 
+android:checkMarkTintMode <br>
+Blending mode used to apply the check mark tint. <br><hr>
+
+android:checked	<br>
+Indicates the initial checked state of this text. <br><hr><hr>
+
+<b><u>Methods</u>:</b><br><br>
+Drawable getCheckMarkDrawable():<br>
+Gets the checkmark drawable.<br><hr>
+
+ColorStateList	getCheckMarkTintList():<br>
+Returns the tint applied to the check mark drawable, if specified.<br><hr>
+
+PorterDuff.Mode	getCheckMarkTintMode():<br>
+Returns the blending mode used to apply the tint to the check mark drawable, if specified.<br><hr>
+
+boolean isChecked():<br>
+Returns true if the view is Checked.<br><hr>
+
+
+void setCheckMarkDrawable(Drawable d):<br>
+Set the check mark to the specified drawable.<br><hr>
+
+void setCheckMarkDrawable(int resId):<br>
+Sets the check mark to the drawable with the specified resource ID.<br><hr>
+
+void setCheckMarkTintList(ColorStateList tint):<br>
+Applies a tint to the check mark drawable.<br><hr>
+
+void setCheckMarkTintMode(PorterDuff.Mode tintMode):<br>
+Specifies the blending mode used to apply the tint specified by setCheckMarkTintList(ColorStateList) to the check mark drawable.<br><hr>
+
+void setChecked(boolean checked):<br>
+Sets the checked state of this view.<br><hr>
+
+void setVisibility(int visibility):<br>
+Set the visibility state of this view.<br><hr>
+
+void toggle():<br>
+Toggles the checked state of the view.<br><hr><br><br>

@@ -1,0 +1,415 @@
+<html>
+<head>
+<title>MYSQL Register</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>MYSQL Register</u></b>:-<br><br>
+<b>Steps of Creating XML File:-</b><br>
+Create a Layout file as shown below.<br>
+It contains two EditText fields to get the UserName and Password and a Button.<br><br>
+<div>
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:id=&quot;@+id/activity_main&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot;
+    android:padding=&quot;16dp&quot;
+    tools:context=&quot;com.example.arjun.mysql.MainActivity&quot;&gt;
+
+        &lt;EditText
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:hint=&quot;UserName: &quot;
+        android:id=&quot;@+id/idFullName&quot;
+        /&gt;
+    &lt;EditText
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:hint=&quot;Password: &quot;
+        android:id=&quot;@+id/idPassword&quot;
+        /&gt;
+    &lt;EditText
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:hint=&quot;Email Id: &quot;
+        android:id=&quot;@+id/idEmailId&quot;
+        /&gt;
+    &lt;EditText
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:hint=&quot;Cell No: &quot;
+        android:id=&quot;@+id/idCellNo&quot;
+        /&gt;
+
+    &lt;Button
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/idBtnLogin&quot;
+        android:text=&quot;Login&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code>
+</pre>
+</div><br><hr><hr>
+Steps of Creating Java File:-<br>
+<ol style="padding-left: 15px;">
+<li>MainActivity.java Class should be like:</li>
+<div>
+<pre>
+<code>
+public class MainActivity extends AppCompatActivity {
+
+    Button registerBtn;
+    EditText txtUserName,txtPassword,txtEmail,txtTel;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        txtUserName= (EditText) findViewById(R.id.idUserName);
+        txtPassword= (EditText) findViewById(R.id.idPassword);
+		txtEmail = (EditText) findViewById(R.id.idEmailId);
+        txtTel = (EditText) findViewById(R.id.idCellNo);
+
+        registerBtn = (Button) findViewById(R.id.idBtnLogin);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                register();
+            }
+        });
+    }
+
+    private void register() {
+        String username = txtUserName.getText().toString();
+        String password = txtPassword.getText().toString();
+		String email = txtEmail.getText().toString();
+        String tel = txtTel.getText().toString();
+
+        String type="register";
+        BackGroundWorker backGroundWorker = new BackGroundWorker(this);
+        backGroundWorker.execute(type,username,password,email,tel);
+    }
+}
+
+</code>
+</pre>
+</div><br><hr><hr>
+
+<li>Create a new Java Class (say BackgroundWorker) extending AsyncTask</li>
+<div>
+<pre>
+<code>
+public class BackGroundWorker extends AsyncTask &lt;String, String, String&gt;{
+}
+</code>
+</pre>
+</div><br><hr><hr>
+<li>Implement Methods:-</li>
+<div>
+<pre>
+<code>
+public class BackGroundWorker extends AsyncTask &lt;String, String, String&gt;{
+	
+	@Override
+    protected String doInBackground(String... params) {
+        return null;
+    }
+
+  
+}
+</code>
+</pre>
+</div><br><hr><hr>
+<li>Add onPreExecute and onPostExecute method:-</li>
+<div>
+<pre>
+<code>
+public class BackGroundWorker extends AsyncTask &lt;String, String, String&gt;{
+	
+	@Override
+    protected String doInBackground(String... params) {
+        return null;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+    }
+}
+</code>
+</pre>
+</div><br><hr><hr>
+
+<li>Create a Constructor taking Context as a parameter.</li>
+<div>
+<pre>
+<code>
+ BackGroundWorker(Context ctx){
+ }
+</code>
+</pre>
+</div><br><hr><hr>
+<li>Create a Context object and assign this object to the Context of the constructor.</li>
+<div >
+<pre>
+<code>
+ Context context;
+ BackGroundWorker(Context ctx){
+ context=this.ctx;
+ }
+</code>
+</pre>
+</div><br><hr><hr>   
+<li>Call your php file using your url:-</li>
+<div >
+<pre>
+<code>
+String register_url="http://myandroid-tester.esy.es/register.php";
+URL url = new URL(register_url);
+</code>
+</pre>
+</div><br><hr><hr>
+PHP File looks like:-<br>
+<div >
+<pre>
+<code>
+&lt;?php
+define(&#39;HOST&#39;,&#39;my_host&#39;);
+define(&#39;USER&#39;,&#39;my_username&#39;);
+define(&#39;PASS&#39;,&#39;my_password&#39;);
+define(&#39;DB&#39;,&#39;my_db_name&#39;);
+ 
+$con = mysqli_connect(HOST,USER,PASS,DB);
+
+if($_SERVER[&#39;REQUEST_METHOD&#39;]==&#39;POST&#39;){
+
+ $username = $_POST[&#39;username&#39;];
+ $password = $_POST[&#39;password&#39;];
+ $email = $_POST[&#39;email&#39;];
+ $tel = $_POST[&#39;tel&#39;];
+ 
+ if($username == &#39;&#39; || $password == &#39;&#39; || $email == &#39;&#39; || $tel == &#39;&#39;){
+ echo &#39;please fill all values&#39;;
+ }else{
+ require_once(&#39;dbConnect.php&#39;);
+ $sql = &quot;SELECT * FROM users WHERE username=&#39;$username&#39; OR email=&#39;$email&#39;&quot;;
+ 
+ $check = mysqli_fetch_array(mysqli_query($con,$sql));
+ 
+ if(isset($check)){
+ echo &#39;username or email already exist&#39;;
+ }else{ 
+ $sql = &quot;INSERT INTO users (username,password,email,tel,uid) VALUES(&#39;$username&#39;,&#39;$password&#39;,&#39;$email&#39;,&#39;$tel&#39;)&quot;;
+ if(mysqli_query($con,$sql)){
+ echo &#39;successfully registered&#39;;
+ }else{
+ echo &#39;oops! Please try again!&#39;;
+ }
+ }
+ mysqli_close($con);
+ }
+}else{
+echo &#39;error&#39;;
+}
+</code>
+</pre>
+</div><br>
+<b><u>Note</u></b>:-<br>
+You need to replace the credentials with that of yours and host this file.<br>
+<hr><br><br>
+<li>Create an Object of class HttpURLConnection and obtain a new HttpURLConnection by calling URL.openConnection() and casting the result to HttpURLConnection.</li>
+<div >
+<pre>
+<code> 
+ HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+</code>
+</pre>
+</div><br><hr><hr>
+<li>Set the method for url request as "POST" on HttpURLConnection object.</li>
+<div >
+<pre>
+<code> 
+ httpURLConnection.setRequestMethod("POST");
+</code>
+</pre>
+</div><br><hr><hr>
+<li>Set doOutput() as true since we are using "POST" and we want to allow sending a body via the connection.</li>
+<div >
+<pre>
+<code>
+  httpURLConnection.setDoOutput(true);
+</code>
+</pre>
+</div><br><hr><hr> 
+<li>Create an object of OutputStream and get the OutputStream from our httpURLConnection.</li>
+A program uses an output stream to write data to a destination, one item at time.<br>
+<div >
+<pre>
+<code>
+OutputStream outputStream = httpURLConnection.getOutputStream();
+</code>
+</pre>
+</div><br><hr><hr> 
+<li>.Encode the characters obtained into bytes using a specified charset.This can be done by using OutputStreamWriter.</li>
+<div >
+<pre>
+<code>
+OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream,"UTF-8");
+</code>
+</pre>
+</div><br><hr><hr> 
+<li>To avoid frequent converter invocations wrap an OutputStreamWriter within a BufferedWriter.</li>
+<div>
+<pre>
+<code>
+BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+</code>
+</pre>
+</div><br><hr><hr> 
+<li>Encode the url using URLEncoder class.</li>
+<div >
+<pre>
+<code>
+String post_data= URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
+                  +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(pass_word,"UTF-8")+"&"
+                  +URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"
+                  +URLEncoder.encode("tel","UTF-8")+"="+URLEncoder.encode(tel,"UTF-8");
+</code>
+</pre>
+</div><br><hr><hr> 
+<li>Write the data into bufferedWriter and flush and close it.</li>
+<div>
+<pre>
+<code>
+ bufferedWriter.write(post_data);
+ bufferedWriter.flush();
+ bufferedWriter.close();
+</code>
+</pre>
+</div><br><hr><hr> 
+<li>set doInput() as true since we want to allow reading information from the response.</li>
+httpURLConnection.setDoInput(true);
+
+<li>Create an object of InputStream and get the InputStream from our httpURLConnection.</li>
+A program uses an input stream to read data from a source, one item at a time:
+<div >
+<pre>
+<code>
+InputStream inputStream = httpURLConnection.getInputStream();
+</code>
+</pre>
+</div><br><hr><hr>
+
+<li>Encode the bytes obtained back into characters using a specified charset.This can be done by using InputStreamWriter.</li>    
+<div>
+<pre>
+<code>
+InputStreamWriter inputStreamWriter = new InputStreamWriter(inputStream,"iso-8859-1");
+</code>
+</pre>
+</div><br><hr><hr>
+
+<li>To avoid frequent converter invocations wrap an InputStreamWriter within a BufferedReader.
+Read the data and close InputStreamWriter and BufferedReader.
+<div >
+<pre>
+<code>
+ BufferedReader bufferedReader = new BufferedReader();
+ String result="";
+ String line="";
+ while ((line = bufferedReader.readLine())!=null)
+ {
+   result+=line;
+ }
+ bufferedReader.close();
+ inputStream.close();
+</code>
+</pre>
+</div><br><hr><hr>
+
+<li>Disconnect the httpURLConnection.</li>
+<div >
+<pre>
+<code>
+ httpURLConnection.disconnect();
+</code>
+</pre>
+</div><br><hr><hr>
+
+<li>Return the result so obtained.</li>
+So the complete method would be:-
+<div >
+<pre>
+<code>
+protected String doInBackground(String... params) {
+ String type = params[0];
+ String user_name = params[1];
+ String pass_word = params[2];
+ String email = params[3];
+ String tel = params[4];
+ String register_url="http://myandroid-tester.esy.es/register.php";
+ if(type.equals("register")){
+   try {
+      URL url = new URL(login_url);
+      try {
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+               httpURLConnection.setRequestMethod("POST");
+               httpURLConnection.setDoOutput(true);
+               httpURLConnection.setDoInput(true);
+
+               OutputStream outputStream = httpURLConnection.getOutputStream();
+               BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+               String post_data= URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
+                               +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(pass_word,"UTF-8");
+               bufferedWriter.write(post_data);
+               bufferedWriter.flush();
+               bufferedWriter.close();
+
+               InputStream inputStream = httpURLConnection.getInputStream();
+               BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+               String result="";
+               String line="";
+               while ((line = bufferedReader.readLine())!=null)
+                {
+                  result+=line;
+                }
+               bufferedReader.close();
+               inputStream.close();
+               httpURLConnection.disconnect();
+               return result;
+           } catch (IOException e) {
+               e.printStackTrace();
+            }
+          } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+
+        }
+    return null;
+    }
+</code>
+</pre>
+</div><br><hr><hr>
+
+<li>In onPostExecute method show the result.</li>
+<div >
+<pre>
+<code>
+ protected void onPostExecute(String s) {
+  Toast.makeText(context,"Result:"+s,Toast.LENGTH_LONG).show();
+  }    
+</code>
+</pre>
+</div><br><hr><hr>
+    </ol>
+</body>
+</html>

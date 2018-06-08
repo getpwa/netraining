@@ -1,0 +1,71 @@
+<html>
+<head>
+	<title>Android Process</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android Process</u>:-</b><br>
+<i id=font">In Android a process is an instance of a application running on an Android device.</i><br>
+All Android apps run in their own process and by default, in a single thread.<br>
+Since each Android Apps runs in its own process, all apps are isolated from each other.<br><hr><hr>
+
+<b><u>Thread</u>:-</b><br><br>
+A thread is the smallest unit of processing that can be performed in an OS. <br>
+A thread exists within a process - that is, a single process may contain multiple threads.<br><hr><hr>
+
+<b>Components of Android Application</b><br>
+All android apps are built using 4 key components:-
+<ol>
+	<li><u>Activities</u> –<br> Typically the screen that the user sees.</li>
+	<li><u>Services</u> –<br> A component that does work in the background.</li>
+	<li><u>Content providers</u> –<br> A component that manages a shared set of data.</li>
+	<li><u>Broadcast receivers</u> –<br> A component that responds to a broadcast message.</li>
+</ol>
+<hr><hr>
+
+<b>Note:-</b><br>
+We can use another apps component to implement a particular functionality by using intent.
+<i id="font">If we start a component in another app, it runs in the process of that app, not that of our apps process.</i><br><br>
+
+<i id="font">Whenever our app starts, and none of its components are running, the system starts a new process.</i><br>
+All processes are kept alive in memory for as long as possible.
+Even when you exit an app, its processes may be kept alive in memory – maybe the process is shared by another app, and in some cases the process is kept alive in case it’s needed again.<br>
+<i>Processes are killed when memory is needed for the more important processes.As the process are killed so does the components associated
+	with that process gets killed too.</i><br><br>
+<hr><hr>
+Android follows a set of rules when deciding which processes to kill.The rules are based on two facts:
+<ol>
+	<li>How important is the process to the user’s current experience</li>
+	<li>How long has it been since the process was last used.</li>
+</ol>
+<hr><hr>
+<b>Process priority structue:-</b><br>
+<img src="process_lifecycle_small.png" />
+<u><i>Active process/Foreground Process</i></u> –<br> Active processes have components that the user is interacting with.<br>
+A process is considered to be in the foreground if any of the following conditions hold:
+<ol>
+	<li>It is running an Activity at the top of the screen that the user is interacting with (its onResume() method has been called).</li>
+	<li>It has a BroadcastReceiver that is currently running (its BroadcastReceiver.onReceive() method is executing).</li>
+	<li>It has a Service that is currently executing code in one of its callbacks (Service.onCreate(), Service.onStart(), or Service.onDestroy()).</li>
+</ol>
+<hr>
+<u><i>Visible process</i></u> –<br> These have visible activities which are not in the foreground. The user is not currently interacting with them.<br>
+A process is considered to be visible if any of the following conditions hold:
+<ol>
+	<li>It is running an Activity that is visible to the user on-screen but not in the foreground (its onPause() method has been called). This may occur, for example, if the foreground Activity is displayed as a dialog that allows the previous Activity to be seen behind it.</li>
+	<li>It has a Service that is running as a foreground service, through Service.startForeground() (which is asking the system to treat the service as something the user is aware of, or essentially visible to them).</li>
+	<li>A Service which is attached to visible process.</li>
+</ol>
+<hr>
+<u><i>Service process</i></u> –<br> They have running services and are treated as an Active process.
+A service that has been started with the startService() method.
+Note:-
+Though these processes are not directly visible to the user, they are generally doing things that the user cares about (such as background network data upload or download).
+<hr>
+<u><i>Background process</i></u>–<br> These contain activities that are not visible. There is no user interaction with them. They can be killed at any time. These processes are killed according to the last-seen-first-killed principle.
+<hr>
+<u><i>Empty process</i></u> –<br> They don’t have any active application components. They’re only kept alive to improve start-up time when next the component is needed. These processes are killed when resources are needed.
+<br><hr><br><br>
+</body>
+</html>
+

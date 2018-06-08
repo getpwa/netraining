@@ -1,0 +1,74 @@
+<html>
+<head>
+
+    <title>AnimTweenSequential</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:fillAfter=&quot;true&quot;
+    android:interpolator=&quot;@android:anim/linear_interpolator&quot; &gt;
+
+
+    &lt;!-- Move --&gt;
+    &lt;translate
+        android:duration=&quot;1000&quot;
+        android:fillAfter=&quot;true&quot;
+        android:fromXDelta=&quot;0%p&quot;
+        android:toXDelta=&quot;25%p&quot; /&gt;
+    &lt;translate
+        android:duration=&quot;1000&quot;
+        android:fillAfter=&quot;true&quot;
+        android:fromYDelta=&quot;0%p&quot;
+        android:startOffset=&quot;2000&quot;
+        android:toYDelta=&quot;25%p&quot; /&gt;
+    &lt;translate
+        android:duration=&quot;1000&quot;
+        android:fillAfter=&quot;true&quot;
+        android:fromXDelta=&quot;0%p&quot;
+        android:startOffset=&quot;3000&quot;
+        android:toXDelta=&quot;-25%p&quot; /&gt;
+
+    &lt;translate
+        android:duration=&quot;1000&quot;
+        android:fillAfter=&quot;true&quot;
+        android:fromYDelta=&quot;0%p&quot;
+        android:startOffset=&quot;4700&quot;
+        android:toYDelta=&quot;-25%p&quot; /&gt;
+    &lt;!-- Rotate 360 degrees --&gt;
+    &lt;rotate
+        android:duration=&quot;1000&quot;
+        android:fromDegrees=&quot;0&quot;
+        android:interpolator=&quot;@android:anim/cycle_interpolator&quot;
+        android:pivotX=&quot;50%&quot;
+        android:pivotY=&quot;50%&quot;
+        android:startOffset=&quot;5000&quot;
+        android:repeatCount=&quot;infinite&quot;
+        android:repeatMode=&quot;restart&quot;
+        android:toDegrees=&quot;360&quot; /&gt;
+&lt;/set&gt;
+</textarea>
+
+</body>
+</html>
+

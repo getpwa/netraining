@@ -1,0 +1,95 @@
+<html>
+<head>
+
+    <title>CustomListView</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+public class MainActivity extends AppCompatActivity {
+    String FileName = "myFile";
+    Button BtnSave,BtnRead;
+    EditText editName;
+    TextView readName;
+    String name;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        BtnSave = (Button) findViewById(R.id.idBtnSave);
+        BtnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveFile();
+            }
+        });
+        BtnRead = (Button) findViewById(R.id.idBtnRead);
+        BtnRead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readFile();
+            }
+        });
+        editName = (EditText) findViewById(R.id.idName);
+        readName = (TextView) findViewById(R.id.idReadtxt);
+    }
+
+    private void readFile() {
+        try {
+            File file = new File(getCacheDir(),FileName);
+            FileInputStream fin = new FileInputStream(file);
+            InputStreamReader inputStream = new InputStreamReader(fin);
+            BufferedReader bufferedReader  = new BufferedReader(inputStream);
+            StringBuilder stringBuilder = new StringBuilder();
+            String line =null;
+            while ((line=bufferedReader.readLine())!=null){
+                stringBuilder.append(line);
+            }
+            fin.close();
+            inputStream.close();
+            readName.setText("Name: "+stringBuilder.toString());
+            Toast.makeText(this,"Data Retrieved :"+stringBuilder.toString(),Toast.LENGTH_SHORT).show();
+
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void saveFile() {
+        try {
+            //To append the Data in the File use Context.MODE_APPEND
+            File file = new File(getCacheDir(),FileName);
+            FileOutputStream fos = new FileOutputStream(file);
+            name = editName.getText().toString();
+            fos.write(name.getBytes());
+            fos.close();
+            Toast.makeText(this,"Data Saved",Toast.LENGTH_SHORT).show();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</textarea>
+
+</body>
+</html>

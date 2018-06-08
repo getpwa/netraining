@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>Popup Menu</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android PopUp Menu:</u></b><br>
+Android Popup Menu displays the menu below the anchor text if space is available otherwise above the anchor text.<br>
+<hr><hr>
+1. Define menu items in res/menu.xml<br>
+<div >
+<pre >
+<code>
+&lt;menu xmlns:androclass=&quot;http://schemas.android.com/apk/res/android&quot; &gt;  
+    &lt;item  android:id=&quot;@+id/item1&quot;  
+        android:title=&quot;Item 1&quot;/&gt;  
+    &lt;item  android:id=&quot;@+id/item2&quot;  
+        android:title=&quot;Item 2&quot;/&gt;  
+    &lt;item  android:id=&quot;@+id/item3&quot;  
+        android:title=&quot;Item 3&quot;/&gt;  
+&lt;/menu&gt;
+</code>
+</pre>
+</div><br><hr>
+2. If you define your menu in XML, here's how you can show the popup menu:<br>
+E.g A button with the android:onClick attribute that shows a popup menu:<br>
+<div >
+<pre >
+<code>
+&lt;ImageButton
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:src=&quot;@drawable/ic_overflow_holo_dark&quot;
+    android:contentDescription=&quot;@string/descr_overflow_button&quot;
+    android:onClick=&quot;showPopup&quot; /&gt;
+</code>
+</pre>
+</div><br><hr>
+3. The activity can then show the popup menu like this:<br>
+<div >
+<pre >
+<code>
+public void showPopup(View v) {
+    PopupMenu popup = new PopupMenu(this, v);
+    MenuInflater inflater = popup.getMenuInflater();
+    inflater.inflate(R.menu.actions, popup.getMenu());
+    popup.show();
+}
+</code>
+</pre>
+</div><br><hr>
+4. Define Click Events<br>
+<div >
+<pre >
+<code>
+public void showMenu(View v) {
+    PopupMenu popup = new PopupMenu(this, v);
+    MenuInflater inflater = popup.getMenuInflater();
+    inflater.inflate(R.menu.actions, popup.getMenu());
+	
+    // This activity implements OnMenuItemClickListener
+    popup.setOnMenuItemClickListener(this);
+    popup.show();
+}
+
+@Override
+public boolean onMenuItemClick(MenuItem item) {
+    switch (item.getItemId()) {
+        case R.id.archive:
+            //Your Code Here
+            return true;
+        case R.id.delete:
+            //Your Code Here
+            return true;
+        default:
+            return false;
+    }
+}
+</code>
+</pre>
+</div><br>
+<hr><hr>
+Summarizing:
+<ol>
+<li>Instantiate a PopupMenu with its constructor, which takes the current application Context and the View to which the menu should be anchored.</li>
+<li>Use MenuInflater to inflate your menu resource into the Menu object returned by PopupMenu.getMenu().</li>
+<li>To implement onClick events use PopupMenu.setOnMenuItemClickListener(this);</li>
+<li>Call PopupMenu.show().</li>
+</ol><br><hr><br><br>
+</body>
+</html>

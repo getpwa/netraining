@@ -1,0 +1,81 @@
+<html>
+<head>
+    <title>TextSwitcher</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>TextSwitcher:-</u></b><br>
+<i id="font">A TextSwitcher is useful to animate a label on screen.</i><br>
+Whenever setText(CharSequence) is called, TextSwitcher animates the current text out and animates the new text in.<br><br>
+Android TextSwitcher is a subclass of Android ViewSwitcher class in the hierarchy.<br><hr>
+</b>Note:-</b>
+The views added to an TextSwitcher must all be TextViews.<br><hr><hr>
+
+<b>Steps for Implementing TextSwitcher:-</b><br><br>
+1. Define the TextSwitcher in XML.<br>
+<div>
+<pre>
+<code>
+&lt;TextSwitcher
+   android:id=&quot;@+id/IdTextSwitcher&quot;
+   android:layout_width=&quot;wrap_content&quot;
+   android:layout_height=&quot;wrap_content&quot;
+   android:layout_centerHorizontal=&quot;true&quot;
+   android:layout_centerVertical=&quot;true&quot; &gt;
+&lt;/TextSwitcher&gt;
+</code>
+</pre>
+</div><br><hr>
+
+2. Create an instance of TextSwitcher in Java file and get a reference of its XML Component.<br>
+<div>
+<pre>
+<code>
+private TextSwitcher switcher;
+switcher = (TextSwitcher)findViewById(R.id.IdTextSwitcher);
+</code>
+</pre>
+</div><br><hr>
+
+3. Implement the ViewFactory interface and implement unimplemented method that returns an imageView.<br>
+<div>
+<pre>
+<code>
+switcher = (TextSwitcher) findViewById(R.id.idTextSwitcher);
+        switcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                TextView textView = new TextView(getApplicationContext());
+                textView.setTextSize(18);
+                return textView;
+            }
+        });
+</code>
+</pre>
+</div><br><hr>
+
+
+4. Add Animation to the TextSwitcher<br>
+<div>
+<pre>
+<code>
+Animation in = AnimationUtils.loadAnimation(this,android.R.anim.slide_in_left);
+switcher.setInAnimation(in);
+switcher.setOutAnimation(out);   
+</code>
+</pre>
+</div><br><hr><hr>
+
+<b>Methods:</b><br><br>
+setCurrentText (CharSequence text)<br>
+Sets the text of the text view that is currently showing.<br><hr>
+
+	
+setText (CharSequence text)<br>
+Sets the text of the next view and switches to the next view. This can be used to animate the old text out and animate the next text in.<br><hr>
+
+
+TextSwitcher (Context context, AttributeSet attrs)<br>
+Creates a new empty TextSwitcher for the given context and with the specified set attributes.<br><hr>
+</body>
+</html>

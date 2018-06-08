@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>ToggleButton</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>ToggleButton:-</u></b><br>
+A toggle button allows the user to change a setting between two states.<br><hr><hr>
+Toggle Button Example<br>
+<div>
+<pre>
+<code>
+&lt;ToggleButton
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;MyToggleButton&quot;
+        android:id=&quot;@+id/toggleButton&quot;
+        android:onClick=&quot;ToggleClicked&quot;/&gt;
+</code>
+</pre>
+</div><br/>
+Within the Activity that hosts this layout, the following method handles the click event for both ToggleButton:<br>
+<div>
+<pre>
+<code>
+public void ToggleClicked(View view) {
+        // Is the togglebutton now clicked?
+        boolean checked = ((ToggleButton) view).isChecked();
+        if (checked)
+            //ToggleButton ON
+        else
+             //ToggleButton OFF
+    }
+</code>
+</pre>
+</div><br><hr><br><br>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>External Storage</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android External Storage:</u></b><br>
+Like internal storage, we are able to save or read data from the device external memory such as sdcard.<br>
+Files saved to the external storage are world-readable and can be modified by the user when they enable USB mass storage to transfer files on a computer.<br><br>
+<hr><hr>
+<b>How to write to external storage?</b><br>
+1. Adding Permissions<br>
+In order to read or write files on the external storage, your app must acquire the <i id="font">READ_EXTERNAL_STORAGE</i> or <i id="font">WRITE_EXTERNAL_STORAGE</i> system permissions.<br>
+If you need to both read and write files, then you need to request only the <i id="font">WRITE_EXTERNAL_STORAGE</i> permission, because it implicitly requires read access as well.<br><br>
+Thus adding <i id="font">WRITE_EXTERNAL_STORAGE</i> in <i id="font">AndroidManifest.xml</i><br>
+<div >
+<pre >
+<code>
+&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;
+</code>
+</pre>
+</div><br><hr>
+2. Checking media availability<br>
+Call <i id="font">getExternalStorageState()</i> to check whether the media is available. <br>
+For example, here are a couple methods you can use to check the availability:<br>
+<div >
+<pre >
+<code>
+/* Checks if external storage is available for read and write */
+public boolean isExternalStorageWritable() {
+    String state = Environment.getExternalStorageState();
+    if (Environment.MEDIA_MOUNTED.equals(state)) {
+        return true;
+    }
+    return false;
+}
+
+/* Checks if external storage is available to at least read */
+public boolean isExternalStorageReadable() {
+    String state = Environment.getExternalStorageState();
+    if (Environment.MEDIA_MOUNTED.equals(state) ||
+        Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+        return true;
+    }
+    return false;
+}
+</code>
+</pre>
+</div><br><hr>
+3. Get the files directory by calling<br>
+a. <b>getExternalStorageFilesDir(String type):</b><br>
+Create Files specific to your app and are removed when your app in uninstalled<br>
+<div >
+<pre >
+<code>
+File folder = getExternalStorageFilesDir("MyFolder");
+File myfile = new File(folder,"mydata.txt");
+</code>
+</pre>
+</div><br><hr>
+b. <b>getExternalStoragePublicDirectory(String type):</b><br>
+Create files not just specific to your app and should not be deleted when your app in uninstalled<br>
+<div >
+<pre >
+<code>
+File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+File myfile = new File(folder,"mydata.txt");
+</code>
+</pre>
+</div><br><hr>
+
+
+4. Use FileInputStream and FileOutputStream to do the required operation<br>
+<div >
+<pre >
+<code>
+String string = "hello world!";
+FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+fos.write(string.getBytes());
+fos.close();
+</code>
+</pre>
+</div><br><hr><hr>
+
+<b>How to read from External Storage?</b><br>
+1. Get the files directory by calling<br>
+a. <b>getExternalStorageFilesDir(String type):</b><br>
+Create Files specific to your app and are removed when your app in uninstalled<br>
+<div >
+<pre >
+<code>
+File folder = getExternalStorageFilesDir("MyFolder");
+File myfile = new File(folder,"mydata.txt");
+</code>
+</pre>
+</div><br><hr>
+b. <b>getExternalStoragePublicDirectory(String type):</b><br>
+Create files not just specific to your app and should not be deleted when your app in uninstalled<br><hr>
+<div >
+<pre >
+<code>
+File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+File myfile = new File(folder,"mydata.txt");
+</code>
+</pre>
+</div><br><hr>
+2. Call <i id="font">FileInputStream()</i> and pass it the name of the file to read. This returns a FileInputStream.<br><hr>
+3. Read bytes from the file with <i id="font">read()</i>.<br>
+<b><u>Note:-</u></b><br>
+Since we are going to read data byte by byte we need to append each character.<br><hr>
+4. Then close the stream with <i id="font">close()</i>.<br><hr>
+</ol>
+<div >
+<pre >
+<code>
+FileInputStream fis = openFileInput(FILENAME);
+int read=-1;
+StringBuffer buffer= new StringBuffer();
+while(read=fis.read())!=-1)
+ {
+   buffer.append((char)read);
+ }
+fis.close();
+
+</code>
+</pre>
+</div><br><hr><br><br><br>
+</body>
+</html>

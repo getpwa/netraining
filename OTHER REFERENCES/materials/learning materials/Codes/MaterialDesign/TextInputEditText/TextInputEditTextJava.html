@@ -1,0 +1,87 @@
+<html>
+<head>
+
+    <title>ActivityLifeCycle</title>
+    <link rel="stylesheet" href="../../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../../CodeMirror/codemirror.js"></script>
+    <script src="../../../CodeMirror/clike.js"></script>
+    <script src="../../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class MainActivity extends AppCompatActivity {
+
+    TextInputEditText txtUserName,txtPassword;
+    Button btnLogin;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        txtUserName = (TextInputEditText) findViewById(R.id.idUserName);
+        txtPassword = (TextInputEditText) findViewById(R.id.idPassword);
+        btnLogin = (Button) findViewById(R.id.idBtnLogin);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                login();
+            }
+        });
+    }
+
+    private void login() {
+        if(TextUtils.isEmpty(txtUserName.getText().toString().trim()) || TextUtils.isEmpty(txtPassword.getText().toString().trim())){
+            txtUserName.setError("Fields can't be Empty");
+            txtPassword.setError("Fields can't be Empty");
+        }else if(!emailValidator(txtUserName.getText().toString())){
+            txtUserName.setError("Please Enter Valid Email Address");
+        }else{
+            Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //Email Validation Using Regex
+    public boolean emailValidator(String email)
+    {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+}
+
+
+
+</textarea>
+
+</body>
+</html>

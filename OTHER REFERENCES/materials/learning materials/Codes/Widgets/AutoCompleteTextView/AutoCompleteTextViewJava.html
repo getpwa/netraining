@@ -1,0 +1,49 @@
+<html>
+<head>
+
+    <title>AutoCompleteTextView</title>
+    <link rel="stylesheet" href="../../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../../CodeMirror/codemirror.js"></script>
+    <script src="../../../CodeMirror/clike.js"></script>
+    <script src="../../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../../Scripts/myscript.js"></script>
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+
+public class MainActivity extends AppCompatActivity {
+AutoCompleteTextView autoCompleteTextView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        String [] texts={&quot;Arjun&quot;,&quot;Ankit&quot;,&quot;Anuradha&quot;,&quot;Amreen&quot;,&quot;Abhishek&quot;,&quot;Arvind&quot;,&quot;Amit&quot;,&quot;Bharat&quot;,&quot;Chaitanya&quot;,
+        &quot;Chitra&quot;,&quot;Darshan&quot;,&quot;Darsheel&quot;,&quot;Deven&quot;,&quot;Faizal&quot;,&quot;Fayyaz&quot;,&quot;Ganesh&quot;,&quot;Girish&quot;,&quot;Heena&quot;,&quot;Hemant&quot;,&quot;Irfan&quot;,&quot;Jagdish&quot;,&quot;Jeel&quot;,
+        &quot;Kaushik&quot;,&quot;Kapil&quot;,&quot;Keshav&quot;,&quot;Manish&quot;,&quot;Mayuri&quot;,&quot;Manali&quot;,&quot;Nikita&quot;,&quot;Pramod&quot;,&quot;Pratik&quot;,&quot;Puja&quot;,&quot;Ravi&quot;,&quot;Raj&quot;,&quot;Reshma&quot;};
+        autoCompleteTextView= (AutoCompleteTextView) findViewById(R.id.idAutoCompTextView);
+        ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(this,android.R.layout.simple_list_item_1,texts);
+        autoCompleteTextView.setAdapter(adapter);
+    }
+}
+</textarea>
+</body>
+</html>

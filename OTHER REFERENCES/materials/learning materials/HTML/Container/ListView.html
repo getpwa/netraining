@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>ListView</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b>What is a ListView?</b><br>
+ListView is a view group that displays a list of scrollable items.<br>
+The list items are inserted from the source using an Adapter Class.<br><br><hr>
+<img src="adapter.png" />
+<b>Note:</b><br>
+The source of list item can be anything ranging from simple Array to Database queries.<br>
+The Adapter acts as a bridge between the listview and the source.Thus the Adapter provides access to the data items
+by fetching the data from the source.<br>
+The Adapter is also responsible for making a View for each item in the data set.<br><hr>
+<b>Steps of Implementing ListView to display lists in Android:</b>
+<ol>
+    <li>Define the array or the data source</li>
+    <div style="color:blue">
+<pre>
+<code>
+ String[] days={"Sunday","Monday","Tuesday","Wednesday","Friday","Saturday"};
+</code>
+</pre>
+    </div><br>
+    <li>Define the adapter and provide the layout of a single view to the adapter.</li>
+    <div style="color:blue">
+<pre>
+<code>
+ ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,days);
+</code>
+</pre>
+    </div>
+    Here "android.R.layout.simple_list_item_1" is the default layout file available in android for displaying listview.<br><br>
+    <li>Set the adapter to the listview</li>
+    <div style="color:blue">
+<pre>
+<code>
+ ListView lv = (ListView) findViewById(R.id.idListView);
+ lv.setAdapter(adapter);
+</code>
+</pre>
+    </div><br>
+    <li>Attach an onItemClickListener to define what action should take place on click of the list item</li>
+    <div style="color:blue">
+<pre>
+<code>
+ lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView adapterView, View view, int i, long l) {
+
+            }
+        });
+</code>
+</pre>
+    </div><br>
+</ol>
+<br><hr><br><br>
+</body>
+</html>

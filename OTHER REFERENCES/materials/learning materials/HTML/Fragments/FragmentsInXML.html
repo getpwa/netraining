@@ -1,0 +1,73 @@
+<title>fragments</title>
+<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Fragments in XML:-</u></b><br>
+You can think of a <i id="font">fragment as a modular section of an activity</i>, which has its own lifecycle, receives its own input events, and which you can add or remove while the activity is running (sort of like a "sub activity" that you can reuse in different activities)<br><br>
+Simply saying, we can say <i id="font">"Fragments as a reuseable UI components".</i><br>
+It has its own lifecycle and process its own events.<br>
+It can be added or removed while the activity runs.<br><hr><hr>
+<b><u>Uses of Fragments:</u></b><br>
+1. Flexible user interface across different screen sizes.<br>
+2. Fixed/Scrolling/Swipe tab displays.<br>
+3. Dialog boxes.<br>
+4. Actionbar customization with the list and tab modes.<br><hr><hr>
+<b>Steps for creating Fragments in XML Layout:</b><br>
+1. Create a  class that extends fragment.<br>
+<div>
+<pre>
+<code>
+public class MyFragment extends Fragment
+</code>
+</pre>
+</div>
+2. Create a separate layout file or java objects that contain the appearance<br>
+<div>
+<pre>
+<code>
+&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;demo.arjun.com.fragmentapp.MyFragment&quot;
+    android:id=&quot;@+id/cdcd12121&quot;&gt;
+
+    &lt;!-- TODO: Update blank fragment layout --&gt;
+    &lt;TextView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:text=&quot;@string/hello_blank_fragment&quot; /&gt;
+
+&lt;/FrameLayout&gt;
+</code>
+</pre>
+</div>
+3. Use the onCreateView method to link its appearance.<br>
+<div>
+<pre>
+<code>
+public class MyFragment extends Fragment {
+public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_my, container, false);
+    }
+}
+</code>
+</pre>
+</div>
+4. Attach the fragment inside the Activity through XML<br>
+<div>
+<pre>
+<code>
+&lt;fragment
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:name=&quot;demo.arjun.com.fragmentapp.MyFragment&quot;
+        android:id=&quot;@+id/myfragment&quot;/&gt;
+</code>
+</pre>
+</div>
+<br><hr><br><br><br>
+</body>
+</html>

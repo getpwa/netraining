@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>SQLite Delete</title>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Steps to Update Values in SQLite Database</u>:-</b><br>
+<ol style="padding-left: 15px;">
+<li>In DataBaseHelper class create a method with return type as Integer to delete data in the Database.</li>
+<div >
+<pre>
+<code>
+ public Integer deleteData(){
+	
+ }
+</code>
+</pre>
+</div><br>
+
+ <li>Pass the primary key according to which according the data needs to be deleted from the database as parameters to the function.</li>
+<div>
+<pre>
+<code>
+ public Integer deleteData(String id){
+   
+ }
+</code>
+</pre>
+</div><br>
+
+ <li>Open Database for updating data in the tables using getWritableDatabase().</li>
+<div >
+<pre>
+<code>   
+ SQLiteDatabase db = this.getWritableDatabase();
+</code>
+</pre>
+</div><br>
+ <li>Delete Data from table using delete method on the SQLiteDatabase instance.</li>
+<div>
+<pre>
+<code>
+ int delete (String table, String whereClause, String[] whereArgs)
+</code>
+</pre>
+</div><br>
+It takes three parameters,<br>
+table: the table to delete from<br>
+whereClause	: the optional WHERE clause to apply when deleting. Passing null will delete all rows.<br>
+whereArgs: You may include ?s in the where clause, which will be replaced by the values from whereArgs. The values will be bound as Strings.<br><br>
+
+ <li>Thus the complete method for deleting the data would be,</li>
+<div>
+<pre>
+<code>
+ public Integer deleteData(String id){
+ SQLiteDatabase db = this.getWritableDatabase();
+ int i =db.delete(TABLE_NAME,"ID=?",new String[]{id});
+ return i;
+ }
+</code>
+</pre>
+</div><br>
+ <li>Now in MainActivity,</li>
+Get the values of the primarykey according to which data needs to be deleted.<br>
+Create an object of class DataBaseHelper and call the method of inserting Data in it.<br>
+<div>
+<pre>
+<code> 
+ DataBaseHelper myDb;
+ myDb.deleteData(value1);
+</code>
+</pre>
+</div>
+ </ol>
+This is how we delete entries from SQLite DataBase <br><hr><br><br>
+</body>
+</html>

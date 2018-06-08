@@ -1,0 +1,282 @@
+<html>
+<head>
+<title>ExpandableListView</title>
+
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+ListView just displays a group of item in a list.<br>
+But what if we want to group the items in a list and display it in categories.At such times ExpandableListView comes 
+into picture.<br>
+Thus simply saying expandable listview is used to group data by categories.<br><hr><hr>
+Steps of creating ExpandableListView:
+<ol>
+<li>Create an xml file with ExpandableListView</li>
+<div style="color:blue">
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot;
+    android:id=&quot;@+id/idLayout&quot;&gt;
+    
+    &lt;ExpandableListView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:id=&quot;@+id/idListView&quot;/&gt;
+&lt;/LinearLayout&gt;
+</code>
+</pre>
+</div><br>
+<li>Create an xml file to display categories header</li>
+<div style="color:blue">
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+android:orientation=&quot;vertical&quot; android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;&gt;
+
+&lt;TextView
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:id=&quot;@+id/idTitle&quot;
+    android:text=&quot;Title&quot;
+    android:padding=&quot;2dp&quot;
+    /&gt;
+&lt;/RelativeLayout&gt;
+</code>
+</pre>
+</div><br>
+<li>Create an xml file to display categories items</li>
+<div style="color:blue">
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+android:orientation=&quot;vertical&quot; android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;&gt;
+
+&lt;TextView
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:id=&quot;@+id/idChildItem&quot;
+    android:text=&quot;Child&quot;
+    android:padding=&quot;2dp&quot;
+    /&gt;
+&lt;/RelativeLayout&gt;
+</code>
+</pre>
+</div><br>
+<li>Create the Adapter Class by extending BaseExpandableListAdapter and implement all the methods.</li>
+<div style="color:blue">
+<pre>
+<code>
+package tutorials.android.com.autocompletetextview;
+
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
+
+/**
+ * Created by arjun on 11/13/2016.
+ */
+
+public class MyAdapter extends BaseExpandableListAdapter {
+    @Override
+    public int getGroupCount() {
+        return 0;
+    }
+
+    @Override
+    public int getChildrenCount(int i) {
+        return 0;
+    }
+
+    @Override
+    public Object getGroup(int i) {
+        return null;
+    }
+
+    @Override
+    public Object getChild(int i, int i1) {
+        return null;
+    }
+
+    @Override
+    public long getGroupId(int i) {
+        return 0;
+    }
+
+    @Override
+    public long getChildId(int i, int i1) {
+        return 0;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return false;
+    }
+
+    @Override
+    public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
+        return null;
+    }
+
+    @Override
+    public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
+        return null;
+    }
+
+    @Override
+    public boolean isChildSelectable(int i, int i1) {
+        return false;
+    }
+}
+
+</code>
+</pre>
+</div><br>
+<li>Override the Default constructor of the Adapter Class by passing 3 paramters i.e the Context , Hashmap of ChildViews  and list of Headerviews.</li>
+<div style="color:blue">
+<pre>
+<code>
+private Context ctx;
+private HashMap&lt;String,List&lt;String&gt;&gt; ChildTitles;
+private List&lt;String&gt; HeaderTitles;
+MyAdapter(Context ctx,HashMap&lt;String,List&lt;String&gt;&gt; ChildTitles,List&lt;String&gt; HeaderTitles){
+        this.ctx = ctx;
+        this.ChildTitles=ChildTitles;
+        this.HeaderTitles=HeaderTitles;
+    }
+</code>
+</pre>
+</div><br>
+<li>Pass the count of Categories header in getGroupCount() method.</li>
+<div style="color:blue">
+<pre>
+<code>
+ public int getGroupCount() {
+        return HeaderTitles.size();
+    }
+</code>
+</pre>
+</div><br>
+<li>Pass the count of Categories items for each group Header in getChildrenCount() method.</li>
+<div style="color:blue">
+<pre>
+<code>
+    public int getChildrenCount(int i) {
+        return ChildTitles.get(HeaderTitles.get(i)).size();
+    }
+</code>
+</pre>
+</div><br>
+<li>Pass the position of each Header view.</li>
+<div style="color:blue">
+<pre>
+<code>
+    public Object getGroup(int i) {
+        return HeaderTitles.get(i);
+    }
+</code>
+</pre>
+</div><br>
+<li>Pass the position of each Children for respective Header view</li>
+<div style="color:blue">
+<pre>
+<code>
+    public Object getChild(int i, int i1) {
+        return ChildTitles.get(HeaderTitles.get(i)).get(i1);
+    }
+
+</code>
+</pre>
+</div><br>
+<li>Inflate the Layout for the HeaderView and the ChildViews and convert the XML views into java objects.</li>
+<div style="color:blue">
+<pre>
+<code>
+public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
+        String title = (String) this.getGroup(i);
+        if(view == null){
+            LayoutInflater inflater = (LayoutInflater) this.ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.custom_header,null);
+        }
+        TextView txt = (TextView) view.findViewById(R.id.idTitle);
+        txt.setTypeface(null, Typeface.BOLD);
+        txt.setText(title);
+        return view;
+    }
+	
+public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
+        String child = (String) this.getChild(i,i1);
+        if(view == null){
+            LayoutInflater inflater = (LayoutInflater) this.ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.custom_child,null);
+        }
+        TextView txt = (TextView) view.findViewById(R.id.idChildItem);
+        txt.setText(child);
+        return view;
+    }
+</code>
+</pre>
+</div><br>
+<li>Create the DataProvider for providing the data to the views.</li>
+<div style="color:blue">
+<pre>
+<code>
+public class DataProvider {
+    public static HashMap<String,List<String>> getInfo()
+
+    {
+        HashMap<String, List<String>> HeaderDetails = new HashMap<String, List<String>>();
+        List<String> ChildDetails1 = new ArrayList<String>();
+        ChildDetails1.add("This is Children 11");
+        ChildDetails1.add("This is Children 12");
+        ChildDetails1.add("This is Children 13");
+        ChildDetails1.add("This is Children 14");
+        List<String> ChildDetails2 = new ArrayList<String>();
+        ChildDetails2.add("This is Children 21");
+        ChildDetails2.add("This is Children 22");
+        ChildDetails2.add("This is Children 23");
+        ChildDetails2.add("This is Children 24");
+        List<String> ChildDetails3 = new ArrayList<String>();
+        ChildDetails3.add("This is Children 31");
+        ChildDetails3.add("This is Children 32");
+        ChildDetails3.add("This is Children 33");
+        ChildDetails3.add("This is Children 34");
+        List<String> ChildDetails4 = new ArrayList<String>();
+        ChildDetails4.add("This is Children 41");
+        ChildDetails4.add("This is Children 42");
+        ChildDetails4.add("This is Children 43");
+        ChildDetails4.add("This is Children 44");
+        HeaderDetails.put("Header 1", ChildDetails1);
+        HeaderDetails.put("Header 2", ChildDetails2);
+        HeaderDetails.put("Header 3", ChildDetails3);
+        HeaderDetails.put("Header 4", ChildDetails4);
+
+        return HeaderDetails;
+    }
+}
+</code>
+</pre>
+</div><br>
+<li>Get the refernce of the listview , Adapter and set the adapter to the listview.</li>
+<div style="color:blue">
+<pre>
+<code>
+ExpandableListView expList = (ExpandableListView) findViewById(R.id.idListView);
+HashMap<String,List<String>> myHeader= DataProvider.getInfo();
+List<String> myChild = new ArrayList<String >(myHeader.keySet());
+MyAdapter adapter = new MyAdapter(this,myHeader,myChild);
+expList.setAdapter(adapter);
+</code>
+</pre>
+</div>
+</ol>
+<br><hr><br><br>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Notification</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android Notification</u>:-</b><br>
+<i id="font">A notification is a message you can display to the user outside of your application's normal UI.</i><br>
+Notifications are intended to inform users about events in your app.
+<br><hr><hr><br>
+
+When the system first issues a notification it first appears as an Icon in Notificaton area.<br>
+<img src="notification_area.png" /><br><hr><br>
+Details of the Notifications can be seen when the user opens the Notification drawer.
+<img src="notification_drawer.png" /><br><hr><hr><br>
+
+
+To create a Notification we need to use an object of <i>NotificationCompat.Builder</i> class<br><br>
+
+<b>Required notification contents:-</b><br>
+The notification object must contain <br>
+1. setSmallIcon() :- To set a small Icon <br>
+2. setContentTitle() :-To set the content Title <br>
+3. setContentText():-To set the content Text <br>
+Other paramters are optional. <br>
+<hr><hr><br>
+
+<b>Notification priority:-</b><br>
+We can assign priority levels to the Notifications by <i>NotificationCompat.Builder.setPriority()</i> by passing one of the NotificationCompat priority constants.<br><br>
+There are five priority levels like as bellow :<br>
+1) PRIORITY_MAX =2<br>
+2) PRIORITY_HIGH =1<br>
+3) PRIORITY_DEFAULT =0<br>
+4) PRIORITY_LOW =-1<br>
+5) PRIORITY_MIN=-2<br>
+<hr><hr><br>
+
+<b>Code for Creating Simple Notification:-</b><br>
+<div>
+<pre>
+<code>
+//build notification
+NotificationCompat.Builder mBuilder =new NotificationCompat.Builder(this);
+mBuilder.setSmallIcon(R.drawable.notification_icon)
+mBuilder.setContentTitle("Simple notification")
+mBuilder.setContentText("This is test of simple notification.");
+
+// Gets an instance of the NotificationManager service
+NotificationManager notificationManager =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+//to post your notification to the notification bar
+notificationManager.notify(0 , mBuilder.build());
+</code>
+</pre>
+</div><br><hr><br><br>
+
+</body>
+</html>
+ 

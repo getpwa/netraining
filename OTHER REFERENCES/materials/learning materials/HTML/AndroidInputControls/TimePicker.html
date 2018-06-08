@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>TimePicker</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>TimePicker:-</u></b><br>
+<i id="font">Android Time Picker allows you to select the time of day in either <i>24 hour</i> or <i>AM/PM mode</i>. The time consists of hours, minutes and clock format.</i><br>
+The <i id="font">android.widget.TimePicker</i> is the subclass of <i>FrameLayout</i> class.<br>
+<b id="font">Object &rarr; View &rarr; ViewGroup &rarr; FrameLayout &rarr; TimePicker</b><br><hr><hr>
+<b><u>TimePicker code in XML:-</u></b>
+<div>
+<pre>
+<code>
+&lt;TimePicker
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/timePicker&quot; /&gt;
+</code>
+</pre>
+</div><br><hr>
+<b><u>TimePicker code in Activity:-</u></b>
+<div>
+<pre>
+<code>
+TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
+timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+           @Override
+           public void onTimeChanged(TimePicker timePicker, int i, int i1) {
+               Toast.makeText(getApplicationContext(),&quot;Time is &quot;+i+&quot;:&quot;+i1,Toast.LENGTH_SHORT).show();
+           }
+       });
+</code>
+</pre>
+</div><br><hr><hr>
+<b><u>Methods:-</u></b><hr>
+<u id="font">setCurrentHour(Integer currentHour):</u><br>
+&#8627;This method is used to set the current hours in a time picker.<br><hr>
+
+<u id="font">setCurrentMinute(Integer currentMinute):</u><br>
+&#8627;This method is used to set the current minutes in a time picker.<br><hr>
+
+<u id="font">getCurrentHour():</u><br>
+&#8627;This method is used to get the current hours from a time picker.<br><hr>
+
+<u id="font">getCurrentMinute():</u><br>
+&#8627;This method is used to get the current minutes from a time picker.<br><hr>
+
+<u id="font">setIs24HourView(Boolean is24HourView):</u><br>
+&#8627;This method is used to set the mode of the Time picker either 24 hour mode or AM/PM mode. In this method we set a Boolean value either true or false. True value indicate 24 hour mode and false value indicate AM/PM mode.<br><hr>
+
+<u id="font">is24HourView():</u><br>
+&#8627;This method is used to check the current mode of the time picker. This method returns true if its 24 hour mode or false if AM/PM mode is set.<br><hr>
+
+<u id="font">onTimeChangedListener):</u><br>
+&#8627;This method is used to set the callback that indicates the time has been adjusted by the user. onTimeChanged(TimePicker view, int hourOfDay, int minute) is an override function of this listener in which we have three parameters first is for TimePicker, second for getting hour of the day and last is for getting the minutes after changing the time of the time picker.<br><hr>
+<br><br>
+</body>
+</html>

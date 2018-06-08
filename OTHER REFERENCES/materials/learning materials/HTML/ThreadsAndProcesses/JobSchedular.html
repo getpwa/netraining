@@ -1,0 +1,109 @@
+<html>
+<head>
+    <title>Job Schedular</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Job Schedular :-</u></b><br>
+Android 5.0 Lollipop (API 21) introduced JobScheduler API that let developers improve app's performance considerably along with 
+optimizing battery life by scheduling a task /job to run under specified conditions.<br><hr>
+<b>Note:-</b><br>
+Alarm Manager API is used for scheduling tasks that are meant to be run at a specified  time.<br>
+While JobScheduler is used to schedule tasks which are meant to be run for most robust conditions which can help us to optimize battery life.<br><hr><hr>
+
+<b>When to use JobScheduler:</b>
+<ul>
+<li>Tasks that should be done once the device is connect to a power supply, connected to a wifi , device is in idle state etc etc</li>
+<li>Task that are not critical and need to be scheduled at an exact specified time</li>
+<li>Tasks that should be running on a regular basis as batch where the timing is not critical</li>
+</ul>
+<hr><hr>
+
+<b>Creating Job Objects:-</b><br>
+JobInfo is a container for data passed to the JobScheduler.<br>
+It encapsulates all the information about the work you want to accomplish and the conditions of its execution (time, power availability, etc). <br> 
+JobInfo isn’t the actual work or task itself.  The actual work to be accomplished is defined in a class which extends JobService.  <br>
+The JobInfo just represents the parameters or criteria about when you want the work to execute.  <br>
+It is in the JobInfo object, for example, that you specify that a big downloading job is to run when the device is plugged in and has a WIFI connection
+The <i class="myfont">JobInfo.Builder</i> class is used to initialize a new Job objects.<br><hr><hr>
+<div>
+<pre>
+<code>
+JobInfo.Builder builder = new JobInfo.Builder (int jobId, ComponentName jobService);
+//Set conditions for scheduling the jobs
+</code>
+</pre>
+</div><br>
+<b>Attributes:</b><br>
+int jobId :<br>
+ Application-provided id for this job. Subsequent calls to cancel, or jobs created with the same jobId, will update the pre-existing job with the same id.<br> 
+ This ID must be unique across all clients of the same uid (not just the same package).<br><br>
+ComponentName jobService :<br>
+ The endpoint that you implement that will receive the callback from the JobScheduler.<br>
+This value must never be null.<br><hr><hr>
+
+For All the Optional Methods for Scheduling a Job .<br> 
+Please Refer:<br>
+https://developer.android.com/reference/android/app/job/JobInfo.Builder.html<br><hr><hr>
+
+<b>JobService:</b><br>
+JobService is a long running running background process responsible for execution of our job.<br>
+It extends from Service class.Thus by default it runs on Main UI Thread.<br>
+Hence we need to offload your execution logic to another thread/handler/AsyncTask.<br>
+Steps of creating the Service:
+<ol>
+<li>Create a class that extends JobService Class.</li>
+<li>Override and implement its methods:</li>
+	<ol value="a">
+	<li>onStartJob:</li>
+	The onStartJob( ) method gets called when the job is started.<br>
+	The onStartJob( ) method runs on the main / UI thread.  <br>
+	It is typically in this method , we create another thread for running the processing of our job. <br> 
+	The onStartJob( ) method returns a Boolean true if the process runs on another thread. In that case we need to call onJobFinished() method from that thread , to tell the system
+	that the job has finished.If onStartJob() returns false that means there is no more work to be done for the job.<br>
+
+	<li>onStopJob:</li>
+	The onStopJob( ) method gets called when the job is stopped by the system when the criteria or parameters associated with your job via the JobInfo no longer apply.<br>
+	For example, if you specified in your JobInfo that the job must have wifi access to run,  yet while your job was executing the user toggled WiFi.<br>
+	At that time onStopJob( ) will be called since the requirements specified at schedule time are no longer met.<br>    
+	This method also executes on the main / UI thread.  <br>
+	The onStopJob( ) method also returns a Boolean.<br>
+	True to indicate whether you would like the job to rescheduled / retried when conditions are right again.False to drop the job.<br>
+
+	<li>onJobFinished:</li>
+	We cannot override this metohd.  The final jobFinished( ) method must be called by your code when your job is done executing.<br>  
+	This notifies the system’s "JobManager" that it is finished so that it no longer needs to be managed, rescheduled, etc. <br>
+	One of the parameters (a Boolean true) to jobFinished( ) allows you to indicate that you want the job to be rescheduled according to the back-off criteria.<br>
+	</ol>
+	
+<li>Add the permission android.permission.BIND_JOB_SERVICE into your service manifest declaration</li>
+<div>
+<pre>
+<code>
+&lt;service android:name=&quot;MyJobService&quot;
+              android:permission=&quot;android.permission.BIND_JOB_SERVICE&quot; &gt;
+</code>
+</pre>
+</div>
+<li>Scheduling the Job:</li>
+Create an Instance of Job Schedular System Service:
+<div>
+<pre>
+<code>
+final JobScheduler jobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+</code>
+</pre>
+</div><br>
+
+Pass the JobInfo object to the schedule method:
+<div>
+<pre>
+<code>
+jobScheduler.schedule(builder.build());
+</code>
+</pre>
+</div>
+</ol>
+ 
+</body>
+</html>

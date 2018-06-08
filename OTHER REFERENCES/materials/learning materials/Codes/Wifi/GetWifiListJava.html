@@ -1,0 +1,139 @@
+<html>
+<head>
+
+    <title>GetWifiList</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiManager;
+import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
+
+import static android.content.Context.WIFI_SERVICE;
+
+    private static final int MY_PERMISSIONS_REQUEST_CHANGE_WIFI_STATE =123 ;
+    TextView varTxt;
+    Button varBtn;
+    WifiManager mWifiManager;
+    List &lt;ScanResult&gt; wifiList;
+    StringBuilder sb = new StringBuilder();
+    public Example_WifiList() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view =  inflater.inflate(R.layout.fragment_example__wifi_list, container, false);
+        varTxt = (TextView) view.findViewById(R.id.idTxt);
+        varBtn = (Button) view.findViewById(R.id.idBtn);
+        varBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION },
+                            MY_PERMISSIONS_REQUEST_CHANGE_WIFI_STATE);
+                } else {
+                    Toast.makeText(getContext(),"Method Called",Toast.LENGTH_SHORT).show();
+                    MyWifiMethod();
+                }
+            }
+        });
+       return view;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CHANGE_WIFI_STATE: {
+                if (grantResults.length >= 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //Name of Method for Calling Message
+                    MyWifiMethod();
+                } else {
+                    Toast.makeText(getContext(), "You dont have required permission to make the Action", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    private void MyWifiMethod() {
+        mWifiManager = (WifiManager) getActivity().getSystemService(WIFI_SERVICE);
+        getActivity().registerReceiver(mWifiScanReceiver,
+                new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+        mWifiManager.startScan();
+    }
+
+    private final BroadcastReceiver mWifiScanReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context c, Intent intent) {
+            if (intent.getAction().equals(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)) {
+
+                wifiList = mWifiManager.getScanResults();
+                sb = new StringBuilder();
+                sb.append("\n" + "Number Of Wifi connections :" + wifiList.size() + "\n");
+                for (int i = 0; i < wifiList.size(); i++) {
+                    sb.append(new Integer(i + 1).toString() + ". ");
+                    sb.append("SSID: "+(wifiList.get(i).SSID).toString() +"\n");
+                    sb.append("BSSID: "+(wifiList.get(i).BSSID).toString() +"\n");
+                    sb.append("capabilities: "+(wifiList.get(i).capabilities).toString() +"\n");
+                    sb.append("level: "+(wifiList.get(i).level) +"\n");
+                    sb.append("frequency: "+(wifiList.get(i).frequency) +"\n");
+                    sb.append("describeContents: "+(wifiList.get(i).describeContents()) +"\n");
+                 //   sb.append("centerFreq0: "+(wifiList.get(i).centerFreq0) +"\n");
+                 //  sb.append("centerFreq1: "+(wifiList.get(i).centerFreq1) +"\n");
+                    sb.append("channelWidth: "+(wifiList.get(i).channelWidth) +"\n");
+                    sb.append("\n\n");
+                }
+                varTxt.setText(sb);
+            }
+        }
+    };
+
+}
+
+</textarea>
+
+</body>
+</html>
+

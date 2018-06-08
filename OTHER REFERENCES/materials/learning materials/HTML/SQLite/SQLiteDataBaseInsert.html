@@ -1,0 +1,127 @@
+<html>
+<head>
+    <title>SQLite Insert</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Steps to Insert Values in SQLite Database:-</u></b><br>
+<ol style="padding-left: 15px;">
+    <li>Follow to Steps of Creating a Database and Table.</li>
+    <li>Create a method in DatabaseHelper Class to insert values in Table.</li>
+    <div >
+<pre>
+<code>
+ public boolean insertData{
+ 
+ }
+</code>
+</pre>
+    </div><br><hr>
+
+    <li>Pass all the values which needs to be inserted in the Table as parameters to the function.
+    </li>
+    <div>
+<pre>
+<code>
+ public boolean insertData(String name, String surname ,String Marks){
+ 
+ }
+</code>
+</pre>
+    </div><br><hr>
+
+    <li>Create an instance of a class ContentValues and use put method to store values in the
+        object.
+    </li>
+    <div>
+<pre>
+<code>
+ ContentValues contentValues = new ContentValues();
+ contentValues.put(COL_2,name);
+ contentValues.put(COL_3,surname);
+ contentValues.put(COL_4,marks);
+</code>
+</pre>
+    </div><br><hr>
+
+    <li>Insert Data in the table using insert method on the SQLiteDatabase instance.</li>
+    <div>
+<pre>
+<code>
+ long insert (String table,String nullColumnHack,ContentValues values)
+</code>
+</pre>
+    </div><br><hr>
+    It takes three parameters,<br>
+    <b id="font">table </b>:<br> the table to insert the row into.<br>
+    <b id="font">nullColumnHack</b>:<br> optional; may be null. SQL doesn't allow inserting a completely
+    empty row without naming at least one column name. If your provided values is empty, no column
+    names are known and an empty row can't be inserted. If not set to null, the nullColumnHack
+    parameter provides the name of nullable column name to explicitly insert a NULL into in the case
+    where your values is empty.<br>
+    <b id="font">values</b>:<br> this map contains the initial column values for the row. The keys should
+    be the column names and the values the column values<br>
+    <br>
+    So the complete code of DatabaseHelper class is:<br>
+    <div>
+<pre>
+<code>
+ public class DataBaseHelper extends SQLiteOpenHelper {
+ public static final  String DATABASE_NAME = "Student.db";
+ public static final  String TABLE_NAME = "Student_table";
+ 
+ public static final  String COL_1 = "ID";
+ public static final  String COL_2 = "NAME";
+ public static final  String COL_3 = "SURNAME";
+ public static final  String COL_4 = "MARKS";
+
+ public DataBaseHelper(Context context) {
+ super(context, DATABASE_NAME, null, 1);
+ }
+
+ @Override
+ public void onCreate(SQLiteDatabase db) {
+ db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,SURNAME TEXT,MARKS INTEGER)");
+ }
+ 
+ @Override
+ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+ db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+ }
+ 
+ public boolean insertData(String name,String surname,String marks){
+ SQLiteDatabase db = this.getWritableDatabase();
+ ContentValues contentValues = new ContentValues();
+ contentValues.put(COL_2,name);
+ contentValues.put(COL_3,surname);
+ contentValues.put(COL_4,marks);
+ long result = db.insert(TABLE_NAME,null,contentValues);
+ db.close();
+ 
+ //To Check Whether Data is Inserted in DataBase
+ if(result==-1){
+   return false;
+  }else{
+   return true;
+  }
+ }
+}
+</code>
+</pre>
+    </div><br><hr>
+
+    <li>Now in MainActivity,</li>
+    Get the values of the textFields which needs to be inserted in the DataBase.<br>
+    Create an object of class DataBaseHelper and call the method of inserting Data in it.<br>
+    <div>
+<pre>
+<code>
+ DataBaseHelper myDb;
+ myDb.insertData(value1,value2,value3);
+</code>
+</pre>
+    </div>
+</ol>
+This is how we insert entries from SQLite DataBase <br><hr><br><br>
+</body>
+</html>

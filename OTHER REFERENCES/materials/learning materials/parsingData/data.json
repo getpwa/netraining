@@ -1,0 +1,25 @@
+{
+"rootnode": [
+  {
+  "Id":1,
+  "Name": "Arjun",
+  "Surname": "Toshniwal",
+  "Age":25
+  }, {
+  "Id":2,
+  "Name": "Anuradha",
+  "Surname": "Awale",
+  "Age":24
+}, {
+  "Id":3,
+  "Name": "Ankit",
+  "Surname": "Toshniwal",
+  "Age":21
+}, {
+  "Id":4,
+  "Name": "Ganesh",
+  "Surname": "Mudkhede",
+  "Age":26
+  }
+]
+}

@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>ScrollView</title>
+
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>ScrollView</u> :-</b><br>  
+ScrollView adds a scrollbar to the layout content which is beyond the size assigned to the scrollview container<br><hr><hr>
+
+Note:<br/>
+<ol>
+<li>ScrollView adds scrolling only in the vertical direction.To enable horizontal scrolling we need to use Horizontal ScrollView.</li>
+<li>ScrollView can hold only one direct child. This means that, if you have complex layout with more view controls, you must enclose them inside any another standard layout like LinearLayout, TableLayout ,RelativeLayout etc.</li>
+<li>ScrollView should not be used with Listview,Gridview, Recyclerview 	which have their own vertical scrolling.</li>
+</ol>
+
+<b>How to add scrollview to your app layout?</b><br>
+Add the XML tag of scrollview inside XML view.<br>
+Add any layout inside scrollview to which you want to add scrollbars if the content spans more than the height specified for the view.<br><br>
+<div style="color:blue">
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;ScrollView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+
+    &lt;LinearLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:orientation=&quot;vertical&quot;&gt;
+
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:orientation=&quot;horizontal&quot;&gt;
+
+            &lt;ImageView
+                android:layout_width=&quot;100dp&quot;
+                android:layout_height=&quot;200dp&quot;
+                android:src=&quot;@drawable/img1&quot; /&gt;
+
+            &lt;TextView
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;wrap_content&quot;
+                android:text=&quot;View 1&quot; /&gt;
+
+        &lt;/LinearLayout&gt;
+
+    &lt;/LinearLayout&gt;
+&lt;/ScrollView&gt;
+</code>
+</pre>
+</div>
+<br><hr><br><br>
+</body>
+</html>

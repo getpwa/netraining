@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Cache Storage</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Cache Storage:-</u></b><br>
+The files stored in internal storage by user has to be explicitly deleted by the user explicitly otherwise it would exist till then.<br>
+Cache data stored in memory is not a permanent data because the system automatically deletes it if it feels there is shortage of memory.<br><br>
+<hr><hr>
+<b>Where are the files stored?</b><br>
+Files are stored in the directory <i id="font">data/data/&lt;package-name&gt;/cache</i> folder<br><br>
+<hr><hr>
+<b><u>Steps to store data in cache:-</u></b><br>
+<ol>
+<li>Use <i id="font">getCacheDir()</i> to open a File that represents the internal directory where your application should save temporary cache files.</li>
+<li>Use the File class to create a file inside that cache folder.</li>
+<li>Call <i id="font">openFileOutput(String filename)</i> with the name of the file.</li>
+</ol>
+<hr><hr>
+<b><u>Steps to retrieve data from cache:-</u></b><br>
+<ol>
+<li>Again get a refernce to the cache directory.</li>
+<li>Get the file using File class by specifying its name.</li>
+<li>Use FileInputStream to read data from the files.</li>
+</ol><br><hr><br><br>
+</body>
+</html>

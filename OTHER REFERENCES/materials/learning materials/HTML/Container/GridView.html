@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>GridView</title>
+
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>GridView</u> :-</b><br>
+GridView is a ViewGroup that displays items in a two-dimensional, scrollable grid.<br>
+The grid items are automatically inserted to the layout using a Adapter.
+(Similar to what we did in the listview).<br><hr><hr>
+Steps of using GridView are:
+<ol>
+<li>Add the GridView in the Layout XML file</li>
+<div style="color:blue">
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot;
+    android:id=&quot;@+id/idLayout&quot;&gt;
+
+    &lt;GridView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:numColumns=&quot;2&quot;
+        android:id=&quot;@+id/idGridView&quot;/&gt;
+&lt;/LinearLayout&gt;
+</code>
+</pre>
+</div>
+<li>Create the DataSource for the GridView in Activity</li>
+<div style="color:blue">
+<pre>
+<code>
+String [] data={"data1","data2","data3","data4","data5","data6","data7","data8"};
+</code>
+</pre>
+</div>
+<li>Instantiate the Gridview XML into Java Object</li>
+<div style="color:blue">
+<pre>
+<code>
+GridView gridView = (GridView) findViewById(R.id.idGridView);
+</code>
+</pre>
+</div>
+<li>Define an Adapter for the GridView and set it to the GridView</li>
+<div style="color:blue">
+<pre>
+<code>
+ ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,data);
+ gridView.setAdapter(adapter);
+</code>
+</pre>
+</div>
+</ol>
+<br><hr><br><br>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Context Menu Menu</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android Context Menu:</u></b><br>
+<i id="font">Android context menu appears when user long clicks on the item/element. </i><br>
+It is also known as <b id="font">floating menu.</b><br>
+<hr><hr>
+1. Define menu items in res/menu.xml<br>
+<div >
+<pre >
+<code>
+&lt;menu xmlns:androclass=&quot;http://schemas.android.com/apk/res/android&quot; &gt;  
+    &lt;item  android:id=&quot;@+id/item1&quot;  
+        android:title=&quot;Item 1&quot;/&gt;  
+    &lt;item  android:id=&quot;@+id/item2&quot;  
+        android:title=&quot;Item 2&quot;/&gt;  
+    &lt;item  android:id=&quot;@+id/item3&quot;  
+        android:title=&quot;Item 3&quot;/&gt;  
+&lt;/menu&gt;
+</code>
+</pre>
+</div><br><hr><hr>
+<b>In Activity class:</b><br>
+2. Implement onContextItemSelected().<br>
+<div >
+<pre >
+<code>
+@Override
+public void onCreateContextMenu(ContextMenu menu, View v,
+                                ContextMenuInfo menuInfo) {
+    super.onCreateContextMenu(menu, v, menuInfo);
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.context_menu, menu);
+}
+</code>
+</pre>
+</div><br><hr>
+3. Define Click Events<br>
+When the user selects a menu item, the system calls onContextItemSelected() method so you can perform the appropriate action. For example:
+<div >
+<pre >
+<code>
+@Override
+public boolean onContextItemSelected(MenuItem item) {
+    AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+    switch (item.getItemId()) {
+        case R.id.edit:
+            //Your Code here
+            return true;
+        case R.id.delete:
+            //Your Code here
+            return true;
+        default:
+            return super.onContextItemSelected(item);
+    }
+}
+</code>
+</pre>
+</div><br><hr><br><br>
+</body>
+</html>

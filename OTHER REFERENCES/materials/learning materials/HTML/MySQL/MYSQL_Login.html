@@ -1,0 +1,306 @@
+<html>
+<head>
+<title>MYSQL Introduction</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>MYSQL Login</u></b>:-<br>
+<b>Steps of Creating XML File:-</b><br>
+Create a Layout file as shown below.<br>
+It contains two EditText fields to get the UserName and Password and a Button.<br><br>
+<div>
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:id=&quot;@+id/activity_main&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot;
+    android:padding=&quot;16dp&quot;
+    tools:context=&quot;com.example.arjun.mysql.MainActivity&quot;&gt;
+
+    &lt;EditText
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/idUserName&quot;
+        android:hint=&quot;UserName&quot; /&gt;
+
+    &lt;EditText
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/idPassword&quot;
+        android:hint=&quot;Password&quot; /&gt;
+
+    &lt;Button
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/idBtnLogin&quot;
+        android:text=&quot;Login&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code>
+</pre>
+</div><br><hr><hr>
+<b><u>Steps of Creating Java File</u></b>:-<br>
+1. Create a new Java Class (say BackgroundWorker) extending AsyncTask<br>
+<div>
+<pre>
+<code>
+public class BackGroundWorker extends AsyncTask &lt;String, String, String&gt;{
+}
+</code>
+</pre>
+</div><br><hr><hr>
+2. Implement Methods:-<br>
+<div>
+<pre>
+<code>
+public class BackGroundWorker extends AsyncTask &lt;String, String, String&gt;{
+	
+	@Override
+    protected String doInBackground(String... params) {
+        return null;
+    }
+
+  
+}
+</code>
+</pre>
+</div><br><hr><hr>
+3. Add onPreExecute and onPostExecute method:-<br>
+<div >
+<pre>
+<code>
+public class BackGroundWorker extends AsyncTask &lt;String, String, String&gt;{
+	
+	@Override
+    protected String doInBackground(String... params) {
+        return null;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+    }
+}
+</code>
+</pre>
+</div><br><hr><hr>
+
+4. Create a Constructor taking Context as a parameter.<br>
+<div>
+<pre>
+<code>
+ BackGroundWorker(Context ctx){
+ }
+</code>
+</pre>
+</div><br><hr><hr>
+5. Create a Context object and assign this object to the Context of the constructor.<br>
+<div >
+<pre>
+<code>
+ Context context;
+ BackGroundWorker(Context ctx){
+ context=this.ctx;
+ }
+</code>
+</pre>
+</div><br><hr><hr>   
+6. Call your php file using the url:-<br>
+<div >
+<pre>
+<code>
+String login_url="http://myandroid-tester.esy.es/login.php";
+URL url = new URL(login_url);
+</code>
+</pre>
+</div><br><hr><hr>
+7. Create an Object of class HttpURLConnection and obtain a new HttpURLConnection by calling URL.openConnection() and casting the result to HttpURLConnection.<br>
+<div >
+<pre>
+<code> 
+ HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+</code>
+</pre>
+</div><br><hr><hr>
+8. Set the method for url request as "POST" on HttpURLConnection object.<br>
+<div >
+<pre>
+<code> 
+ httpURLConnection.setRequestMethod("POST");
+</code>
+</pre>
+</div><br><hr><hr>
+9. Set doOutput() as true since we are using "POST" and we want to allow sending a body via the connection.<br>
+<div >
+<pre>
+<code>
+  httpURLConnection.setDoOutput(true);
+</code>
+</pre>
+</div><br><hr><hr> 
+10. Create an object of OutputStream and get the OutputStream from our httpURLConnection.<br>
+A program uses an output stream to write data to a destination, one item at time.<br>
+<div >
+<pre>
+<code>
+OutputStream outputStream = httpURLConnection.getOutputStream();
+</code>
+</pre>
+</div><br><hr><hr> 
+11. Encode the characters obtained into bytes using a specified charset.This can be done by using OutputStreamWriter.<br>
+<div >
+<pre>
+<code>
+OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream,"UTF-8");
+</code>
+</pre>
+</div><br><hr><hr> 
+12. To avoid frequent converter invocations wrap an OutputStreamWriter within a BufferedWriter.<br>
+<div>
+<pre>
+<code>
+BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+</code>
+</pre>
+</div><br><hr><hr> 
+13. Encode the url using URLEncoder class.<br>
+<div >
+<pre>
+<code>
+String post_data= URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
+                +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(pass_word,"UTF-8");
+</code>
+</pre>
+</div><br><hr><hr> 
+14. Write the data into bufferedWriter and flush and close it.<br>
+<div>
+<pre>
+<code>
+ bufferedWriter.write(post_data);
+ bufferedWriter.flush();
+ bufferedWriter.close();
+</code>
+</pre>
+</div><br><hr><hr> 
+15. set doInput() as true since we want to allow reading information from the response.<br>
+httpURLConnection.setDoInput(true);
+
+16. Create an object of InputStream and get the InputStream from our httpURLConnection.<br>
+A program uses an input stream to read data from a source, one item at a time:
+<div >
+<pre>
+<code>
+InputStream inputStream = httpURLConnection.getInputStream();
+</code>
+</pre>
+</div><br><hr><hr>
+
+17. Encode the bytes obtained back into characters using a specified charset.This can be done by using InputStreamWriter.<br>
+<div>
+<pre>
+<code>
+InputStreamWriter inputStreamWriter = new InputStreamWriter(inputStream,"iso-8859-1");
+</code>
+</pre>
+</div><br><hr><hr>
+
+18. To avoid frequent converter invocations wrap an InputStreamWriter within a BufferedReader.
+Read the data and close InputStreamWriter and BufferedReader.
+<div >
+<pre>
+<code>
+ BufferedReader bufferedReader = new BufferedReader();
+ String result="";
+ String line="";
+ while ((line = bufferedReader.readLine())!=null)
+ {
+   result+=line;
+ }
+ bufferedReader.close();
+ inputStream.close();
+</code>
+</pre>
+</div><br><hr><hr>
+
+19. Disconnect the httpURLConnection.<br>
+<div >
+<pre>
+<code>
+ httpURLConnection.disconnect();
+</code>
+</pre>
+</div><br><hr><hr>
+
+20. Return the result so obtained.<br>
+So the complete method would be:-
+<div >
+<pre>
+<code>
+protected String doInBackground(String... params) {
+ String type = params[0];
+ String user_name = params[1];
+ String pass_word = params[2];
+ String login_url="http://myandroid-tester.esy.es/login.php";
+ if(type.equals("login")){
+   try {
+      URL url = new URL(login_url);
+      try {
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+               httpURLConnection.setRequestMethod("POST");
+               httpURLConnection.setDoOutput(true);
+               httpURLConnection.setDoInput(true);
+
+               OutputStream outputStream = httpURLConnection.getOutputStream();
+               BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+               String post_data= URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
+                               +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(pass_word,"UTF-8");
+               bufferedWriter.write(post_data);
+               bufferedWriter.flush();
+               bufferedWriter.close();
+
+               InputStream inputStream = httpURLConnection.getInputStream();
+               BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+               String result="";
+               String line="";
+               while ((line = bufferedReader.readLine())!=null)
+                {
+                  result+=line;
+                }
+               bufferedReader.close();
+               inputStream.close();
+               httpURLConnection.disconnect();
+               return result;
+           } catch (IOException e) {
+               e.printStackTrace();
+            }
+          } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+
+        }
+    return null;
+    }
+</code>
+</pre>
+</div><br><hr><hr>
+
+21. In onPostExecute method show the result.<br>
+<div >
+<pre>
+<code>
+ protected void onPostExecute(String s) {
+  Toast.makeText(context,"Result:"+s,Toast.LENGTH_LONG).show();
+  }    
+</code>
+</pre>
+</div><br><hr><br><br>
+</body>
+</html>

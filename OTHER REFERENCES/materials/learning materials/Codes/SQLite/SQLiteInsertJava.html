@@ -1,0 +1,74 @@
+<html>
+<head>
+
+    <title>SQliteInsert Java</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    DataBaseHelper myDb;
+    EditText txtName, txtSurName, txtMarks;
+    Button btnClick;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        myDb = new DataBaseHelper(this);
+        txtName = (EditText) findViewById(R.id.idName);
+        txtSurName = (EditText) findViewById(R.id.idSurname);
+        txtMarks = (EditText) findViewById(R.id.idMarks);
+        btnClick = (Button) findViewById(R.id.idBtn);
+        btnClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClickMe();
+            }
+        });
+
+    }
+
+    private void ClickMe() {
+        String name = txtName.getText().toString();
+        String surname = txtSurName.getText().toString();
+        String marks = txtMarks.getText().toString();
+        Boolean result = myDb.insertData(name, surname, marks);
+        if (result == true) {
+            Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Data Insertion Failed", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
+</textarea>
+
+</body>
+</html>

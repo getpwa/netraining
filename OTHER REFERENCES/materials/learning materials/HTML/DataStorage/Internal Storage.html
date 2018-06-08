@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Internal Storage</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Internal Storage:</u></b><br>
+In Android we can even save files directly on the device's internal storage.<br> 
+By default, files saved to the internal storage are private to your application and other applications cannot access them (nor can the user). <br> 
+When the user uninstalls your application, these files are removed.<br> <br> 
+<hr><hr>
+<b>What kind of data can be stored in Internal Storage?</b><br>
+The type of data involves things such as a text file, image file, video file, audio file etc.<br> 
+<hr><hr>
+<b>Where are the files stored?</b><br>
+Files are stored in the directory <br>
+<i id="font">data/data/&lt;package-name&gt;/files</i> folder<br>
+To create and write a private file to the internal storage:<br>
+1. Call openFileOutput(String filename, int mode) with the name of the file and the operating mode.This returns a FileOutputStream. <br>
+<b>Modes:</b><br>
+Modes refer to operating modes.<br>
+<i id="font">Context.MODE_PRIVATE: </i>Only your app can acces the file<br>
+    <i id="font">Context.MODE_APPEND: </i>Append the data to the existing content<br>
+2. Write to the file with write().<br>
+3. Close the stream with close().<br>
+</ol>
+<div >
+<pre >
+<code>
+String FILENAME = "hello_file";
+String string = "hello world!";
+
+FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+fos.write(string.getBytes());
+fos.close();
+</code>
+</pre>
+</div><hr><hr>
+<b>How to read data from Internal Storage?</b><br>
+1. Call openFileInput() and pass it the name of the file to read. This returns a FileInputStream.<br>
+2. Read bytes from the file with read().Note:Since we are going to read data byte by byte we need to append each character.<br>
+3. Then close the stream with close().<br>
+
+<div >
+<pre >
+<code>
+FileInputStream fis = openFileInput(FILENAME);
+int read=-1;
+StringBuffer buffer= new StringBuffer();
+while(read=fis.read())!=-1)
+ {
+   buffer.append((char)read);
+ }
+fis.close();
+</code>
+</pre>
+</div><br><hr><br><br><br>
+</body>
+</html>

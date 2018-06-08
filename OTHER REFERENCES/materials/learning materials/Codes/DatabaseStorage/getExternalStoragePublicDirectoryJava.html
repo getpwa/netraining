@@ -1,0 +1,138 @@
+<html>
+<head>
+
+    <title>ExternalStoragePublicDirectory</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+public class MainActivity extends AppCompatActivity {
+    private static final int PERMISION_WRITE_EXTERNAL_STORAGE = 123;
+    String FileName = "myFile";
+    Button BtnSave, BtnRead;
+    EditText editName;
+    TextView readName;
+    String name;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        BtnSave = (Button) findViewById(R.id.idBtnSave);
+        BtnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                    if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+                        saveFile();
+
+                    } else {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISION_WRITE_EXTERNAL_STORAGE);
+                    }
+            }
+        });
+        BtnRead = (Button) findViewById(R.id.idBtnRead);
+        BtnRead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readFile();
+            }
+        });
+        editName = (EditText) findViewById(R.id.idName);
+        readName = (TextView) findViewById(R.id.idReadtxt);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISION_WRITE_EXTERNAL_STORAGE: {
+                //premission to read storage
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    saveFile();
+                } else {
+
+                    Toast.makeText(MainActivity.this, "Please grant Permission to Save File", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+        }
+    }
+
+
+    private void readFile() {
+        try {
+            //To Read the File in a Directory called MyData in the Downloads Folder ...
+            //UnComment and Replace the Code
+            /* File myDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/MyData");
+               myDir.mkdirs();
+               File file = new File(myDir,FileName);*/
+
+            //To Read the File directly in Downloads
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),FileName);
+
+            //Below Code will remain the same
+            FileInputStream fin = new FileInputStream(file);
+            InputStreamReader inputStream = new InputStreamReader(fin);
+            BufferedReader bufferedReader = new BufferedReader(inputStream);
+            StringBuilder stringBuilder = new StringBuilder();
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+            fin.close();
+            inputStream.close();
+            readName.setText("Name: " + stringBuilder.toString());
+            Toast.makeText(this, "Data Retrieved :" + stringBuilder.toString(), Toast.LENGTH_SHORT).show();
+
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void saveFile() {
+        try {
+            //To Save the File in a Directory called MyData in the Downloads Folder...
+            //UnComment and Replace the Code
+           /* File myDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/MyData");
+            myDir.mkdirs();
+            File file = new File(myDir,FileName);*/
+
+            //To Save the File directly in Downloads
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),FileName);
+
+            //Below Code will remain the same
+            FileOutputStream fos = new FileOutputStream(file);
+            name = editName.getText().toString();
+            fos.write(name.getBytes());
+            fos.close();
+            Toast.makeText(this, "Data Saved", Toast.LENGTH_SHORT).show();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</textarea>
+
+</body>
+</html>

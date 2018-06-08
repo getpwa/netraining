@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>strings.xml</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>strings.xml:</u></b><br/>
+A string resource provides text strings for your application with optional text styling and formatting. <br/><br/>
+<hr><hr>
+Types of resources that can provide your application with strings:<br/>
+<ul>
+<li><b><a href="string.html">String</a></b></li>
+XML resource that provides a single string.<br/><br/>
+<hr>
+<li><b><a href="string-array.html">String Array</a></b></li>
+XML resource that provides an array of strings.<br/>
+</ul>
+<hr><hr>
+<b>Why to use strings.xml in Android?<br/>Why the practice of hardcoding strings is bad?</b><br/>
+
+1. When adding your strings to strings.xml, you can easily translate your whole app into other languages.<br/>
+So in the folder <b id="font">values</b> you would have <b id="font">strings.xml</b> with this content:<br/>
+	&emsp;&emsp;<i id="font">&lt;string name=&quot;hello&quot;&gt;Hello&lt;/string&gt;</i><br/>
+In <b id="font">values-fr</b> a <b id="font">strings.xml</b> with this content:<br/>
+	&emsp;&emsp;<i id="font">&lt;string name=&quot;hello&quot;&gt;Bonjour&lt;/string&gt;</i><br/>
+This saves you a lot of work instead of doing this the hardcoded way.Android automatically correct the language based on user preferences, and you don't have to worry about selecting and displaying this language.<br/><br/>
+2. Secondly,Suppose you have a string, let it be a title for example, that is repeated in every activity of your app. 
+Now suppose after a while, you decide to change that title. 
+Using strings.xml you will need to change it in a single place, while hard-coded values will need to be changed in every activity.
+<br><hr><br><br>
+</body>
+</html>

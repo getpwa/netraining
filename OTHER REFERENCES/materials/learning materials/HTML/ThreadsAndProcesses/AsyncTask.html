@@ -1,0 +1,152 @@
+<html>
+<head>
+    <title>AsyncTask</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<i class="font">Android Application code by default runs in a single thread called as Main thread or UI
+    thread.</i><br><br>
+Since all the codes are running in a single thread every statement gets executed in sequence.<br>
+Thus if we perform a long lasting operation, the application blocks the thread until the
+corresponding operation has been finished.<br>
+Hence it is better to perform such long lasting operations asynchronously.<br><br>
+<i class="font">An asynchronous task is defined by a computation that runs on a background thread and
+    whose result is published on the UI thread.</i><br>
+<hr>
+<hr>
+<b><u>Note</u>:-</b><br>
+If an activity does not react within 5 seconds to user input, the Android system displays an
+Application Not Responding (ANR) dialog.
+<hr>
+<hr>
+<br>
+<b><u>Asynctask</u>:-</b><br>
+AsyncTask is one of the easiest ways to implement parallelism in Android without having to deal with
+more complex methods like Threads.
+Though it offers a basic level of parallelism with the UI thread, it should not be used for longer
+operations lasting more than few seconds.
+
+<br>
+<hr>
+<hr>
+<b>AsyncTask has four methods to do the task</b>:-<br>
+<b class="font"><u>onPreExecute()</u></b>:- <br>
+This method contains the code which is executed before the background processing starts.<br><br>
+<hr>
+<b class="font"><u>doInBackground()</u></b>:-<br>
+This method contains the code which needs to be executed in background. In this method we can send
+results multiple times to the UI thread by publishProgress() method. To notify that the background
+processing has been completed we just need to use the return statements.<br><br>
+<hr>
+<b class="font"><u>onProgressUpdate()</u></b>:-<br>
+This method receives progress updates from doInBackground method, which is published via
+publishProgress method, and this method can use this progress update to update the UI
+thread.<br><br>
+<hr>
+<b class="font"><u>onPostExecute()</u></b>:-<br>
+This method is called after doInBackground method completes processing. Result from doInBackground
+is passed to this method.<br><br>
+<hr>
+<br>
+<i class="font">doInBackground() is the most important as it is where background computations are
+    performed.</i><br><br>
+<i class="font">doInBackground() works as a background thread, while other works in the UI
+    Thread.
+    Thus it is not possible to access an UI element in doInBackground().</i><br>
+<hr>
+<hr>
+
+<i>AsyncTask must be subclassed to be used.</i><br><br>
+The three generic types used in an android AsyncTask class are given below :<br>
+<i class="font"><u>Params</u></i> :<br> The type of the parameters sent to the task upon execution<br><hr>
+<i class="font"><u>Progress</u></i> :<br> The type of the progress units published during the background
+computation<br><hr>
+<i class="font"><u>Result </u></i>:<br> The type of the result of the background computation<br><br><hr>
+
+<div>
+<pre>
+<code>
+    public class AsyncTaskTestActivity extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+
+    // This starts the AsyncTask
+    new MyTask().execute("my string paramater");
+    }
+
+    // Here is the AsyncTask class:
+    // AsyncTask
+    &lt;Params, Progress, Result&gt;.
+    // Params – the type (Object/primitive) you pass to the AsyncTask from .execute()
+    // Progress – the type that gets passed to onProgressUpdate()
+    // Result – the type returns from doInBackground()
+    // Any of them can be String, Integer, Void, etc.
+
+    private class MyTask extends AsyncTask
+    &lt;String, Integer, String&gt; {
+
+    // Runs in UI before background thread is called
+    @Override
+    protected void onPreExecute() {
+    super.onPreExecute();
+
+    // Do something like display a progress bar
+    }
+
+    // This is run in a background thread
+    @Override
+    protected String doInBackground(String... params) {
+    // get the string from params, which is an array
+    String myString = params[0];
+
+    // Do something that takes a long time, for example:
+    for (int i = 0; i <= 100; i++) {
+
+    // Do things
+
+    // Call this to update your progress
+    publishProgress(i);
+    }
+
+    return "this string is passed to onPostExecute";
+    }
+
+    // This is called from background thread but runs in UI
+    @Override
+    protected void onProgressUpdate(Integer... values) {
+    super.onProgressUpdate(values);
+
+    // Do things like update the progress bar
+    }
+
+    // This runs in UI when background thread finishes
+    @Override
+    protected void onPostExecute(String result) {
+    super.onPostExecute(result);
+
+    // Do things like hide the progress bar or change a TextView
+    }
+    }
+    }
+</code>
+</pre>
+</div>
+<br>
+<hr>
+<hr>
+<b><u>Flow Diagram</u>:-</b><br>
+<img src="asynctask.png"/>
+<br>
+<b><u>Note</u>:-</b><br>
+The AsyncTask instance must be created and invoked in the UI thread.<br>
+The methods overridden in the AsyncTask class should never be called. They’re called
+automatically
+AsyncTask can be called only once. Executing it again will throw an exception<br>
+<hr>
+<br><br>
+
+</body>
+</html>

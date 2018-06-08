@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>JSON Introduction</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>JSON</u> :</b><br>
+JSON stands for Javascript Object Notation.<br>
+It is a lightweight data - interchange format.<br><br>
+It consists of key-value pair where,<br>
+<i>Key</i> : It is always a string enclosed in quotation marks.<br>
+<i>Value</i>: It can be a string, number, boolean expression, array, or object.<br><br>
+Example1: Value containing a String
+<div>
+<pre>
+<code>
+ {
+	"Name":"Arjun"
+ }
+</code>
+</pre>
+</div><br>
+Example2 : Value containing an Array
+<div>
+<pre>
+<code>
+ {
+	"Authors": ["Arjun", "Ganesh ", "Raj", "Ankit"]
+ }
+</code>
+</pre>
+</div><br>
+Example2 : Value containing a combination of Integer,String,Array and Objects
+<div>
+<pre>
+<code>
+  {
+	"rootnode": [{
+				"Tutorial": "Android Tutorial",
+				"Author": {
+				"Name": "Arjun",
+				"Surname": "Toshniwal"
+				},
+				"Rating": 5
+			  },
+			  {
+				"Tutorial": "Angular Tutorial",
+				"Author": {
+				"Name": "Ankit",
+				"Surname": "Toshniwal"
+				},
+				"Rating": 5
+			  }]
+	}
+</code>
+</pre>	
+</div><br>
+<b>Note:</b><br>
+A key value pair follows a specific syntax, with the key followed by a colon followed by the value.<br>
+Key/value pairs are comma separated.<br><br>
+
+JSON Validation:<br>
+You can validate JSON online using:<br>
+<a href="https://jsonlint.com/">jsonlint.com</a>
+<img src="jsonlint.png" alt="JSON Validation" /><br><hr><br><br>
+
+</body>
+</html>

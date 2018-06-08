@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>onClick</title>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+Button Click Events:
+When the user clicks a button, the Button object receives an on-click event.<br><br>
+
+We can define the click event handler for a button, in two ways:<br>
+1. In Layout XML file:<br>
+<div style="color:blue">
+<pre>
+<code>
+&lt;Button
+    android:id=&quot;@+id/btn1&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;@string/button_text&quot;
+    android:text=&quot;btnClick()&quot;
+    /&gt;
+</code>
+</pre>
+</div><br>
+Within the Activity that hosts this layout, the following method handles the click event:<br>
+<div style="color:blue">
+<pre>
+<code>
+public void btnClick(View view) {
+    // Do something in response to button click
+}
+</code>
+</pre>
+</div><br><hr><br>
+2. In Activity using onClickListener:<br>
+You can also declare the click event handler programmatically rather than in an XML layout.<br> 
+This might be necessary if you instantiate the Button at runtime or you need to declare the click behavior in a Fragment subclass.<br>
+To declare the event handler programmatically, create an View.OnClickListener object and assign it to the button by calling setOnClickListener(View.OnClickListener).<br>
+For example:<br>
+<div style="color:blue">
+<pre>
+<code>
+Button button = (Button) findViewById(R.id.button_send);
+button.setOnClickListener(new View.OnClickListener() {
+    public void onClick(View v) {
+        // Do something in response to button click
+    }
+});
+</code>
+</pre>
+</div><br>
+</body>
+</html>

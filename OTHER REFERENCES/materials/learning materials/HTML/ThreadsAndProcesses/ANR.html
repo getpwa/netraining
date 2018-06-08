@@ -1,0 +1,34 @@
+﻿<html>
+<head>
+	<title>ANR</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Main/UI Thread</u>:-</b><br>
+All apps, when started, run in a single Main thread. It’s also known as the User Interface (or UI) thread.<br>
+<i id="font">All components that run in the same process run in this thread.</i><br><br>
+
+But,blocking UI thread by running everything in it will result in  poor response times and the display of the dreaded Application Not Responding(ANR) dialog.
+<br><hr><hr><br>
+<b><u>ANR (Application Not Responding) is triggered when</u>:-</b>
+<ol>
+	<li>If an app can’t respond to user input within 5 seconds.</li>
+	<li>If Broadcast receivers haven’t finished executing within 10 seconds.</li>
+</ol>
+<hr><hr><br>
+<img src="ANR.png"/>
+<b><u>Measures for avoiding ANR</u>:-</b>
+<ol>
+	<li>Do less work as much as possible on the Activity's main thead.</li>
+	<li>Use separate threads for executing long running operations like database transactions, file downloading,complex calculations etc.
+		There are various alternatives available in Android for moving our processing to the background thread :-</li>
+	<ol type='a'>
+		<li>Use your own Threads and use the Handler class to notify the main thread when the work is done</li>
+		<li>Use the AsyncTask class to do the work in the background</li>
+		<li>Use Loaders for asynchronous data loading</li>
+		<li>Use IntentService for background services performing set tasks like internet updates or data processing.</li>
+	</ol>
+</ol>
+<br><hr><br><br>
+</body>
+</html>

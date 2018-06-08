@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Manifest</title>
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<u><b>manifests:-</b></u><br>
+It contains the <b id="font">AndroidManifest.xml</b> file.<br><hr>
+AndroidManifest.xml describes the fundamental characteristics of an app and each of its components.<br/><hr>
+<span id="b2">It works as an interface between your Android OS and your application, so if you forget to declare your components in this file then it will not be considered by the OS.</span><br><br/>
+The default AndroidManifest.xml files looks like this:
+<div>
+<pre>
+<code>
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+   package=&quot;com.example.helloworld&quot;
+   android:versionCode=&quot;1&quot;
+   android:versionName=&quot;1.0&quot; &gt;
+   
+   &lt;uses-sdk
+      android:minSdkVersion=&quot;8&quot;
+      android:targetSdkVersion=&quot;22&quot; /&gt;
+   
+   &lt;application
+       android:icon=&quot;@drawable/ic_launcher&quot;
+       android:label=&quot;@string/app_name&quot;
+       android:theme=&quot;@style/AppTheme&quot; &gt;
+       
+       &lt;activity
+          android:name=&quot;.MainActivity&quot;
+          android:label=&quot;@string/title_activity_main&quot; &gt;
+       
+          &lt;intent-filter&gt;
+             &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+             &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;
+          &lt;/intent-filter&gt;
+       
+       &lt;/activity&gt;
+       
+   &lt;/application&gt;		
+&lt;/manifest&gt;
+</code>
+</pre>
+</div><br>
+<u><b>xmlns:android</b></u><br/>
+Defines the Android namespace. This attribute should always be set to "http://schemas.android.com/apk/res/android".<br/><br/>
+<hr>
+<u><b>Package:</b></u><br/>
+A full Java Language style package name for Android Application.It should be unique. The package name serves as a unique identifier for the application. It's also the default name for the application process.<br/>
+<u>Caution</u>:<br> <span id="font">Once you publish your application, you cannot change the package name. The package name defines your application's identity, so if you change it, then it is considered to be a different application and users of the previous version cannot update to the new version.</span><br/><br/>
+<hr><hr>
+<u><b>versionCode:</b></u><br/>
+It is an integer which is only used to determine whether one version is more recent than the other, with higher number denoting more recent versions.<br/>
+<u>Note</u>:<br> <span id="font">This value is not displayed to the user,it is used by the system to check the upgrade or downgrade relationship.</span><br/>
+<u>Warning</u>:<br><i>The greatest possible value for versionCode is MAXINT (2147483647). However, if you upload an app with this value, your app can't ever be updated.</i><br/><br/>
+<hr><hr>
+<u><b>versionName:</b></u><br/>
+It is a string used as a version number which is displayed to the users.It has no other purpose other than getting displayed to the user.<br/><br/>
+<hr><hr>
+<u><b>android:minSdkVersion</b></u><br/>
+An integer designating the minimum API Level required for the application to run.<br/>
+The Android system will prevent the user from installing the application if the system's API Level is lower than the value specified in this attribute.You should always declare this attribute.<br/>  
+<u>Caution</u>:<br> <i>If you do not declare this attribute, the system assumes a default value of "1", which indicates that your application is compatible with all versions of Android. If your application is notcompatible with all versions (for instance, it uses APIs introduced in API Level 3) and you have not declared the proper minSdkVersion, then when installed on a system with an API Level less than 3, the application will crash during runtime when attempting to access the unavailable APIs. For this reason, be certain to declare the appropriate API Level in the minSdkVersion attribute.</i>
+<br/><br/>
+<hr><hr>
+<u><b>android:targetSdkVersion</b></u><br/>
+An integer designating the API Level that the application targets. If not set, the default value equals that given to minSdkVersion.This attribute informs the system that you have tested against the target version and the system should not enable any compatibility behaviors to maintain your app's forward-compatibility with the target version. The application is still able to run on older versions (down to minSdkVersion).<br/><br/>
+<hr><hr>
+<b>&lt;application&gt;...&lt;/application&gt;:</b><br/>
+It includes all the declaration to the application.<br/>
+android:icon :It will point to the application icon available under res/mipmap. <br/>
+The application uses the image named ic_launcher.png located in the mipmap folders.<br/><br/>
+<hr><hr>
+<b>android:allowBackup:</b><br/>
+Whether to allow the application to participate in the backup and restore infrastructure.<br/><br/>
+<hr><hr>
+<b>android:theme:</b><br/>
+A reference to a style resource defining a default theme for all activities in the application. Individual activities can override the default by setting their own theme attributes.<br/><br/>
+<hr><hr>
+<b>&lt;activity&gt;:</b><br/> This tag is used to specify an activity.<br/>
+android:name attribute specifies the fully qualified class name of the Activity subclass and android:label attributes specifies a string to use as the label for the activity.<br/>
+Note:  You can specify multiple activities using <activity> tags.<br/>
+<hr><hr>
+The action for the intent filter is named <b id="font">android.intent.action.MAIN</b> to indicate that <i>this activity serves as the entry point for the application</i>.<br/>
+The category for the intent-filter is named <b id="font">android.intent.category.LAUNCHER</b> to indicate <i>that the application can be launched from the device's launcher icon</i>.<br/><br/>
+<hr><hr>
+<b>Following is the list of tags which you will use in your manifest file to specify different Android application components:</b><br/>
+&lt;activity&gt;elements for activities<br/>
+&lt;service&gt; elements for services<br/>
+&lt;receiver&gt; elements for broadcast receivers<br/>
+&lt;provider&gt; elements for content providers<br/>
+<br>
+    <br><hr><br><br>
+</body>
+</html>

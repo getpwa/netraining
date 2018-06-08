@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>WebView</title>
+
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Webview</u>:-</b><br>
+WebView is a view that display web pages inside your application thus enabling our application to become webapplication.<br><hr><hr>
+Steps of using webview in our application:
+<ol>
+<li>Add &lt;WebView&gt; element to your xml layout file</li>
+
+<div style="color:blue">
+<pre>
+<code>
+&lt;WebView  xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+   android:id=&quot;@+id/webview&quot;
+   android:layout_width=&quot;fill_parent&quot;
+   android:layout_height=&quot;fill_parent&quot;
+/&gt;
+</code>
+</pre>
+</div> <br>
+<li>Get a reference of this view in Java file</li>
+<div style="color:blue">
+<pre>
+<code>
+WebView browser = (WebView) findViewById(R.id.webview);
+</code>
+</pre>
+</div> <br> 
+<li>Load the webview url inside webview</li>
+<div style="color:blue">
+<pre>
+<code>
+browser.loadUrl("https://opencv-tutorial-codes.blogspot.in");
+</code>
+</pre>
+</div>  
+</ol>
+<hr>
+<b>Note:-</b><br>
+If you want to access a file hosted on the server.<br>It would require an Internet Connection.<br>
+So you need to include its permission in AndroidManifest.xml file.
+<div style="color:blue">
+<pre>
+<code>
+&lt;manifest ... &gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+    ...
+&lt;/manifest&gt;
+</code>
+</pre>
+</div><br>
+<hr>
+<b>Enabling Javascript in Webview:-</b><br>
+JavaScript is disabled in a WebView by default.<br> 
+You can enable it through the WebSettings attached to your WebView.<br> 
+You can retrieve WebSettings with getSettings(), then enable JavaScript with setJavaScriptEnabled().  
+<div style="color:blue">
+<pre>
+<code>
+WebView browser = (WebView) findViewById(R.id.webview);
+WebSettings webSettings = browser.getSettings();
+webSettings.setJavaScriptEnabled(true);
+</code>
+</pre>
+</div>
+<br><hr><br><br>
+</body>
+</html>

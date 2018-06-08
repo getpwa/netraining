@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>InboxStyle Notification</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android Inbox Style Notification</u>:-</b><br>
+Inbox Style allows a notification made of several independent lines of short text.<br>
+This style accepts up to 7 lines. Any number above the notification will ellipsize further lines by adding a "...".<br>
+<img src="inbox_style_expanded-1.png" />
+<br><hr><hr><br>
+<b>Steps of Creating Inbox Style Notification:-</b>
+1. Retrieve an instance of NotificationCompat.Builder.<br>
+<div>
+<pre>
+<code>
+	NotificationCompat.Builder builder =  new NotificationCompat.Builder(context);
+</code>
+</pre>
+</div><br><hr>
+
+2. Apply the style by creating a new NotificationCompat.InboxStyle instance.<br>
+<div>
+<pre>
+<code>
+	NotificationCompat.InboxStyle style =  new NotificationCompat.InboxStyle(builder);
+</code>
+</pre>
+</div><br><hr>
+
+3. Add as many lines as you wish.<br>
+<div>
+<pre>
+<code>
+	style.addLine("This is line 1" ); 
+	style.addLine("This is line 2" ); 
+</code>
+</pre>
+</div><br><hr>
+
+4. Add a different title if you want by using setBigContentTitle.<br>
+<div>
+<pre>
+<code>
+	style.setBigContentTitle("Expanded title");
+</code>
+</pre>
+</div><br><hr>
+
+5. Optionally add a summary to the notification.<br>
+<div>
+<pre>
+<code>
+	style.setSummaryText("Summary text");
+</code>
+</pre>
+</div><br><hr>
+
+6. Build a Notification using the NotificationCompat.Builder<br>
+<div>
+<pre>
+<code>
+	Notification notification = builder  
+    	.setContentTitle("Title")
+    	.setContentText("This is a notification!")
+    	.setSmallIcon(R.drawable.ic_notifications_white_small)
+    	.build();
+</code>
+</pre>
+</div><br><hr>
+
+7. Pass along the Notification object via notify method from NotificationManagerCompat and assign an ID of your choice.<br>
+<div>
+<pre>
+<code>
+	NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+	notificationManager.notify(0x1234, notification); 
+</code>
+</pre>
+</div><br><hr>
+ 
+<b>Note:-</b><br> 
+Title, text and small icon are mandatory so that the notification can be displayed.<br><hr><br><br>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,298 @@
+<html>
+<head>
+<title>Handlers</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b>Handler:-</b><br><br>
+Handlers can handle messages that comes from the looper and can also send messages to the message queue from different thread.
+It will deliver messages and runnables to that message queue and execute them as they come out of the message queue.
+Each Handler instance is actually bound to the thread (and hence the message queue associated with the thread) in which it is created.
+In Android we cannot access the UI element directly from the threads other than the Main/UI thread.
+Thus,if we want to access UI elements from threads other than the Main thread we  just post a message to the Handler created on the UI thread.
+<br><hr><hr>
+
+<u><i>There are two main uses for a Handler: </i></u><br>
+(1) to schedule messages and runnables to be executed as some point in the future.<br>
+(2) to enqueue an action to be performed on a different thread than your own.<br>
+<br><hr><hr>
+
+<u><i>Sending messages to the MessageQueue via Handler can be done by two modes:</i></u>
+<ol>
+<li>Message:</li> 
+It is a class that defines various useful methods to deal with message data.<br><br>
+
+<li>Runnable:</li> 
+A runnable can also be posted in the MessageQueue. Ex: posting and running a task in the main thread.<br><br>
+</ol>
+<hr><hr>
+
+<b>Message creation:-</b><br><br>
+Message can be initialized by its constructor:<br>
+<div >
+<pre>
+<code>
+Message message = new Message();
+</code>
+</pre>
+</div><br/>
+But,Best way of initializing it is by reusing it from the already maintained message pool.Thus improving performance and memory usage.<br>
+Thus,<br>
+<div style="color:blue">
+<pre>
+<code>
+Message message = Message.obtainMessage();
+</code>
+</pre>
+</div><br/>
+<hr><hr>
+<table>
+<tr>
+<td>Message obtainMessage():-</td>
+<td>Returns a new Message from the global message pool.</td>
+</tr>
+
+<tr>
+<td>Message obtainMessage(int what):-</td>
+<td>Same as obtainMessage(), except that it also sets the what member of the returned Message.</td>
+</tr>
+
+<tr>
+<td>Message obtainMessage(int what, Object obj):-</td>
+<td>Same as obtainMessage(), except that it also sets the what and obj members of the returned Message.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Message obtainMessage(int what, int arg1, int arg2):-</td>
+<td>Same as obtainMessage(), except that it also sets the what, arg1 and arg2 members of the returned Message.</td>
+</tr>
+
+<tr>
+<td>Message obtainMessage(int what, int arg1, int arg2, Object obj):-</td>
+<td>Same as obtainMessage(), except that it also sets the what, obj, arg1,and arg2 values on the returned Message.</td>
+</tr>
+</table>
+<br><hr><hr>
+
+<b>Paramters:-</b><br>
+<table>
+<tr>
+<td>what</td>
+<td>int:</td>
+<td>Value to assign to the returned Message.what field.</td>
+</tr>
+
+<tr>
+<td>obj</td>
+<td>Object:</td>
+<td>Value to assign to the returned Message.obj field.</td>
+</tr>
+
+<tr>
+<td>arg1</td>
+<td>int:</td>
+<td>Value to assign to the returned Message.arg1 field.</td>
+</tr>
+
+<tr>
+<td>arg2</td>
+<td>int:</td>
+<td>Value to assign to the returned Message.arg2 field.</td>
+</tr>
+</table>
+<br><br>	 
+	 
+	 
+	 
+
+<b>Message insertion:</b><br>
+The handler inserts messages in the message queue in various ways depending on the message type:-<br>
+<hr><hr>
+<i>Add a task to the message queue:</i><br>
+<table>
+<tr>
+<td>boolean post(Runnable r):-</td>
+<td>Causes the Runnable r to be added to the message queue.</td>
+</tr>
+
+<tr>
+<td>boolean postAtFrontOfQueue(Runnable r):-</td>
+<td>Posts a message to an object that implements Runnable.</td>
+</tr>
+
+<tr>
+<td>boolean postAtTime(Runnable r, Object token, long uptimeMillis):-</td>
+<td>Causes the Runnable r to be added to the message queue, to be run at a specific time given by uptimeMillis.</td>
+</tr>
+
+<tr>
+<td>boolean postAtTime(Runnable r, long uptimeMillis):-</td>
+<td>Causes the Runnable r to be added to the message queue, to be run at a specific time given by uptimeMillis.</td>
+</tr>
+
+<tr>
+<td>boolean postDelayed(Runnable r, long delayMillis):-</td>
+<td>Causes the Runnable r to be added to the message queue, to be run after the specified amount of time elapses.</td>
+</tr>
+</table>
+
+<hr><hr>
+<i>Add a data object to the message queue:</i><br>
+<table>
+<tr>
+<td>boolean sendMessage(Message msg):-</td>
+<td>Pushes a message onto the end of the message queue after all pending messages before the current time.</td>
+</tr>
+
+<tr>
+<td>boolean sendMessageAtFrontOfQueue(Message msg):-</td>
+<td>Enqueue a message at the front of the message queue, to be processed on the next iteration of the message loop.</td>
+</tr>
+
+<tr>
+<td>boolean sendMessageAtTime(Message msg, long uptimeMillis):-</td>
+<td>Enqueue a message into the message queue after all pending messages before the absolute time (in milliseconds) uptimeMillis.</td>
+</tr>
+
+<tr>
+<td>boolean sendMessageDelayed(Message msg, long delayMillis):-</td>
+<td>Enqueue a message into the message queue after all pending messages before (current time + delayMillis).</td>
+</tr>
+</table>
+
+<hr><hr>
+<i>Add simple data object to the message queue:</i><br>
+<table>
+<tr>
+<td>boolean sendEmptyMessage(int what):-</td>
+<td>Sends a Message containing only the what value.</td>
+</tr>
+
+<tr>
+<td>boolean sendEmptyMessageAtTime(int what, long uptimeMillis):-</td>
+<td>Sends a Message containing only the what value, to be delivered at a specific time.</td>
+</tr>
+
+<tr>
+<td>boolean sendEmptyMessageDelayed(int what, long delayMillis):-</td>
+<td>Sends a Message containing only the what value, to be delivered after the specified amount of time elapses.</td>
+</tr>
+</table>
+Runnable objects are inserted through methods whose names begin with post, whereas data messages are inserted through methods whose names begin with send:
+<br>
+<hr><hr><br>
+
+Steps of Creating Handler and communicating with it using Message objects:-<br><br>
+<ol>
+<li>Create a Class that implements Runnable interface.</li>
+<div>
+<pre>
+<code>
+class MyThread implements Runnable {
+        
+    }
+</code>
+</pre>
+</div><br/>	
+<li>Override the method run in the class implementing Runnable interface.</li>
+<div >
+<pre>
+<code>
+class MyThread implements Runnable {
+        @Override
+        public void run() {
+          
+        }
+</code>
+</pre>
+</div><br/>
+		
+<li>Create a new Thread inside OnCreate() method and Pass the object of the class implementing Runnable interface.</li>
+<div >
+<pre>
+<code>
+MyThread myThread = new MyThread();
+Thread thread = new Thread(myThread);
+</code>
+</pre>
+</div><br/>
+
+<li>To start the Thread call the start method on the Thread object.</li>
+<div>
+<pre>
+<code>
+thread.start();
+</code>
+</pre>
+</div><br/>
+
+<li>Put the long running Background process inside the run() method.</li>
+   The run method runs on separate thread.<br>
+<div>
+<pre>
+<code>   
+   class MyThread implements Runnable {
+        @Override
+        public void run() {
+          
+        }
+</code>
+</pre>
+</div><br/>	
+
+<li>UI elements reside in the Main thread.Thus to communicate between Mainthread and background thread we use Handlers.<br>
+    Initialize the Handler in the OnCreate() method. </li>
+<div>
+<pre>
+<code>
+	Handler handler = new Handler()
+</code>
+</pre>
+</div><br/>	
+
+<li>To send the message from other thread to the Mainthread attach sendMessage method to the Handler object inside the run() method.</li>
+ <div>
+<pre>
+<code>
+ class MyThread implements Runnable {
+        @Override
+        public void run() {
+        //Code to be executed in a Thread
+            for (int i = 0; i < 10; i++) {
+                Message message = Message.obtain();
+                message.arg1 = i;
+                handler.sendMessage(message);
+                goTosleep();
+            }
+		 
+        }
+	}
+</code>
+</pre>
+</div><br/>		
+
+<li>To receive the message from other thread, override the handleMessage() method inside onCreate().<br>
+   handleMessage() will be called when the message arrives inside UI thread.</li>
+<div>
+<pre>
+<code>   
+   handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+			int count = msg.arg1;
+			//Update the UI element here
+			//Setting the count to textview , updating progressbar etc.
+            }
+        };
+</code>
+</pre>
+</div><br/>
+</ol>
+<br><hr><br><br>
+</body>
+</html>

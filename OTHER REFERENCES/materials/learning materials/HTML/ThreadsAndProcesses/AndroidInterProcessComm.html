@@ -1,0 +1,57 @@
+<html>
+<head>
+	<title>Android InterProcess Communication</title>
+	<link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Android Application Sandbox</u>:-</b><br>
+Android Applications runs in a SANDBOX.<br>
+<i id="font">Sandbox is an isolated area of the Operating System that does not have access to the rest of the system resources unless access permissions are granted by the user whenever an app is installed.</i><br>
+<hr><hr>
+
+<b>How does Android achieves the concept of SANDBOX?</b><br>
+<i id="font">Each Android Application is assigned a unique Linux USER ID and runs in separate process.</i><br><br>
+<b><u>Note</u>:-</b><br>
+<i id="font">By default android takes the package name as the process name.</i><br>
+But if you define process property in application tag in manifest file <br>
+<i id="font">android:process</i>="com.example.newprocessname" <br>
+then the application will run with this name "com.example.newprocessname".<br>
+So several app packages may run as a part of one process.<br>
+<hr><hr>
+
+<b>Can an Android Application share a common userid?</b><br>
+Yes, they can.<br>
+Use <i id="font">android:sharedUserId</i> in <i id="font">AndroidManifest.xml</i> file.If this attribute is set to the same value for two or more applications, they will all share the same ID — provided that they are also signed by the same certificate.<br><br>
+
+<b><u>Note</u>:-</b>
+Application with the same user ID can access each other's data and, if desired, run in the same process.<br><hr><hr>
+
+<b>Android InterProcess Communications:-</b><br>
+<i id="font">Communication across process boundaries is known as inter process communication.</i><br>
+It can take place when two app share the same common App User ID.<br>
+Thus steps of achieving interprocess communication are:-
+<ol>
+	<li>App2 wants to read data of App1.</li>
+	<li>Thus App2 will be needing installation information of App1.</li>
+	<li>Since PackageManager contains various kinds of information related to the application packages that are currently installed in the device.
+		Use getPackageManager of Context Class.</li>
+	<li>Call <i id="font">ApplicationInfo getApplicationInfo(String packagename,int flags)</i> of package manager to retrieve all the information about app1.<br>
+		<b id="font"><u>packagename</u>-</b><br>
+		&#8627;The full name (i.e. com.google.apps.contacts) of an application.<br>
+		<b id="font"><u>flags</u>-</b><br>
+		&#8627;Additional option flags. Use any combination of <i id="font">GET_META_DATA</i>, <i id="font">GET_SHARED_LIBRARY_FILES</i>, <i id="font">MATCH_SYSTEM_ONLY</i>, <i id="font">MATCH_UNINSTALLED_PACKAGES</i> to modify the data returned.
+	</li>
+</ol>
+<hr><hr>
+<b>Mechanisms of Inter Process Communications are:-</b>
+<ol>
+	<li>Intents</li>
+	<li>Messenger</li>
+	<li>ContentResolver</li>
+	<li>Binder/IBinder</li>
+</ol>
+<br><hr><br><br>
+</body>
+</html>
+
+

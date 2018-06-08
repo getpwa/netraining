@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>TextField</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>TextField:-</u></b><br>
+<i id="font">A text field allows the user to type text into your app.</i> <br>
+It can be either <i>single line</i> or <i>multi-line</i>.<br>
+Touching a text field places the cursor and automatically displays the keyboard.<br>
+In addition to typing, text fields allow for a variety of other activities, such as text selection (cut, copy, paste) and data look-up via auto-completion.<br>
+<hr><hr>
+You can specify the type of keyboard you want for your EditText object with the android:inputType attribute. 
+For example, if you want the user to input an phone number, you should use the phone input type:
+<div>
+<pre>
+<code>
+&lt;EditText
+    android:id=&quot;@+id/phone_number&quot;
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:hint=&quot;@string/phnNumber_hint&quot;
+    android:inputType=&quot;phone&quot; /&gt;
+</code>
+</pre>
+</div><br/><hr><hr>
+There are several different input types available for different situations. Here are some of the more common values for <a href="https://developer.android.com/reference/android/widget/TextView.html#attr_android:inputType">android:inputType:</a>
+<ul><hr>
+<li>"text"</li>
+&emsp;&#8627;Normal text keyboard.
+<hr>
+<li>"textEmailAddress"</li>
+&emsp;&#8627;Normal text keyboard with the @ character.
+<hr>
+<li>"textUri"</li>
+&emsp;&#8627;Normal text keyboard with the / character.
+<hr>
+<li>"number"</li>
+&emsp;&#8627;Basic number keypad.
+<hr>
+<li>"phone"</li>
+&emsp;&#8627;Phone-style keypad.
+<hr>
+</ul>
+<hr>
+<hr>
+<b><u>Keyboard Behaviour Controls:-</u></b>
+The <i id="font">android:inputType</i> also allows you to specify certain keyboard behaviors, such as whether to capitalize all new words or use features like auto-complete and spelling suggestions.
+<ul><hr>
+<li>"textCapSentences"</li>
+&emsp;&#8627;Normal text keyboard that capitalizes the first letter for each new sentence.<hr>
+<li>"textCapWords"</li>
+&emsp;&#8627;Normal text keyboard that capitalizes every word. Good for titles or person names.<hr>
+<li>"textAutoCorrect"</li>
+&emsp;&#8627;Normal text keyboard that corrects commonly misspelled words.<hr>
+<li>"textPassword"</li>
+&emsp;&#8627;Normal text keyboard, but the characters entered turn into dots.<hr>
+<li>"textMultiLine"</li>
+&emsp;&#8627;Normal text keyboard that allow users to input long strings of text that include line breaks (carriage returns).<hr>
+</ul>
+<hr><hr>
+<b><u>Keyboard Actions:-</u></b><br>
+In addition to changing the keyboard's input type, Android allows you to specify an action to be made when users have completed their input.
+The action specifies the button that appears in place of the carriage return key and the action to be made, such as "Search" or "Send."
+
+You can specify the action by setting the <i>android:imeOptions</i> attribute. For example, here's how you can specify the Send action:
+<div style="color:blue">
+<pre>
+<code>
+&lt;EditText
+    android:id=&quot;@+id/search&quot;
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:hint=&quot;@string/search_hint&quot;
+    android:inputType=&quot;text&quot;
+    android:imeOptions=&quot;actionSend&quot; /&gt;
+</code>
+</pre>
+</div><br><hr><hr> 
+<b><u>Listening to keyboard Actions</u></b><br>
+If you have specified a keyboard action for the input method using android:imeOptions attribute (such as "actionSend"), you can listen for the specific action event using an <i>TextView.OnEditorActionListener.</i><br><br>
+The <i>TextView.OnEditorActionListener</i> interface provides a callback method called onEditorAction() that indicates the action type invoked with an action ID such as IME_ACTION_SEND or IME_ACTION_SEARCH.<br><br>
+For example, here's how you can listen for when the user clicks the Send button on the keyboard:<br>
+<div style="color:blue">
+<pre>
+<code>
+EditText editText = (EditText) findViewById(R.id.search);
+editText.setOnEditorActionListener(new OnEditorActionListener() {
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        boolean handled = false;
+        if (actionId == EditorInfo.IME_ACTION_SEND) {
+            sendMessage();
+            handled = true;
+        }
+        return handled;
+    }
+});
+</code>
+</pre>
+</div><br><hr><br><br>
+</body>
+</html>

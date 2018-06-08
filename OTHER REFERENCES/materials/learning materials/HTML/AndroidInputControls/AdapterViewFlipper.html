@@ -1,0 +1,160 @@
+<html>
+<head>
+    <title>ImageSwitcher</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>AdapterViewFlipper:-</u></b><br>
+Android AdapterViewFlipper is subclass of ViewAnimator class in the hierarchy.<br>
+AdapterViewFlipper switches smoothly between two or more views (TextView, ImageView or any layout) and 
+thus provides a way of transitioning from one view to another through appropriate animations.<br><hr>
+ 
+<b>Note:-</b><br>
+ViewFlipper and AdapterViewFlipper both are sub classes of ViewAnimator. The only difference is in AdapterViewFlipper, we use an Adapter to fill data.<br>
+Thus the recycling of vies is possible in AdapterViewFlipper.<br><hr><br><br>
+
+<b>Steps for Implementing AdapterViewFlipper:-</b><br><br>
+1. Define the AdapterViewFlipper in XML.
+<div>
+<pre>
+<code>
+&lt;AdapterViewFlipper
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:id=&quot;@+id/idAdapterViewFlipper&quot;
+        android:flipInterval=&quot;2000&quot;
+        /&gt;
+</code>
+</pre>
+</div><br><hr>
+
+
+2. Create a custom layout file (say flipper_items) which will define how the items in the row will appear.<br>
+<div>
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:orientation=&quot;vertical&quot; android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    &gt;
+    &lt;ImageView
+        android:id=&quot;@+id/idImageView&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:src=&quot;@mipmap/ic_launcher&quot;/&gt;
+
+    &lt;TextView
+        android:text=&quot;Illusion&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textAppearance=&quot;@style/Base.TextAppearance.AppCompat.Large&quot;
+        android:id=&quot;@+id/idTextView&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code>
+</pre>
+</div><br><hr>
+
+2. Create an Adapter for filling Data:
+<ol>
+<li>Create a new class (called FlipperAdapter) which extends BaseAdapter.</li>
+<li>Override the default constructor of BaseAdapter.</li>
+<li>Inflate the custom layout(flipper_items.xml) in getView() method.It will get the views at the specified positions.</li>
+<li>Set the appropriate count in getCount() method.</li>
+</ol><br>
+<div>
+<pre>
+<code>
+class FlipperAdapter extends BaseAdapter{
+    Context ctx;
+    int[] images;
+    String[] text;
+    LayoutInflater inflater;
+
+    public FlipperAdapter(Context context , String[] myText , int[] myImages){
+        this.ctx = context;
+        this.images = myImages;
+        this.text = myText;
+        inflater = LayoutInflater.from(context);
+    }
+    @Override
+    public int getCount() {
+        return text.length;
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        view = inflater.inflate(R.layout.flipper_items, null);
+        TextView txtName = (TextView) view.findViewById(R.id.idTextView);
+        ImageView txtImage = (ImageView) view.findViewById(R.id.idImageView);
+        txtName.setText(text[i]);
+        txtImage.setImageResource(images[i]);
+        return view;
+
+    }
+}
+
+</code>
+</pre>
+</div><br><hr>
+
+3. Create an instance of AdapterViewFlipper in Java file and get a reference of its XML Component.
+<div>
+<pre>
+<code>
+AdapterViewFlipper simpleAdapterViewFlipper = (AdapterViewFlipper) findViewById(R.id.simpleAdapterViewFlipper); // get the reference of AdapterViewFlipper
+simpleAdapterViewFlipper.setAdapter(adapter);
+simpleAdapterViewFlipper.setAutoStart(true);
+</code>
+</pre>
+</div><br><hr><hr>
+
+
+<b>XML Attributes:</b><br><br>
+android:autoStart<br>	
+When true, automatically start animating. <br><hr>
+
+android:flipInterval<br>
+Defines the interval for changing view	 <br><hr><br>
+
+<b>Methods:</b><br><br>
+int	getFlipInterval()<br>
+Returns the flip interval, in milliseconds. <br><hr>
+
+boolean	isAutoStart()<br>
+Returns true if this view automatically calls startFlipping() when it becomes attached to a window. <br><hr>
+
+boolean	isFlipping()<br>
+Returns true if the child views are flipping. <br><hr>
+
+void setAdapter(Adapter adapter)<br>
+Sets the adapter that provides the data and the views to represent the data in this widget. <br><hr>
+
+void setAutoStart(boolean autoStart)<br>
+Set if this view automatically calls startFlipping() when it becomes attached to a window. <br><hr>
+
+void setFlipInterval(int flipInterval)<br>
+How long to wait before flipping to the next view. <br><hr>
+
+void showNext()<br>
+Manually shows the next child. <br><hr>
+
+void showPrevious()<br>
+Manually shows the previous child. <br><hr>
+
+void startFlipping()<br>
+Start a timer to cycle through child views. <br><hr>
+
+void stopFlipping()<br>
+No more flips <br><hr><br><br>

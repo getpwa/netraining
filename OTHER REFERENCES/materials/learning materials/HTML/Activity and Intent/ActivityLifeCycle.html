@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Activity Life Cycle</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+    <b><u>Activity:-</u></b>
+    <i class="font">Activity represents a single screen with which a user can interact with.</i><br><br>
+    For a <i class="font">.java</i> class to qualify as an Activity it should extend the <b>Activity</b> class.<br>
+    Activities in the system are managed as an activity stack.<br><br>
+    When a new activity is started, it is placed on the top of the stack and becomes the running activity.<br>The previous activity always remains below it in the stack, and will not come to the foreground again until the new activity exits.<br><br>
+    <hr><hr>
+    <b><u>An activity essentially has 4 states:-</u></b><br>
+
+    1. <b><u>Foreground State:</u></b><br>If an activity is in the foreground of the screen (at the top of the stack), it is active or running.<br>
+    <hr>2. <b><u>Paused State:</u></b><br>If an activity has lost focus but is still visible (that is, a new non-full-sized or transparent activity has focus on top of your activity e.g. Opening a Dialog Box), it is in paused state. A paused activity is completely alive (it maintains all state and member information and remains attached to the window manager), but can be killed by the system in extreme low memory situations.<br>
+    <hr>3. <b><u>Background State:</u></b><br>If an activity is completely obscured by another activity, it is stopped. It still retains all state and member information, however, it is no longer visible to the user so its window is hidden and it will often be killed by the system when memory is needed elsewhere.<br>
+    <hr>4. <b><u>Destroyed State:</u></b><br>If an activity is paused or stopped, the system can drop the activity from memory by either asking it to finish, or simply killing its process. When it is displayed again to the user, it must be completely restarted and restored to its previous state.<br>
+
+    <hr><hr>
+    <img src="activity_lifecycle1.png"/><hr><hr>
+    <b>Activity Life Cycle Methods:</b><br><br>
+    <b><u>onCreate():</u></b><br>
+    Called when the activity is first created.
+    This is where you should do all of your normal static set up: create views, bind data to lists, etc.
+    This method also provides you with a Bundle containing the activity's previously frozen state, if there was one.
+    Always followed by <i>onStart()</i>.<br><br>
+    <hr><b><u>onRestart():</u></b><br>
+    Called after your activity has been stopped, prior to it being started again.<br>
+    Always followed by <i>onStart()</i>.<br><br>
+    <hr><b><u>onStart():</u></b><br>
+    Called when the activity is becoming visible to the user.<br>
+    Followed by <i>onResume()</i> if the activity comes to the foreground, or <i>onStop()</i> if it becomes hidden.<br><br>
+    <hr><b><u>onResume():</u></b><br>
+    Called when the activity will start interacting with the user.<br>
+    At this point your activity is at the top of the activity stack, with user input going to it.<br>
+    Always followed by <i>onPause()</i>.<br><br>
+    <hr><b><u>onPause():</u></b><br>
+    Called when the system is about to start resuming a previous activity.<br>
+    The paused activity does not receive user input and cannot execute any code .<br>
+    Followed by either <i>onResume()</i> if the activity returns back to the front, or <i>onStop()</i> if it becomes invisible to the user.<br><br>
+    <hr><b><u>onStop():</u></b><br>
+    Called when the activity is no longer visible to the user, because another activity has been resumed and is covering this one.<br>
+    This may happen either because a new activity is being started, an existing one is being brought in front of this one, or this one is being destroyed.<br>
+    Followed by either <i>onRestart()</i> if this activity is coming back to interact with the user, or <i>onDestroy()</i> if this activity is going away.<br><br>
+    <hr><b><u>onDestroy():</u></b><br>
+    The final call you receive before your activity is destroyed.<br>
+    This can happen either because the activity is finishing (someone called finish() on it, or because the system is temporarily destroying this instance of the activity to save space. <br><br>
+    <br>
+    <img src="activity_lifecycle.png"/><br><hr><br><br>
+    </body>
+</html>

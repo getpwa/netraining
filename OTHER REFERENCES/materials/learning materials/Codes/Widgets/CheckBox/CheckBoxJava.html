@@ -1,0 +1,80 @@
+<html>
+<head>
+
+    <title>CheckBox</title>
+    <link rel="stylesheet" href="../../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../../CodeMirror/codemirror.js"></script>
+    <script src="../../../CodeMirror/clike.js"></script>
+    <script src="../../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    Button btn;
+    CheckBox checkBox1,checkBox2,checkBox3;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btn = (Button) findViewById(R.id.button);
+        checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
+        checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
+        checkBox3 = (CheckBox) findViewById(R.id.checkBox3);
+
+    }
+
+    public void ClickMe(View v){
+         if (checkBox1.isChecked() == true &&checkBox2.isChecked() == true && checkBox3.isChecked() == true) {
+                getWindow().getDecorView().setBackgroundColor(Color.parseColor("#FFFFFF"));
+                }else
+                if (checkBox1.isChecked() == true && checkBox2.isChecked() == true) {
+                    getWindow().getDecorView().setBackgroundColor(Color.parseColor("#FFFF00"));
+                }else
+                if (checkBox1.isChecked() == true && checkBox3.isChecked() == true) {
+                    getWindow().getDecorView().setBackgroundColor(Color.parseColor("#FF00FF"));
+                }else
+                if (checkBox2.isChecked() == true && checkBox3.isChecked() == true) {
+                    getWindow().getDecorView().setBackgroundColor(Color.parseColor("#00FFFF"));
+                }
+                 else
+                if (checkBox1.isChecked() == true) {
+                    getWindow().getDecorView().setBackgroundColor(Color.parseColor("#FF0000"));
+                }else
+                if (checkBox2.isChecked() == true) {
+                    getWindow().getDecorView().setBackgroundColor(Color.parseColor("#00FF00"));
+                }else
+                if (checkBox3.isChecked() == true) {
+                    getWindow().getDecorView().setBackgroundColor(Color.parseColor("#0000FF"));
+                }
+               else{
+                    getWindow().getDecorView().setBackgroundColor(Color.parseColor("#000000"));
+                }
+    }
+}
+</textarea>
+
+</body>
+</html>

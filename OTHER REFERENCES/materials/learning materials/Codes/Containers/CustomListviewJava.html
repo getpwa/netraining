@@ -1,0 +1,77 @@
+<html>
+<head>
+
+    <title>CustomListView</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+public class MainActivity extends AppCompatActivity {
+    String [] titles={"Title1","Title2","Title3","Title4","Title5"};
+    String [] descriptions={"Description1","Description2","Description3","Description4","Description5"};
+    int [] images={R.drawable.activity_intent,R.drawable.internal_storage_icon,R.drawable.cache_icon,R.drawable.context_menu_icon,R.drawable.fragments_icon1};
+    ListView lv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        lv = (ListView) findViewById(R.id.idListView);
+        MyAdapter adapter = new MyAdapter(getActivity(),titles,descriptions,images);
+        lv.setAdapter(adapter);
+    }
+
+}
+class MyAdapter extends ArrayAdapter {
+    int[] imageArray;
+    String[] titleArray;
+    String[] descArray;
+    public MyAdapter(Context context, String[] titles1, String[] descriptions1, int [] img1) {
+        //Overriding Default Constructor off ArratAdapter
+        super(context, R.layout.example_cuslistview_row,R.id.idTitle,titles1);
+        this.imageArray=img1;
+        this.titleArray=titles1;
+        this.descArray=descriptions1;
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        //Inflating the layout
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View row = inflater.inflate(R.layout.example_cuslistview_row,parent,false);
+
+        //Get the reference to the view objects
+        ImageView myImage = (ImageView) row.findViewById(R.id.idPic);
+        TextView myTitle = (TextView) row.findViewById(R.id.idTitle);
+        TextView myDescription = (TextView) row.findViewById(R.id.idDescription);
+
+        //Providing the element of an array by specifying its position
+        myImage.setImageResource(imageArray[position]);
+        myTitle.setText(titleArray[position]);
+        myDescription.setText(descArray[position]);
+        return row;
+    }
+}
+</textarea>
+
+</body>
+</html>

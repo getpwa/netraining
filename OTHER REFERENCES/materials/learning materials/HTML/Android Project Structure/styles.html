@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>styles.xml</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Styles:-</u></b>
+<img src="Style.jpg"/>
+A style resource defines the format and look for a UI.<br/>
+It can specify properties such as height, padding, font color, font size, background color etc  <br/><br/>
+<b><u>Note:-</u></b><br>
+<i id="font">Styles in Android share a similar philosophy to cascading stylesheets in web design i.e they allow you to separate the design from the content.</i><br/><br/>
+<hr><hr>
+<b><u>EXAMPLE:-</u></b><br>
+XML file for the style (saved in res/values/styles.xml):
+<div style="color:blue">
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+    &lt;style name=&quot;MyTextStyle&quot; parent=&quot;@style/Text&quot;&gt;
+        &lt;item name=&quot;android:textSize&quot;&gt;25sp&lt;/item&gt;
+        &lt;item name=&quot;android:textColor&quot;&gt;red&lt;/item&gt;
+    &lt;/style&gt;
+&lt;/resources&gt;
+</code>
+</pre>
+</div><br/><hr>
+Now, this style can be applied to a TextView (saved in res/layout/):<br/>
+<div>
+<pre>
+<code>
+<?xml version="1.0" encoding="utf-8"?>
+&lt;EditText
+    style=&quot;@style/MyTextStyle&quot;
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;Hello, World!&quot; /&gt;
+</code>
+</pre>
+</div><br/><hr><hr>
+<b><u>Steps of applying styles to an element in Android are:-</u></b>
+<ol style="padding-left: 20px; margin-top: 5px;">
+<li>The root node of the XML file must be the <i id="font">&lt;resources&gt;</i> tag.</li>
+<li>Add a  <i id="font">&lt;style&gt;</i> element to the file with a name that uniquely identifies the style</li>
+<li>Add an <i id="font">&lt;item&gt;</i> element for each property of that style, with a name that declares the style property and a value to be applied to it.
+The value for the <i id="font">&lt;item&gt;</i> can be a hex color, font type etc</li>
+<li>The parent attribute in the <i id="font">&lt;style&gt;</i> element is optional and specifies the resource ID of another style from which this style should inherit properties.</li>
+<li>Assign the style attribute to entries in your layout file via the style=”@style/any_android_element"</li>
+</ol><hr><hr>
+Also </i>Android supports style Inheritance</i> much the same way as CSS in WebApplications.<br/>
+Thus enabling us to inherit properties from an existing style and then define only the properties that you want to change or add.<br/><br/>
+
+<b><u>Example:-</u></b><br/>
+<div>
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+    &lt;style name=&quot;MyTextStyle&quot; parent=&quot;@style/Text&quot;&gt;
+        &lt;item name=&quot;android:textSize&quot;&gt;25sp&lt;/item&gt;
+        &lt;item name=&quot;android:textColor&quot;&gt;red&lt;/item&gt;
+    &lt;/style&gt;
+&lt;/resources&gt;
+</code>
+</pre>
+</div><br/>
+<div style="color:blue">
+<pre>
+<code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;resources&gt;
+    &lt;style name=&quot;MyTextStyle&quot; parent=&quot;@style/Text&quot;&gt;
+        &lt;item name=&quot;android:textSize&quot;&gt;25sp&lt;/item&gt;
+        &lt;item name=&quot;android:textColor&quot;&gt;red&lt;/item&gt;
+    &lt;/style&gt;
+   &lt;style name=&quot;MyTextStyle.SecondStyle&quot; 
+        &lt;item name=&quot;android:textSize&quot;&gt;30sp&lt;/item&gt;
+       &lt;item name=&quot;android:textStyle&quot;&gt;italic&lt;/item&gt;
+    &lt;/style&gt;
+&lt;/resources&gt;
+</code>
+</pre>
+</div><br/>
+<hr>
+
+<b>MyTextStyle.SecondStyle:-</b><br>
+An example of chained styles without using the parent element.<br/><br/>
+<div style="color:blue">
+<pre>
+<code>
+<?xml version="1.0" encoding="utf-8"?>
+&lt;EditText
+    style=&quot;@style/MyTextStyle&quot;
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;Hello, World!&quot; /&gt;
+</code>
+</pre>
+</div><br/>
+<hr><hr>
+<b><u>Predefined Styles:-</u></b>
+<ol style="padding-left: 20px; margin-top: 5px;">
+<li>Locate the folder where Android SDK is installed.</li>
+<li>Goto <i id="font">platforms > android > data > res > values > styles.xml</i>.</li>
+<li>This file contains the code for all of Android&rsquo;s predefined styles.</li>
+</ol>
+<br><hr><br><br>
+</body>
+</html>

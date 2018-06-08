@@ -1,0 +1,135 @@
+<html>
+<head>
+    <title>JSON Parsing Java</title>
+    <link rel="stylesheet" href="../../Style/myStyleCode.css"/>
+    <link rel="stylesheet" href="../../CodeMirror/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/ambiance.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/blackboard.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/cobalt.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mbo.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/night.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/solarized.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/zenburn.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/vibrant-ink.css">
+    <script src="../../CodeMirror/codemirror.js"></script>
+    <script src="../../CodeMirror/clike.js"></script>
+    <script src="../../CodeMirror/matchbrackets.js"></script>
+    <script src="../../Scripts/myscript.js"></script>
+
+</head>
+
+<body id="idBody">
+<textarea id="editor">
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+
+public class MainActivity extends AppCompatActivity {
+    ArrayList&lt;HashMap&lt;String, String&gt;&gt; contactList;
+    Button btnParseJson;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        contactList = new ArrayList&lt;&gt;();
+        btnParseJson = (Button) findViewById(R.id.idBtnParseXML);
+        btnParseJson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                beginXMLParsing();
+            }
+        });
+    }
+
+    private void beginXMLParsing() {
+        InputStream is = null;
+        try {
+            is = getAssets().open(&quot;parsingData/data.xml&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = null;
+        try {
+            dBuilder = dbFactory.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+        Document doc = null;
+        try {
+            doc = dBuilder.parse(is);
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Element element=doc.getDocumentElement();
+        element.normalize();
+
+        NodeList nList = doc.getElementsByTagName(&quot;rootnode&quot;);
+
+        for (int i=0; i&lt; nList.getLength(); i++) {
+
+            Node node = nList.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element2 = (Element) node;
+                String id = element2.getElementsByTagName(&quot;Id&quot;).item(0).getTextContent();
+                String name = element2.getElementsByTagName(&quot;Name&quot;).item(0).getTextContent();
+                String surname = element2.getElementsByTagName(&quot;Surname&quot;).item(0).getTextContent();
+                String age = element2.getElementsByTagName(&quot;Age&quot;).item(0).getTextContent();
+                addingValuesToHasMap(id,name,surname,age);
+                Toast.makeText(this,&quot;Data: &quot;+element2.getElementsByTagName(&quot;Id&quot;).item(0).getTextContent(),Toast.LENGTH_SHORT).show();
+            }
+        }
+        ListView lv = (ListView) findViewById(R.id.idLvJson);
+        ListAdapter adapter = new SimpleAdapter(MainActivity.this, contactList,
+                R.layout.list_item, new String[]{ &quot;Id&quot;,&quot;Name&quot;,&quot;Surname&quot;,&quot;Age&quot;},
+                new int[]{R.id.idSNO,R.id.idName, R.id.idSurname,R.id.idAge});
+        lv.setAdapter(adapter);
+    }
+
+    private void addingValuesToHasMap(String id, String name, String surname, String age) {
+        // tmp hash map for single contact
+        HashMap&lt;String, String&gt; contact = new HashMap&lt;&gt;();
+
+        // adding each child node to HashMap key =&gt; value
+        contact.put(&quot;Id&quot;, id);
+        contact.put(&quot;Name&quot;, name);
+        contact.put(&quot;Surname&quot;, surname);
+        contact.put(&quot;Age&quot;, age);
+        // adding contact to contact list
+        contactList.add(contact);
+    }
+}
+</textarea>
+
+
+</body>
+</html>

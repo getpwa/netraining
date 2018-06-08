@@ -1,0 +1,93 @@
+<html>
+<head>
+    <title>Android Threads</title>
+    <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b><u>Thread</u>:-</b><br>
+<i id="font">A thread is a single sequential flow of control(thread of execution) within a program.</i><br><hr><hr>
+
+<b><u>Threads in Java</u>:-</b><br>
+In Java, JVM allows an application to run multiple thread simultaneously and also allows us to set priority of each thread.<br>
+<i id="font">Threads with higher priority are executed in preference to threads with lower priority.</i> <br><br>
+When code running in some thread creates a new Thread object, the new thread has its priority initially set equal to the priority of the creating thread, and is a daemon thread if and only if the creating thread is a daemon.
+<br><hr><hr>
+
+There are two ways to create a new thread of execution:<br><br>
+1. One is to declare a class to be a subclass of Thread.<br>
+This subclass should override the run method of class Thread.<br>
+An instance of the subclass can then be allocated and started.
+<div>
+<pre>
+<code>
+    class MyThreadClass extends Thread{
+
+    public void run() {
+    //Code to be executed in a Thread
+    goTosleep();
+    }
+    }
+
+    private void goTosleep() {
+    try {
+    Thread.sleep(5000);
+    } catch (InterruptedException e) {
+    e.printStackTrace();
+    }
+    }
+</code>
+</pre>
+</div>
+<br>
+
+To Call the Thread :-
+<div>
+<pre>
+<code>
+    MyThreadClass mythread = new MyThreadClass();
+    mythread.start();
+</code>
+</pre>
+</div>
+<br><hr><br>
+The other way to create a thread is to declare a class that implements the Runnable interface.<br>
+That class then implements the run method. An instance of the class can then be allocated, passed as an argument when creating Thread, and started. <br>
+The same example in this other style looks like the following:<br>
+<div>
+<pre>
+<code>
+    class MyThreadClass implements Runnable{
+
+    public void run() {
+    //Code to be executed in a Thread
+    goTosleep();
+    }
+    }
+
+    private void goTosleep() {
+    try {
+    Thread.sleep(5000);
+    } catch (InterruptedException e) {
+    e.printStackTrace();
+    }
+    }
+</code>
+</pre>
+</div>
+<br>
+The following code would then create a thread and start it running:
+<div>
+<pre>
+<code>
+    MyThreadClass myThreadClass = new MyThreadClass();
+    new Thread(myThreadClass).start();
+</code>
+</pre>
+</div>
+<br>
+<b><u>Note</u>:-</b><br>
+<i>Java threads are one-time use only and die after executing its run method.</i><br><hr><br><br>
+</body>
+</html>
+
+

@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>Inter-fragment Communication</title>
+
+ <link rel="stylesheet" href="../../Style/myStyleHTML.css"/>
+</head>
+<body>
+<b>What is Inter-fragment Communication?</b><br>
+Inter-fragment Communication means passing data from one fragment to another or in short creating a communication 
+channel such that one fragment can talk to the other.<br><br><hr><br>
+<b>How to do inter-fragment Communication?</b><br>
+Since fragment are reuseable UI components, it is a bad practice to have a reference of one fragment in that of the other.
+Thus avoid using another fragment reference inside a fragment since it induces tight coupling between the two fragments.
+So the best and correct way of pass data from one fragment to another is with the help of <b>"Interface"</b>.<br><br><hr><br>
+Steps of Inter-fragment Communication:<br>
+<ol>
+<li><b>Create an Interface</b></li>
+Make a method which acts as an event carrier between the two fragments.
+<div style="color:blue">
+<pre>
+<code>
+Interface MyInterface
+{
+  public void myresponse(String data);
+}
+</code>
+</pre>
+</code>
+</div><br>
+<li><b>Make the Activity implement the Interface.</b></li>
+(Java property : A class implementing the interface should override its method)<br>
+Implement the methods of an interface in the Activity.<br>
+<div style="color:blue">
+<pre>
+<code>
+class MainActivity extends AppCompactActivity implements MyInterface{
+   @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+	
+	public void myresponse(String data){
+	
+	}
+}
+</code>
+</pre>
+</div><br>
+<li><b>reate a Fragment(say FragmentA)</b></li>
+Create a reference of an interface in the fragment.
+(Java property :Since Interface reference variable can refer to the sub class object)
+Make the interface reference variable refer to the Activty class.
+Call the Activity method using interface reference variable which is pointing to the Activity(sub class object)
+<div style="color:blue">
+<pre>
+<code>
+public class FragmentA extends Fragment {
+
+
+    public FragmentA() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_a, container, false);
+		
+        //Reference of an Interface 
+        MyInterface my_interface;
+        //Interface reference variable pointing to the Activty
+        my_interface= (MyInterface) a;
+        my_interface.myresponse("My Name is Arjun");
+        return view;
+    }
+}
+</code>
+</pre>
+</div><br>
+<li><b>Create another fragment (say FragmentB)</b></li>
+<div style="color:blue">
+<pre>
+<code>
+public class FragmentB extends Fragment {
+
+
+    public FragmentB() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_b, container, false);
+    }
+   public void changeData(String data){
+    Toast.makeText(getActivity(),"Data is"+data,Toast.LENGTH_SHORT).show();
+   }
+}
+
+</code>
+</pre>
+</div><br>
+<li><b>Get the reference of  second fragment in implemented  method of an Interface in the Activity.</b></li>
+<div style="color:blue">
+<pre>
+<code>
+class MainActivity extends AppCompactActivity implements MyInterface{
+   @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+	
+    public void myresponse(String data){
+    FragmentManager manager = getSupportFragmentManager();
+    manager.findFragmentById(R.id.fragmentb);
+    fragmentb.changeData(data);
+    }
+}
+</code>
+</pre>
+</div>
+</ol>
+<br><hr><br><br>
+</body>
+</html>
