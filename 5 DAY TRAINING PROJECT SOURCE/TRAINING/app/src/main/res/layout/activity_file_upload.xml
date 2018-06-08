@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_application"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    //-----------header view---------------
+
+    <include
+        android:id="@+id/in"
+        layout="@layout/activity_title"></include>
+
+    //-----------end header view---------------
+
+    //-------------center view----------------------
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="7.3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:background="#FFFF"
+            android:orientation="vertical">
+
+
+            //---------"NAME OF APPILICATION" layout-----------------
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#666464">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#e1e4e5"
+                    android:gravity="center"
+
+                    android:text="Attach Supporting Documents"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/TextInputLayoutfbapplno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:background="#FFFF">
+
+                <EditText
+                    android:id="@+id/fbapplno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Application Number*"
+                    android:inputType="phone"
+
+                    android:maxLength="5"></EditText>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/TextInputLayoutfbmblno"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginStart="30dp"
+                android:background="#FFFF">
+
+                <EditText
+                    android:id="@+id/fbmblno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mobile Number Given In Application*"
+                    android:inputType="phone"
+
+                    android:maxLength="10"></EditText>
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/button_verify"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:layout_marginEnd="30dp"
+
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btnsearch"
+                android:onClick="onVerify" />
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <TableLayout
+                    android:id="@+id/tableinsert1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginStart="30dp"
+                    android:background="#FFFF">
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/slno1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:text="1"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/TextInputLayoutdocname1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/docname1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Document Name*"
+                            android:inputType="text"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/attchtype1"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="Attach Type"></Spinner>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:background="#FFFF"
+                        android:checkableBehavior="single">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Button
+                                android:id="@+id/browse1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="16"
+                                android:background="@drawable/buttoncustom"
+                                android:onClick="browse"
+                                android:text="Browse"
+                                android:textColor="#FFFFFF"></Button>
+
+                            <TextView
+                                android:id="@+id/file_path1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:hint="  No File Selected"></TextView>
+                        </TableRow>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/TextInputLayoutattachremark1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/attachremark1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Remarks*"
+                            android:inputType="text"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/tableinsert2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginStart="30dp"
+                    android:background="#FFFF">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="#CFD8DC"
+
+                            ></TextView>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/slno2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:text="2"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/TextInputLayoutdocname2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/docname2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Document Name*"
+                            android:inputType="text"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/attchtype2"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="Attach Type"
+
+                        ></Spinner>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:background="#FFFF"
+                        android:checkableBehavior="single">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Button
+                                android:id="@+id/browse2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="16"
+                                android:background="@drawable/buttoncustom"
+                                android:onClick="browse"
+                                android:text="Browse"
+                                android:textColor="#FFFFFF"></Button>
+
+                            <TextView
+                                android:id="@+id/file_path2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:hint=" No File Selected"></TextView>
+                        </TableRow>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/TextInputLayoutattachremark2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/attachremark2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Remarks*"
+                            android:inputType="text"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/tableinsert3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginStart="30dp"
+                    android:background="#FFFF">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="#CFD8DC"
+
+                            ></TextView>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/slno3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:text="3"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/TextInputLayoutdocname3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/docname3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Document Name*"
+                            android:inputType="text"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/attchtype3"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="Attach Type"
+
+                        ></Spinner>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:background="#FFFF"
+                        android:checkableBehavior="single">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Button
+                                android:id="@+id/browse3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="16"
+
+                                android:background="@drawable/buttoncustom"
+                                android:onClick="browse"
+                                android:text="Browse"
+                                android:textColor="#FFFFFF"></Button>
+
+                            <TextView
+                                android:id="@+id/file_path3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:hint=" No File Selected"></TextView>
+                        </TableRow>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/TextInputLayoutattachremark3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/attachremark3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Remarks*"
+                            android:inputType="text"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+                </TableLayout>
+
+
+                <TableLayout
+                    android:id="@+id/tableinsert4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginStart="30dp"
+                    android:background="#FFFF">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="#CFD8DC"
+
+                            ></TextView>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/slno4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:text="4"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/TextInputLayoutdocname4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/docname4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Document Name*"
+                            android:inputType="text"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/attchtype4"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="Attach Type"
+
+                        ></Spinner>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:background="#FFFF"
+                        android:checkableBehavior="single">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Button
+                                android:id="@+id/browse4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="16"
+
+                                android:background="@drawable/buttoncustom"
+                                android:onClick="browse"
+                                android:text="Browse"
+                                android:textColor="#FFFFFF"></Button>
+
+                            <TextView
+                                android:id="@+id/file_path4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:hint=" No File Selected"></TextView>
+                        </TableRow>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/TextInputLayoutattachremark4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/attachremark4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Remarks*"
+                            android:inputType="text"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/tableinsert5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginStart="30dp"
+                    android:background="#FFFF">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="#CFD8DC"
+
+                            ></TextView>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/slno5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:text="5"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/TextInputLayoutdocname5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/docname5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Document Name*"
+                            android:inputType="text"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/attchtype5"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="Attach Type"></Spinner>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:background="#FFFF"
+                        android:checkableBehavior="single">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Button
+                                android:id="@+id/browse5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="16"
+
+                                android:background="@drawable/buttoncustom"
+                                android:onClick="browse"
+                                android:text="Browse"
+                                android:textColor="#FFFFFF"></Button>
+
+                            <TextView
+                                android:id="@+id/file_path5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:hint=" No File Selected"></TextView>
+                        </TableRow>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/TextInputLayoutattachremark5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:background="#FFFF">
+
+                        <EditText
+                            android:id="@+id/attachremark5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Remarks*"
+                            android:inputType="text"></EditText>
+
+
+                    </android.support.design.widget.TextInputLayout>
+                </TableLayout>
+
+
+                <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+
+                    <TableRow
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0px">
+
+                        <Button
+
+                            android:id="@+id/addbutton"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:onClick="addFileUpload"
+                            android:padding="4dip"
+
+                            android:text="+" />
+
+                        <Button
+
+                            android:id="@+id/removebutton"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:onClick="removeFileUpload"
+
+                            android:padding="4dip"
+                            android:text="-" />
+                        <!--<Button-->
+
+                        <!--android:id="@+id/clearbutton"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="30dp"-->
+                        <!--android:padding="4dip"-->
+                        <!--android:background="@drawable/buttoncustom"-->
+                        <!--android:onClick="clearFileUpload"-->
+                        <!--android:text="clear" />-->
+
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+
+                </TableLayout>
+
+                <Button
+                    android:id="@+id/filesuploades"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/buttoncustom"
+                    android:onClick="FinalFileUpload"
+                    android:text="Submit"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    //-------------end center view----------------------
+
+
+</LinearLayout>

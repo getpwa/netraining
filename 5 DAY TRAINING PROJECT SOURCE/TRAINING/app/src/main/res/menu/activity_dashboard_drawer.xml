@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/search"
+
+            android:title="Search" />
+
+
+        <item
+            android:id="@+id/Recyclerview"
+
+
+            android:title="Recyclerview" />
+        <item
+            android:id="@+id/fileupload"
+
+            android:title="File Upload" />
+        <item
+            android:id="@+id/feed"
+
+
+            android:title="Enter Feedback" />
+    </group>
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/Map"
+
+
+                android:title="Load Map" />
+
+
+            <item
+                android:id="@+id/noti"
+
+
+                android:title="Notification" />
+            <item
+                android:id="@+id/sql"
+
+
+                android:title="SQL" />
+
+            <item
+                android:id="@+id/cam"
+
+
+                android:title="Camera" />
+
+        </menu>
+    </item>
+</menu>

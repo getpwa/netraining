@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "316826102151",
+    "firebase_url": "https://training-28acd.firebaseio.com",
+    "project_id": "training-28acd",
+    "storage_bucket": "training-28acd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316826102151:android:1ed81cba0efbdf61",
+        "android_client_info": {
+          "package_name": "in.nic.kerala.training"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "316826102151-3555d12k3njvculcn6iae870ba2i73eh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.nic.kerala.training",
+            "certificate_hash": "0d9a3dcfeb64d35da5a08b22aaedbd08c19b7ab3"
+          }
+        },
+        {
+          "client_id": "316826102151-aittgmgebu31299q95ict6ananget2e5.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "316826102151-aittgmgebu31299q95ict6ananget2e5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRlTPR661FLPzVTUzUgDfnlKCs1gZ-UTg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316826102151-aittgmgebu31299q95ict6ananget2e5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
